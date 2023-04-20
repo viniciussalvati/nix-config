@@ -1,0 +1,23 @@
+#! /bin/sh
+
+dir=$(dirname $0)
+. $dir/includes/get_root.sh
+. $dir/includes/functions.sh
+
+if [[ -f "$root/host" ]]; then
+  echo "File $root/host already exists. Please delete it before generating a new host" >&2
+  exit 1
+fi
+
+parse_parameter host "$1" "No \"host\" specified. The name of the new host file"
+
+config_dir=$root/hosts/$host
+
+echo -n "$host" >$root/host
+mkdir $config_dir
+
+nixos-generate-config --dir $config_dir
+
+if [[ ! -f $root/hosts/hardware-configuration.nix ]]; then
+  mv $config_dir/hardware-configuration.nix $root/hosts/hardware-configuration.nix
+fi

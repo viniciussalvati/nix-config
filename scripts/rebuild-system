@@ -1,0 +1,16 @@
+#! /bin/sh
+
+dir=$(dirname $0)
+. $dir/includes/get_root.sh
+. $dir/includes/get_host.sh
+. $dir/includes/functions.sh
+
+parse_parameter command "$1" "No \"command\" specified. Enter the command to sent to nixos-rebuild.\nCommon values are: test build boot switch"
+
+echo "Rebuilding nixos for \"$host\" host using $root/flake.nix"
+echo "Sudo will be used for these operations"
+echo ""
+
+sudo sh <<EOF
+  nixos-rebuild --flake $root#$host $command
+EOF

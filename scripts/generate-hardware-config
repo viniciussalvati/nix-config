@@ -1,0 +1,15 @@
+#! /bin/sh
+
+dir=$(dirname $0)
+. $dir/includes/get_root.sh
+
+target_file=$root/hosts/hardware-configuration.nix;
+
+if [[ -f "$target_file" ]]; then
+  backup_file=$root/hosts/hardware-configuration.backup.nix
+  mv -f $target_file $backup_file
+  echo "Backed up current hardware config file to $backup_file"
+fi
+
+nixos-generate-config --show-hardware-config >$target_file
+echo "Generated hardware config file $target_file"

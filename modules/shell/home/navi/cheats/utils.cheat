@@ -1,0 +1,19 @@
+% utils
+
+# My ip
+ip address | rg --pcre2 'inet (?!127.0.0.1)((\d{1,3}\.){3}\d{1,3})' --only-matching --replace '$1'
+
+# Copy my ip
+ip address | rg --pcre2 'inet (?!127.0.0.1)((\d{1,3}\.){3}\d{1,3})' --only-matching --replace '$1' | clip
+
+# My public IP
+curl 'https://api.ipify.org'
+
+# Copy my public IP
+curl 'https://api.ipify.org' | clip
+
+# My public IP V6
+curl 'https://api64.ipify.org'
+
+# Copy my public IP V6
+curl 'https://api64.ipify.org' | clip
