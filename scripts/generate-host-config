@@ -17,7 +17,3 @@ echo -n "$host" >$root/host
 mkdir $config_dir
 
 nixos-generate-config --dir $config_dir
-
-if [[ ! -f $root/hosts/hardware-configuration.nix ]]; then
-  mv $config_dir/hardware-configuration.nix $root/hosts/hardware-configuration.nix
-fi

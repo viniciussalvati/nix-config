@@ -1,9 +1,6 @@
 { pkgs, user, ... }: {
 
   imports = [
-    # Include the results of the hardware scan.
-    # This is to be generated for every machine in the same path, and not commited to the repo
-    ./hardware-configuration.nix
     ../modules/shell
   ];
 

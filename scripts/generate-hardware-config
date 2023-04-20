@@ -2,11 +2,12 @@
 
 dir=$(dirname $0)
 . $dir/includes/get_root.sh
+. $dir/includes/get_host.sh
 
-target_file=$root/hosts/hardware-configuration.nix;
+target_file=$root/hosts/$host/hardware-configuration.nix;
 
 if [[ -f "$target_file" ]]; then
-  backup_file=$root/hosts/hardware-configuration.backup.nix
+  backup_file=$root/hosts/$host/hardware-configuration.backup.nix
   mv -f $target_file $backup_file
   echo "Backed up current hardware config file to $backup_file"
 fi
