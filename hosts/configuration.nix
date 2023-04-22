@@ -21,9 +21,13 @@
         enable = true;
       };
 
-      #Disables xterm
+      # Disables xterm
       xterm.enable = false;
     };
+
+    excludePackages = with pkgs; [
+      xterm
+    ];
   };
 
   # Removes some packages from gnome I don't want/need
@@ -63,7 +67,7 @@
     ];
   };
 
-  programs.sway.enable = true;
+  # programs.sway.enable = true;
 
   programs.zsh.enable = true;
 
