@@ -5,6 +5,7 @@
         "org.gnome.Console.desktop"
         "code.desktop"
         "firefox.desktop"
+        "org.telegram.desktop.desktop"
         "org.gnome.TextEditor.desktop"
         "org.gnome.Nautilus.desktop"
         "bitwarden.desktop"

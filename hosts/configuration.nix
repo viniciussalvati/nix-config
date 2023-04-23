@@ -28,6 +28,7 @@
     gnome.gedit
     rnix-lsp
     bitwarden
+    telegram-desktop
   ];
 
   fonts = {
