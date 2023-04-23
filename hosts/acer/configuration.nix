@@ -2,39 +2,37 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, user, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+      
+      # Includes systemd-boot configuration
+      ../../modules/boot/systemd-boot.nix
+    ];
 
-    # Includes systemd-boot configuration
-    ../../modules/boot/systemd-boot.nix
-  ];
-
-  networking.hostName = "nixos-vm"; # Define your hostname.
+  networking.hostName = "nixos-acer"; # Define your hostname.
 
   services.xserver.layout = "br";
   # Configure console keymap
   console.keyMap = "br-abnt2";
 
-  environment.systemPackages = with pkgs; [
-    spice-vdagent
-  ];
+  #services.xserver.libinput.mouse.tapping = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-  # i18n.defaultLocale = "en_GB.UTF-8";
-
+  # i18n.defaultLocale = "en_US.UTF-8";
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkbOptions in tty.
   # };
+
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -53,6 +51,23 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # users.users.alice = {
+  #   isNormalUser = true;
+  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  #   packages = with pkgs; [
+  #     firefox
+  #     thunderbird
+  #   ];
+  # };
+
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  # environment.systemPackages = with pkgs; [
+  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #   wget
+  # ];
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -60,6 +75,8 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;

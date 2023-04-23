@@ -33,4 +33,29 @@ in
       }
     ];
   };
+  acer = lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit user system;
+    };
+    modules = [
+      ./configuration.nix
+      ./acer/configuration.nix
+      home-manager.nixosModules.home-manager
+      {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = {
+            inherit user;
+          };
+          users.${user} = {
+            imports = [
+              ./home.nix
+            ];
+          };
+        };
+      }
+    ];
+  };
 }
