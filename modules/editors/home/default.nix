@@ -1,4 +1,4 @@
 { ... }:
 {
-  imports = [ ./vscode.nix ];
+  imports = [ ./vscode ];
 }

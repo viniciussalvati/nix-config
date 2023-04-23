@@ -1,2 +1,3 @@
+.direnv/
 host
 hardware-configuration.backup.nix

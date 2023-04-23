@@ -1,0 +1,12 @@
+# /bin/sh
+
+set -e
+
+dir=$(dirname $0)
+. $dir/includes/get_root.sh
+
+echo Generating file with vscode extensions
+
+bash $NIXPKGS_ROOT/pkgs/applications/editors/vscode/extensions/update_installed_exts.sh >$root/modules/editors/home/vscode/extensions.nix
+
+echo Generated file modules/editors/home/vscode/extensions.nix with the latest versions of vscode extensions
