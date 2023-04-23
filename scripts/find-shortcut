@@ -1,0 +1,19 @@
+# /bin/sh
+
+dir=$(dirname $0)
+. $dir/includes/functions.sh
+
+search_term="$1"
+
+paths=$(echo $XDG_DATA_DIRS | sed 's/:/ /g')
+
+for path in $paths;
+do
+  all_shortcuts=$path/applications
+
+  if [[ -d "$all_shortcuts" ]]; then
+
+    find "$all_shortcuts" -type f,l -iname "*$search_term*.desktop" -exec echo {} \;
+
+  fi
+done

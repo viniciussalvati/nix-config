@@ -3,6 +3,7 @@
   imports = [
     ../modules/shell/home
     ../modules/editors/home
+    ../modules/desktop/home/gnome.nix
   ];
 
   home = {
