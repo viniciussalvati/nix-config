@@ -2,6 +2,7 @@
 
   imports = [
     ../modules/shell
+    ../modules/desktop/gnome.nix
   ];
 
   # Easiest to use and most distros use this by default.
@@ -9,34 +10,6 @@
 
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";
-
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-
-    # Enable the GNOME Desktop Environment.
-    displayManager.gdm.enable = true;
-    desktopManager = {
-      gnome = {
-        enable = true;
-      };
-
-      # Disables xterm
-      xterm.enable = false;
-    };
-
-    excludePackages = with pkgs; [
-      xterm
-    ];
-  };
-
-  # Removes some packages from gnome I don't want/need
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-tour
-  ]) ++ (with pkgs.gnome; [
-    epiphany # web browser
-    geary # email reader (I'll use thunderbird or another client if I want it)
-  ]);
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
