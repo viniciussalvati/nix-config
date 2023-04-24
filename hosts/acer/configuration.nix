@@ -5,13 +5,13 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      
-      # Includes systemd-boot configuration
-      ../../modules/boot/systemd-boot.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+
+    # Uses grub2 boot, because it supports EFI boot and can probe for Windows in other partitions
+    ../../modules/boot/grub2.nix
+  ];
 
   networking.hostName = "nixos-acer"; # Define your hostname.
 
