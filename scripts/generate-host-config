@@ -16,6 +16,11 @@ parse_parameter host "$1" "No \"host\" specified. The name of the new host file"
 config_dir=$root/hosts/$host
 
 echo -n "$host" >$root/host
-mkdir $config_dir
 
-nixos-generate-config --dir $config_dir
+if [[ -d "$config_dir" ]]; then
+  echo "$config_dir already exist. Skipping config generation" >&2
+else
+  mkdir $config_dir
+
+  nixos-generate-config --dir $config_dir
+fi
