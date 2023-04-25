@@ -15,6 +15,7 @@
       "terminal.integrated.fontFamily" = "FiraCode Nerd Font";
       "terminal.integrated.customGlyphs" = true;
       "terminal.integrated.defaultProfile.linux" = "zsh";
+      "extensions.autoUpdate" = false; # Not update extensions (updates will still be checked)
 
       # nix settings
       "nix.enableLanguageServer" = true;
