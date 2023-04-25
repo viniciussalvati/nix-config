@@ -10,6 +10,10 @@
     };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark"; # dark theme
+      show-battery-percentage = true; # displays battery
+    };
+    "org/gnome/settings-daemon/plugins/power" = {
+      sleep-inactive-ac-type = "nothing"; # never suspends when connected
     };
   };
 }
