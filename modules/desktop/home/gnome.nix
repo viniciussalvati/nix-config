@@ -25,5 +25,8 @@
     "org/gnome/settings-daemon/plugins/power" = {
       sleep-inactive-ac-type = "nothing"; # never suspends when connected
     };
+    "org/gnome/mutter" = {
+      dynamic-workspaces = true; # make dynamic workspaces, instead of a fixed number
+    };
   };
 }
