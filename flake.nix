@@ -19,6 +19,7 @@
     in
     {
       nixosConfigurations = (import ./hosts { inherit nixpkgs user home-manager; });
+      templates = (import ./templates);
     } // utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
