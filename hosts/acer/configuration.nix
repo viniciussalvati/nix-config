@@ -11,6 +11,8 @@
 
     # Uses grub2 boot, because it supports EFI boot and can probe for Windows in other partitions
     ../../modules/boot/grub2.nix
+
+    ../../modules/games/steam.nix
   ];
 
   networking.hostName = "nixos-acer"; # Define your hostname.

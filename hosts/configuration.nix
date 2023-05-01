@@ -14,7 +14,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel" # Enable ‘sudo’ for the user.
+      "networkmanager" # Allows the user to manage network settings without asking for the password
+    ];
   };
   users.defaultUserShell = pkgs.zsh;
 
