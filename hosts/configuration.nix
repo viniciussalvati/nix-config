@@ -29,6 +29,7 @@
     rnix-lsp
     bitwarden
     telegram-desktop
+    nix-index # tool to index and find references in the nix store. Use nix-locate
   ];
 
   fonts = {
