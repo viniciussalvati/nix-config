@@ -20,8 +20,8 @@
   {
     name = "gitlens";
     publisher = "eamodio";
-    version = "2023.4.2505";
-    sha256 = "1xy89x8hq4ggpzxyjvvaimylkarway8521c1jnzrv9jf95q6jxxg";
+    version = "2023.4.2805";
+    sha256 = "0h34ifclqrl1q85x6wf5zwvfgiz93xf0h06g1gfbyin09c56xp1l";
   }
   {
     name = "nix-ide";
