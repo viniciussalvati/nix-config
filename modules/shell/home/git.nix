@@ -61,12 +61,12 @@
       main = "gfa && gsw -d origin/$(git_main_branch)";
 
       # git-bug aliases
-      gb = "git bug";
-      gbui = "git bug termui";
-      gba = "git bug add";
-      gbl = "git bug pull";
-      gbp = "git bug push";
-      gbls = "git bug ls";
+      gbug = "git bug";
+      gbgui = "git bug termui";
+      gbga = "git bug add";
+      gbgl = "git bug pull";
+      gbgp = "git bug push";
+      gbgls = "git bug ls";
     };
   };
 }
