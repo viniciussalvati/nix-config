@@ -8,20 +8,20 @@
   {
     name = "dart-code";
     publisher = "Dart-Code";
-    version = "3.63.20230424";
-    sha256 = "1zp45bprpwlgq8axs1549blg5rr7x01gd02if4f6sg05zdywi5c7";
+    version = "3.69.20230719";
+    sha256 = "0wk8zysxbxq70n2hfblk8647mgpvyk984fmqpawjnn28asi7bx36";
   }
   {
     name = "flutter";
     publisher = "Dart-Code";
-    version = "3.63.20230303";
-    sha256 = "036fhmnbd48jqb3js6xls24p63mfhy4kf4h7jam3agi71m0i2248";
+    version = "3.69.20230703";
+    sha256 = "1yiwzffxvjr7jyp1psaawqs1dnrbpwsycpwb90fba3647673glrg";
   }
   {
     name = "gitlens";
     publisher = "eamodio";
-    version = "2023.4.2805";
-    sha256 = "0h34ifclqrl1q85x6wf5zwvfgiz93xf0h06g1gfbyin09c56xp1l";
+    version = "2023.7.1905";
+    sha256 = "1jxf9mk8n9vddr7spar1bzrglphac379d1l7bcgckxywmzca6js6";
   }
   {
     name = "nix-ide";
@@ -32,8 +32,8 @@
   {
     name = "direnv";
     publisher = "mkhl";
-    version = "0.12.1";
-    sha256 = "0lizp7r2l6dayhvxkz3ghsgywz9magvy7lzkc5dkcqxcsi1p4klb";
+    version = "0.14.0";
+    sha256 = "1ssh577b0fx1cnkj52fiy1x41lcf56vk85sq7yrlmkmy9gmfvrjg";
   }
 ];
 }
