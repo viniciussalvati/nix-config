@@ -23,10 +23,17 @@
       show-battery-percentage = true; # displays battery
     };
     "org/gnome/settings-daemon/plugins/power" = {
+      power-button-action = "nothing"; # doesn't do anything when pressing the power button
       sleep-inactive-ac-type = "nothing"; # never suspends when connected
     };
     "org/gnome/mutter" = {
       dynamic-workspaces = true; # make dynamic workspaces, instead of a fixed number
+    };
+    "org/gnome/desktop/wm/keybindings" = {
+      # Configure switching on alt-tab
+      switch-applications = [ ]; # prevents behaviour of swithing whole applications
+      switch-windows = [ "<Alt>Tab" ]; # configure alt-tab to switch between all open windows
+      switch-windows-backward = [ "<Shift><Alt>Tab" ]; # configure alt-tab to switch between all open windows, backwards
     };
   };
 }
