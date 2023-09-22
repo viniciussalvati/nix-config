@@ -3,7 +3,7 @@
   environment.systemPackages = with pkgs; [
     # Cli utils
     bat
-    exa
+    eza
     fd
     htop
     jq

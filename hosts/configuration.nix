@@ -35,15 +35,13 @@
     nix-index # tool to index and find references in the nix store. Use nix-locate
   ];
 
-  fonts = {
-    fonts = with pkgs; [
-      (nerdfonts.override {
-        fonts = [
-          "FiraCode"
-        ];
-      })
-    ];
-  };
+  fonts.packages = with pkgs; [
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+      ];
+    })
+  ];
 
   # programs.sway.enable = true;
 

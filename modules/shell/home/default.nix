@@ -8,14 +8,11 @@
     ./zsh
   ];
 
-  home = {
-    shellAliases = {
-      # Map ls commands to exa
-      ls = "exa --icons -F --group-directories-first --color-scale";
-      la = "exa --icons -F --group-directories-first --color-scale --all";
-      ll = "exa --icons -F --group-directories-first --color-scale -l --all";
-      l = "ls";
-    };
+  programs.eza = {
+    enable = true;
+    enableAliases = true;
+    icons = true;
+    extraOptions = [ "-F" "--group-directories-first" "--color-scale" ];
   };
 
   programs.direnv = {
