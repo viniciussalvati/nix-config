@@ -13,6 +13,8 @@
     ../../modules/boot/grub2.nix
 
     ../../modules/games/steam.nix
+
+    ../../modules/hardware/logitech.nix
   ];
 
   networking.hostName = "nixos-acer"; # Define your hostname.
