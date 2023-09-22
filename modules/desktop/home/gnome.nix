@@ -3,8 +3,8 @@
     "org/gnome/shell" = {
       favorite-apps = [
         "org.gnome.Console.desktop"
-        "code.desktop"
         "firefox.desktop"
+        "code.desktop"
         "org.gnome.Nautilus.desktop"
         "org.gnome.TextEditor.desktop"
         "bitwarden.desktop"

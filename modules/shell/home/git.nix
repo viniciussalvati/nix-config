@@ -53,6 +53,7 @@
       gitui
       tig
       git-bug
+      lazygit
     ];
 
     shellAliases = {
