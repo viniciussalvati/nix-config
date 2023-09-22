@@ -3,6 +3,7 @@
   imports = [
     ../modules/shell
     ../modules/desktop/gnome.nix
+    ../modules/editors/vscode
   ];
 
   # Easiest to use and most distros use this by default.
