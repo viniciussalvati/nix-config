@@ -11,7 +11,9 @@
       enable = true;
       device = "nodev";
       efiSupport = true;
-      useOSProber = true;
+      # The OSProber can be used to identify other OS in the disks (Windows)
+      # It also makes rebuild of the OS very slow.
+      useOSProber = false;
     };
   };
 
