@@ -13,6 +13,9 @@
     ../../modules/boot/grub2.nix
     ../../modules/boot/plymouth.nix
 
+    # enable waydroid
+    ../../modules/android/emulators/waydroid.nix
+
     ../../modules/games/steam.nix
 
     ../../modules/hardware/logitech.nix
