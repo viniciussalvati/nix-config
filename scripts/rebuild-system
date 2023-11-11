@@ -13,6 +13,4 @@ echo "Rebuilding nixos for \"$host\" host using $root/flake.nix"
 echo "Sudo will be used for these operations"
 echo ""
 
-sudo sh <<EOF
-  nixos-rebuild --flake $root#$host $command
-EOF
+sudo nixos-rebuild --flake $root#$host $command
