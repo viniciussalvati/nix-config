@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ unstablePkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with unstablePkgs; [
     vscode
   ];
 }

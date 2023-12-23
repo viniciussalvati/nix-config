@@ -1,7 +1,11 @@
-{ nixpkgs, user, home-manager, ... }:
+{ nixpkgs, nixpkgs-unstable, user, home-manager, ... }:
 let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
+    inherit system;
+    config.allowUnfree = true;
+  };
+  unstablePkgs = import nixpkgs-unstable {
     inherit system;
     config.allowUnfree = true;
   };
@@ -9,7 +13,7 @@ let
   mkHost = { hostModule, homeManagerImports ? [ ] }: lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit user system;
+      inherit user system unstablePkgs;
     };
     modules = [
       ./configuration.nix
@@ -20,7 +24,7 @@ let
           useGlobalPkgs = true;
           useUserPackages = true;
           extraSpecialArgs = {
-            inherit user;
+            inherit user unstablePkgs;
           };
           users.${user} = {
             imports = [

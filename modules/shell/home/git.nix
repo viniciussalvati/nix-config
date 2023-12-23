@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ unstablePkgs, ... }:
 {
   programs.ssh = {
     matchBlocks = {
@@ -16,7 +16,7 @@
 
   programs.git = {
     enable = true;
-    package = pkgs.gitFull;
+    package = unstablePkgs.gitFull;
     userName = "Vinicius Salvati Melquiades";
     userEmail = "1378981+viniciussalvati@users.noreply.github.com";
     # signing # todo: set up signing
@@ -49,7 +49,7 @@
   };
 
   home = {
-    packages = with pkgs; [
+    packages = with unstablePkgs; [
       gitui
       tig
       git-bug

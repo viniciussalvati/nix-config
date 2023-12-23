@@ -1,7 +1,8 @@
-{ ... }:
+{ unstablePkgs, ... }:
 {
   programs.starship = {
     enable = true;
+    package = unstablePkgs.starship;
     enableZshIntegration = true;
     settings = {
       battery.display = [{

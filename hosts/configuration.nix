@@ -1,4 +1,4 @@
-{ pkgs, user, ... }: {
+{ pkgs, unstablePkgs, user, ... }: {
 
   imports = [
     ../modules/shell
@@ -20,23 +20,24 @@
       "networkmanager" # Allows the user to manage network settings without asking for the password
     ];
   };
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = unstablePkgs.zsh;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
+    gnome.gedit
+  ]) ++ (with unstablePkgs; [
     vim
     zsh
     git
     firefox
-    gnome.gedit
     rnix-lsp
     bitwarden
     telegram-desktop
     nix-index # tool to index and find references in the nix store. Use nix-locate
-  ];
+  ]);
 
-  fonts.packages = with pkgs; [
+  fonts.packages = with unstablePkgs; [
     (nerdfonts.override {
       fonts = [
         "FiraCode"
@@ -48,7 +49,7 @@
 
   programs.zsh.enable = true;
 
-  environment.shells = [ pkgs.zsh ];
+  environment.shells = [ unstablePkgs.zsh ];
 
   # Allow unfree software (such as vscode)
   nixpkgs.config.allowUnfree = true;
