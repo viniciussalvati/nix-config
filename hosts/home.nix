@@ -1,7 +1,8 @@
 { user, pkgs, ... }:
 {
   imports = [
-    ../home/desktop/gnome.nix
+    ../home/desktop/gnome
+    ../home/services/flameshot.nix
     ../home/shell
   ];
 

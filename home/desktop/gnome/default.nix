@@ -1,4 +1,11 @@
+{ pkgs, ... }:
+
 {
+  imports = [
+    ./extensions.nix
+    ./keybindings.nix
+  ];
+
   dconf.settings = {
     "org/gnome/shell" = {
       favorite-apps = [
@@ -28,12 +35,6 @@
     };
     "org/gnome/mutter" = {
       dynamic-workspaces = true; # make dynamic workspaces, instead of a fixed number
-    };
-    "org/gnome/desktop/wm/keybindings" = {
-      # Configure switching on alt-tab
-      switch-applications = [ ]; # prevents behaviour of swithing whole applications
-      switch-windows = [ "<Alt>Tab" ]; # configure alt-tab to switch between all open windows
-      switch-windows-backward = [ "<Shift><Alt>Tab" ]; # configure alt-tab to switch between all open windows, backwards
     };
   };
 }
