@@ -1,4 +1,4 @@
-{ unstablePkgs, ... }:
+{ pkgs, ... }:
 {
-  environment.systemPackages = [ unstablePkgs.localsend ];
+  environment.systemPackages = [ pkgs.localsend ];
 }
