@@ -34,7 +34,7 @@ let
           # gdm is gnome's login screen's user
           users.gdm = {
             home.stateVersion = "23.11";
-            imports = [ ../modules/desktop/home/gdm.nix ];
+            imports = [ ../home/desktop/gdm.nix ];
           };
         };
       }

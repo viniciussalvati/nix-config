@@ -1,8 +1,8 @@
 { user, pkgs, ... }:
 {
   imports = [
-    ../modules/shell/home
-    ../modules/desktop/home/gnome.nix
+    ../home/desktop/gnome.nix
+    ../home/shell
   ];
 
   home = {
