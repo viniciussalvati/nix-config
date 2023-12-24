@@ -19,7 +19,7 @@
 
     ../../modules/games/steam.nix
 
-    ../../modules/hardware/logitech.nix
+    ../../modules/hardware/logitech/solaar.nix
   ];
 
   networking.hostName = "nixos-acer"; # Define your hostname.

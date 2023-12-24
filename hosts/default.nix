@@ -1,4 +1,4 @@
-{ nixpkgs, nixpkgs-unstable, user, home-manager, ... }:
+{ nixpkgs, nixpkgs-unstable, user, home-manager, solaar, ... }:
 let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
@@ -16,6 +16,8 @@ let
       inherit user system unstablePkgs;
     };
     modules = [
+      solaar.nixosModules.default
+
       ./configuration.nix
       hostModule
       home-manager.nixosModules.home-manager
