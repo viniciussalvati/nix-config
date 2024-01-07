@@ -1,4 +1,4 @@
-{ nixpkgs, nixpkgs-unstable, user, home-manager, solaar, ... }:
+{ nixpkgs, nixpkgs-unstable, user, home-manager, nixvim, solaar, ... }:
 let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
@@ -30,6 +30,7 @@ let
           };
           users.${user} = {
             imports = [
+              nixvim.homeManagerModules.nixvim
               ./home.nix
             ] ++ homeManagerImports;
           };

@@ -28,7 +28,6 @@
   environment.systemPackages = (with pkgs; [
     gnome.gedit
   ]) ++ (with unstablePkgs; [
-    vim
     zsh
     git
     firefox

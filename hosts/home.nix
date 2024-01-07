@@ -4,6 +4,7 @@
     ../home/desktop/gnome
     ../home/services/flameshot.nix
     ../home/shell
+    ../home/editors/neovim
   ];
 
   home = {

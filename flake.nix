@@ -13,6 +13,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-23.11";
+      # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
+      # url = "github:nix-community/nixvim/nixos-23.05";
+
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     solaar = {
       url = "github:Svenum/Solaar-Flake/latest"; # For latest stable version
       #url = "https://github.com/Svenum/Solaar-Flake/release-1.1.10; # uncomment line for version 1.1.10
@@ -21,12 +29,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, solaar, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nixvim, solaar, ... }:
     let
       user = "vinicius";
     in
     {
-      nixosConfigurations = (import ./hosts { inherit nixpkgs nixpkgs-unstable user home-manager solaar; });
+      nixosConfigurations = (import ./hosts { inherit nixpkgs nixpkgs-unstable user home-manager nixvim solaar; });
       templates = (import ./templates);
     };
 }
