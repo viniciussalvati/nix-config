@@ -45,6 +45,6 @@ let
   };
 in
 {
-  vm = mkHost { hostModule = ./vm/configuration.nix; };
-  acer = mkHost { hostModule = ./acer/configuration.nix; };
+  vm = mkHost { hostModule = ./vm; };
+  acer = mkHost { hostModule = ./acer; };
 }
