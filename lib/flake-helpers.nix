@@ -6,10 +6,11 @@ in
 {
   mkNixOSConfig =
     { hostname
-    , user ? defaultUser
+    , username ? defaultUser
     , homePath ? "/home"
-    , homeDirectory ? "${homePath}/${user}"
+    , homeDirectory ? "${homePath}/${username}"
     , system ? "x86_64-linux"
+    , stateVersion ? "23.11"
     , nixpkgs ? inputs.nixpkgs
     , home-manager ? inputs.home-manager
     , solaar ? inputs.solaar
@@ -27,7 +28,7 @@ in
     nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = {
-        inherit user system unstablePkgs;
+        inherit username system unstablePkgs;
       };
       modules = [
         solaar.nixosModules.default
@@ -39,17 +40,22 @@ in
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = {
-              inherit user unstablePkgs;
+              inherit username unstablePkgs;
             };
-            users.${user} = {
+            users.${username} = {
               imports = [
                 nixvim.homeManagerModules.nixvim
+                {
+                  home = {
+                    inherit stateVersion username homeDirectory;
+                  };
+                }
                 ../hosts/home.nix
               ] ++ (includeIfExists ../hosts/${hostname}/home.nix);
             };
             # gdm is gnome's login screen's user
             users.gdm = {
-              home.stateVersion = "23.11";
+              home = { inherit stateVersion; };
               imports = [ ../home/desktop/gdm.nix ];
             };
           };

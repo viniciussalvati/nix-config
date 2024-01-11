@@ -1,4 +1,4 @@
-{ pkgs, unstablePkgs, user, ... }: {
+{ pkgs, unstablePkgs, username, ... }: {
 
   imports = [
     ../modules/shell
@@ -14,7 +14,7 @@
   time.timeZone = "Europe/Lisbon";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${user} = {
+  users.users.${username} = {
     isNormalUser = true;
     extraGroups = [
       "wheel" # Enable ‘sudo’ for the user.

@@ -29,14 +29,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nixvim, solaar, ... }@flakes:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nixvim, solaar, ... }@flakes:
     let
-      user = "vinicius";
+      username = "vinicius";
       inherit (import ./lib/flake-helpers.nix flakes) mkHomeConfig;
     in
     {
       nixosConfigurations = (import ./hosts {
-        inherit nixpkgs nixpkgs-unstable user home-manager nixvim solaar;
+        inherit nixpkgs nixpkgs-unstable username home-manager nixvim solaar;
       });
       homeConfigurations = {
         wsl-work = mkHomeConfig {

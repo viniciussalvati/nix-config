@@ -1,4 +1,4 @@
-{ user, pkgs, ... }:
+{ ... }:
 {
   imports = [
     ../home/desktop/gnome

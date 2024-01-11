@@ -1,10 +1,6 @@
-{ nixpkgs, nixpkgs-unstable, user, home-manager, nixvim, solaar, ... }:
+{ nixpkgs, nixpkgs-unstable, username, home-manager, nixvim, solaar, ... }:
 let
   system = "x86_64-linux";
-  pkgs = import nixpkgs {
-    inherit system;
-    config.allowUnfree = true;
-  };
   unstablePkgs = import nixpkgs-unstable {
     inherit system;
     config.allowUnfree = true;
@@ -13,7 +9,7 @@ let
   mkHost = { hostModule, homeManagerImports ? [ ] }: lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit user system unstablePkgs;
+      inherit username system unstablePkgs;
     };
     modules = [
       solaar.nixosModules.default
@@ -26,10 +22,17 @@ let
           useGlobalPkgs = true;
           useUserPackages = true;
           extraSpecialArgs = {
-            inherit user unstablePkgs;
+            inherit username unstablePkgs;
           };
-          users.${user} = {
+          users.${username} = {
             imports = [
+              {
+                home = {
+                  stateVersion = "23.11";
+                  username = "${username}";
+                  homeDirectory = "/home/${username}";
+                };
+              }
               nixvim.homeManagerModules.nixvim
               ./home.nix
             ] ++ homeManagerImports;
