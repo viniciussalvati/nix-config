@@ -14,18 +14,12 @@
       };
 
       servers = {
-        nixd.enable = true;
-
         tsserver.enable = true;
-
-        rust-analyzer = {
-          enable = true;
-          installCargo = true;
-          installRustc = true;
-        };
       };
     };
     fidget.enable = true; # Indicator for LSP
     # lsp-lines.enable = true; # Makes the diagnostics messages appear as virtual lines
+
+    none-ls.enable = true;
   };
 }

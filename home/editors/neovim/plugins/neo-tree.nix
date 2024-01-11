@@ -16,7 +16,7 @@
       {
         mode = "n";
         key = "<C-b>";
-        action = "<cmd>:Neotree filesystem toggle left reveal<CR>";
+        action = "<cmd>:Neotree last focus left reveal<CR>";
       }
     ];
   };

@@ -8,7 +8,10 @@
     ./plugins/treesitter.nix
     ./plugins/lualine.nix
     ./plugins/lsp.nix
-    ./plugins/none-ls.nix
+    ./plugins/language-support/nix.nix
+    ./plugins/language-support/rust.nix
+    ./plugins/language-support/typescript.nix
+    ./plugins/language-support/flutter.nix
     ./plugins/completions.nix
     ./plugins/neo-tree.nix
   ];
