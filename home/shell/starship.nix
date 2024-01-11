@@ -25,10 +25,6 @@
         symbol = " ";
       };
 
-      nodejs = {
-        symbol = " ";
-      };
-
       status = {
         disabled = false;
         symbol = "";
