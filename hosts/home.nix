@@ -8,10 +8,10 @@
   ];
 
   home = {
-    stateVersion = "23.11";
+    # stateVersion = "23.11";
 
-    username = "${user}";
-    homeDirectory = "/home/${user}";
+    # username = "${user}";
+    # homeDirectory = "/home/${user}";
 
     sessionVariables = {
       EDITOR = "code --wait";

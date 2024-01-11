@@ -29,12 +29,20 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nixvim, solaar, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nixvim, solaar, ... }@flakes:
     let
       user = "vinicius";
+      inherit (import ./lib/flake-helpers.nix flakes) mkHomeConfig;
     in
     {
-      nixosConfigurations = (import ./hosts { inherit nixpkgs nixpkgs-unstable user home-manager nixvim solaar; });
+      nixosConfigurations = (import ./hosts {
+        inherit nixpkgs nixpkgs-unstable user home-manager nixvim solaar;
+      });
+      homeConfigurations = {
+        wsl-work = mkHomeConfig {
+          hostname = "wsl-work";
+        };
+      };
       templates = (import ./templates);
     };
 }
