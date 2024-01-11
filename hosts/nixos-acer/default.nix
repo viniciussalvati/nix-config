@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { ... }:
-
 {
   imports = [
     # Include the results of the hardware scan.
@@ -21,8 +20,6 @@
 
     ../../modules/hardware/logitech/solaar.nix
   ];
-
-  networking.hostName = "nixos-acer"; # Define your hostname.
 
   services.xserver.layout = "br";
   # Configure console keymap

@@ -29,20 +29,19 @@
     };
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nixvim, solaar, ... }@flakes:
+  outputs = inputs:
     let
-      username = "vinicius";
-      inherit (import ./lib/flake-helpers.nix flakes) mkHomeConfig;
+      inherit (import ./lib/flake-helpers.nix inputs) deepMerge mkNixosConfig mkHomeConfig;
     in
-    {
-      nixosConfigurations = (import ./hosts {
-        inherit nixpkgs nixpkgs-unstable username home-manager nixvim solaar;
-      });
-      homeConfigurations = {
-        wsl-work = mkHomeConfig {
-          hostname = "wsl-work";
-        };
-      };
-      templates = (import ./templates);
-    };
+    deepMerge [
+      # Nixos Configurations
+      (mkNixosConfig { hostname = "nixos-acer"; })
+      (mkNixosConfig { hostname = "vm"; })
+
+      # Standalone home-manager profiles
+      (mkHomeConfig { hostname = "wsl-work"; })
+
+      # Templates
+      { templates = (import ./templates); }
+    ];
 }
