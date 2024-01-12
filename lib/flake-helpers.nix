@@ -103,6 +103,7 @@ in
               };
             }
             ../home/common.nix
+            ../home/standalone
             ../profiles/${hostname}
           ];
         };

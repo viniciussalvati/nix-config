@@ -1,1 +1,3 @@
-{ }
+{
+  imports = [ ../../home/wsl ];
+}
