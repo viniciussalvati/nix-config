@@ -51,14 +51,14 @@ in
                         inherit stateVersion username homeDirectory;
                       };
                     }
-                    ../home/common.nix
-                    ../home/desktop
+                    ../home-manager/common.nix
+                    ../home-manager/desktop
                   ] ++ (includeIfExists ../hosts/${hostname}/home.nix);
                 };
                 # gdm is gnome's login screen's user
                 users.gdm = {
                   home = { inherit stateVersion; };
-                  imports = [ ../home/desktop/gdm.nix ];
+                  imports = [ ../home-manager/desktop/gdm.nix ];
                 };
               };
             }
@@ -102,8 +102,8 @@ in
                 inherit stateVersion username homeDirectory;
               };
             }
-            ../home/common.nix
-            ../home/standalone
+            ../home-manager/common.nix
+            ../home-manager/standalone
             ../profiles/${hostname}
           ];
         };

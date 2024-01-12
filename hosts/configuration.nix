@@ -1,10 +1,10 @@
 { pkgs, unstablePkgs, username, ... }: {
 
   imports = [
-    ../modules/shell
-    ../modules/desktop/gnome.nix
-    ../modules/editors/vscode
-    ../modules/applications/localsend.nix
+    ../nixos/shell
+    ../nixos/desktop/gnome.nix
+    ../nixos/editors/vscode
+    ../nixos/applications/localsend.nix
   ];
 
   # Easiest to use and most distros use this by default.

@@ -1,3 +1,3 @@
 {
-  imports = [ ../../home/wsl ];
+  imports = [ ../../home-manager/wsl ];
 }

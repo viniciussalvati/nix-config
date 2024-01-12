@@ -9,16 +9,16 @@
     ./hardware-configuration.nix
 
     # Uses grub2 boot, because it supports EFI boot and can probe for Windows in other partitions
-    ../../modules/boot/grub2.nix
-    ../../modules/boot/plymouth.nix
+    ../../nixos/boot/grub2.nix
+    ../../nixos/boot/plymouth.nix
     ./grub-entries.nix
 
     # enable waydroid
-    ../../modules/android/emulators/waydroid.nix
+    ../../nixos/android/emulators/waydroid.nix
 
-    ../../modules/games/steam.nix
+    ../../nixos/games/steam.nix
 
-    ../../modules/hardware/logitech/solaar.nix
+    ../../nixos/hardware/logitech/solaar.nix
   ];
 
   services.xserver.layout = "br";

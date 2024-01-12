@@ -1,7 +1,7 @@
 {
   imports = [
-    ../home/shell
-    ../home/editors/neovim
+    ../home-manager/shell
+    ../home-manager/editors/neovim
   ];
 
   # Used to make home-manager generate the .profile file
