@@ -15,23 +15,19 @@
 
     nixvim = {
       url = "github:nix-community/nixvim/nixos-23.11";
-      # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
-      # url = "github:nix-community/nixvim/nixos-23.05";
-
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     solaar = {
       url = "github:Svenum/Solaar-Flake/latest"; # For latest stable version
-      #url = "https://github.com/Svenum/Solaar-Flake/release-1.1.10; # uncomment line for version 1.1.10
-      #url = "https://github.com/Svenum/Solaar-Flake/main; # Uncomment line for latest unstable version
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs:
+  outputs = { nixpkgs, ... }@inputs:
     let
-      inherit (import ./lib/flake-helpers.nix inputs) deepMerge mkNixosConfig mkHomeConfig;
+      inherit (import ./lib/attrsets.nix { inherit (nixpkgs) lib; }) deepMerge;
+      inherit (import ./lib/flake-helpers.nix inputs) mkNixosConfig mkHomeConfig;
     in
     deepMerge [
       # Nixos Configurations

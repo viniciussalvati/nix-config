@@ -8,6 +8,8 @@
     ./zsh
   ];
 
+  home.packages = with unstablePkgs; [ fd sd bat htop jq ripgrep ];
+
   programs.eza = {
     enable = true;
     package = unstablePkgs.eza;

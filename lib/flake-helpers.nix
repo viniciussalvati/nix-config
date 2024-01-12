@@ -1,10 +1,9 @@
-{ nixpkgs, nixpkgs-unstable, nixvim, ... }@inputs:
+{ nixpkgs-unstable, ... }@inputs:
 let
   defaultUser = "vinicius";
   includeIfExists = path: if __pathExists path then [ path ] else [ ];
 in
 {
-  deepMerge = values: __foldl' nixpkgs.lib.recursiveUpdate (__head values) (__tail values);
   mkNixosConfig =
     { hostname
     , username ? defaultUser
@@ -14,6 +13,7 @@ in
     , stateVersion ? "23.11"
     , nixpkgs ? inputs.nixpkgs
     , home-manager ? inputs.home-manager
+    , nixvim ? inputs.nixvim
     , solaar ? inputs.solaar
     }:
     let
@@ -51,7 +51,8 @@ in
                         inherit stateVersion username homeDirectory;
                       };
                     }
-                    ../hosts/home.nix
+                    ../home/common.nix
+                    ../home/desktop
                   ] ++ (includeIfExists ../hosts/${hostname}/home.nix);
                 };
                 # gdm is gnome's login screen's user
@@ -73,6 +74,7 @@ in
     , stateVersion ? "23.11"
     , nixpkgs ? inputs.nixpkgs
     , home-manager ? inputs.home-manager
+    , nixvim ? inputs.nixvim
     }:
     let
       pkgs = import nixpkgs {
@@ -100,7 +102,7 @@ in
                 inherit stateVersion username homeDirectory;
               };
             }
-            ../hosts/home.nix
+            ../home/common.nix
             ../profiles/${hostname}
           ];
         };
