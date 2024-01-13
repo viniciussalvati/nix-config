@@ -1,12 +1,11 @@
 { nixpkgs-unstable, ... }@inputs:
 let
-  defaultUser = "vinicius";
-  includeIfExists = path: if __pathExists path then [ path ] else [ ];
+  inherit (import ./list.nix) includeIfExists;
 in
 {
   mkNixosConfig =
     { hostname
-    , username ? defaultUser
+    , username ? "vinicius"
     , homePath ? "/home"
     , homeDirectory ? "${homePath}/${username}"
     , system ? "x86_64-linux"
@@ -67,7 +66,7 @@ in
     };
   mkHomeConfig =
     { hostname
-    , username ? defaultUser
+    , username ? "vinicius"
     , homePath ? "/home"
     , homeDirectory ? "${homePath}/${username}"
     , system ? "x86_64-linux"

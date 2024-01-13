@@ -20,7 +20,6 @@
     package = unstablePkgs.gitFull;
     userName = "Vinicius Salvati Melquiades";
     userEmail = "1378981+viniciussalvati@users.noreply.github.com";
-    # signing # todo: set up signing
     aliases = {
       sort = "!git rebase -i $(git merge-base origin/HEAD --fork-point)";
     };

@@ -38,6 +38,12 @@
       }
       {
         mode = "n";
+        key = "fw";
+        action = "<cmd>Telescope grep_string<CR>";
+        options.desc = "[F]ind current [S]tring";
+      }
+      {
+        mode = "n";
         key = "fd";
         action = "<cmd>Telescope diagnostics<CR>";
         options.desc = "[F]ind [D]iagnostics";
