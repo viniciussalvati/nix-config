@@ -1,4 +1,3 @@
-{ ... }:
 {
   virtualisation.waydroid.enable = true;
 }

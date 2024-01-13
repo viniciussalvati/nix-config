@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
 {
   imports = [
     ./extensions.nix
@@ -35,6 +33,13 @@
     };
     "org/gnome/mutter" = {
       dynamic-workspaces = true; # make dynamic workspaces, instead of a fixed number
+    };
+
+    # Sets the font family and size I like most
+    # I may have to replace the gnome console because it doesn't support font ligatures
+    "org/gnome/Console" = {
+      use-system-font = false;
+      custom-font = "FiraCode Nerd Font 12";
     };
   };
 }

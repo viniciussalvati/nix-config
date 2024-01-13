@@ -1,4 +1,3 @@
-{ ... }:
 {
   # Grub entry to boot Windows
   boot.loader.grub.extraEntries = ''

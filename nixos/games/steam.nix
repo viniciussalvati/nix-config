@@ -1,4 +1,3 @@
-{ ... }:
 {
   hardware.steam-hardware.enable = true;
   programs.steam = {
