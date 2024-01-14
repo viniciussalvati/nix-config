@@ -7,7 +7,7 @@
       pkgs.vimPlugins.telescope-ui-select-nvim
     ];
 
-    extraConfigLua = ''
+    extraConfigLua = /* lua */ ''
       require("telescope").load_extension("ui-select");
     '';
 

@@ -14,6 +14,7 @@
     ./plugins/language-support/flutter.nix
     ./plugins/completions.nix
     ./plugins/neo-tree.nix
+    ./plugins/alpha.nix
   ];
 
   # See all options in https://nix-community.github.io/nixvim

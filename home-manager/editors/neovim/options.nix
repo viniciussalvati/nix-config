@@ -14,7 +14,7 @@
       shiftwidth = 2;
     };
 
-    extraConfigLua = ''
+    extraConfigLua = /* lua */ ''
       vim.opt.listchars:append({ multispace = ".", trail = "." })
       vim.opt.list = true;
     '';

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.nixvim = {
-    extraConfigLua = ''
+    extraConfigLua = /* lua */ ''
       require("flutter-tools").setup({})
     '';
 
