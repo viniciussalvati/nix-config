@@ -39,7 +39,7 @@
     # I may have to replace the gnome console because it doesn't support font ligatures
     "org/gnome/Console" = {
       use-system-font = false;
-      custom-font = "FiraCode Nerd Font 12";
+      custom-font = "FiraCode Nerd Font 10";
     };
   };
 }
