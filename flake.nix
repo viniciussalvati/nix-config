@@ -27,7 +27,7 @@
 
   outputs = { nixpkgs, ... }@inputs:
     let
-      inherit (import ./lib/attrsets.nix { inherit (nixpkgs) lib; }) deepMerge;
+      inherit (import ./lib/sets.nix { inherit (nixpkgs) lib; }) deepMerge;
       inherit (import ./lib/flake-helpers.nix inputs) mkNixosConfig mkHomeConfig;
     in
     deepMerge [
