@@ -5,14 +5,10 @@
       autoEnableSources = true;
       snippet.expand = "luasnip";
       sources = [
-        # [
         { name = "nvim_lsp"; }
         { name = "luasnip"; }
-        # ]
-        # [
         { name = "path"; } # Autocompletes from path
         { name = "buffer"; } # Autocompletes from buffer
-        # ]
       ];
       mappingPresets = [ "insert" ];
       mapping =
