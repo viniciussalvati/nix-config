@@ -15,6 +15,7 @@
     ./plugins/completions.nix
     ./plugins/neo-tree.nix
     ./plugins/alpha.nix
+    ./plugins/debugging.nix
   ];
 
   # See all options in https://nix-community.github.io/nixvim
