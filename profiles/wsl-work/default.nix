@@ -13,6 +13,7 @@
   home.packages = with unstablePkgs; [
     nodejs
     yarn
+    awscli2
   ];
 
   programs.zsh.oh-my-zsh.plugins = [
