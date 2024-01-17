@@ -25,20 +25,19 @@
     };
   };
 
-  outputs = { nixpkgs, ... }@inputs:
+  outputs = { ... }@inputs:
     let
-      inherit (import ./lib/sets.nix { inherit (nixpkgs) lib; }) deepMerge;
       inherit (import ./lib/flake-helpers.nix inputs) mkNixosConfig mkHomeConfig;
     in
-    deepMerge [
-      # Nixos Configurations
-      (mkNixosConfig { hostname = "nixos-acer"; })
-      (mkNixosConfig { hostname = "vm"; })
+    {
+      nixosConfigurations =
+        (mkNixosConfig { hostname = "nixos-acer"; }) //
+        (mkNixosConfig { hostname = "vm"; });
 
-      # Standalone home-manager profiles
-      (mkHomeConfig { hostname = "wsl-work"; })
+      homeConfigurations =
+        (mkHomeConfig { hostname = "wsl-work"; });
 
       # Templates
-      { templates = (import ./templates); }
-    ];
+      templates = (import ./templates);
+    };
 }

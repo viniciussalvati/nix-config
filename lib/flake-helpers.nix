@@ -22,7 +22,7 @@ in
       };
     in
     {
-      nixosConfigurations.${hostname} =
+      ${hostname} =
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
@@ -86,7 +86,7 @@ in
       };
     in
     {
-      homeConfigurations.${hostname} =
+      ${hostname} =
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
