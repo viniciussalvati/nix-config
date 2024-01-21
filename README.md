@@ -1,10 +1,10 @@
-# nixos-config
+# nix-config
 
-My nixos configuration files
+My nixos and home-manager configuration files
 
 This readme file is a work in progress
 
-## Install
+## Install Nixos
 
 First, close the default installer, then open gparted and configure it like so
 
