@@ -101,6 +101,9 @@ in
                 inherit stateVersion username homeDirectory;
               };
             }
+          ] ++
+          (includeIfExists ../private/profiles/${hostname}) ++
+          [
             ../home-manager/common.nix
             ../home-manager/standalone
             ../profiles/${hostname}

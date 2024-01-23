@@ -1,4 +1,4 @@
-{ unstablePkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [ ../../home-manager/wsl ];
 
@@ -6,11 +6,11 @@
   # This is also required for yarn to use the same version of nodejs
   nixpkgs.overlays = [
     (_self: _super: {
-      nodejs = unstablePkgs.nodejs-18_x;
+      nodejs = pkgs.nodejs-18_x;
     })
   ];
 
-  home.packages = with unstablePkgs; [
+  home.packages = with pkgs; [
     nodejs
     yarn
     awscli2
