@@ -6,7 +6,6 @@
 
         keymaps.lspBuf = {
           K = "hover";
-          gr = "references";
           gd = "definition";
           gi = "implementation";
           gt = "type_definition";
@@ -23,6 +22,15 @@
 
       none-ls.enable = true;
     };
+
+    keymaps = [
+      {
+        mode = "n";
+        key = "gr";
+        action = "<cmd>Telescope lsp_references<CR>";
+        options.desc = "Go to References";
+      }
+    ];
 
     # Formats the code automatically before writing the file
     autoCmd = [

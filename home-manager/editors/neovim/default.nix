@@ -25,6 +25,7 @@
     viAlias = true;
     vimAlias = true;
     editorconfig.enable = true;
+    globals.mapleader = " ";
 
     clipboard = {
       register = "unnamedplus";
