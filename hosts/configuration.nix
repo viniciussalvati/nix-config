@@ -1,10 +1,10 @@
-{ pkgs, unstablePkgs, user, ... }: {
+{ pkgs, unstablePkgs, username, ... }: {
 
   imports = [
-    ../modules/shell
-    ../modules/desktop/gnome.nix
-    ../modules/editors/vscode
-    ../modules/applications/localsend.nix
+    ../nixos/shell
+    ../nixos/desktop/gnome.nix
+    ../nixos/editors/vscode
+    ../nixos/applications/localsend.nix
   ];
 
   # Easiest to use and most distros use this by default.
@@ -14,7 +14,7 @@
   time.timeZone = "Europe/Lisbon";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${user} = {
+  users.users.${username} = {
     isNormalUser = true;
     extraGroups = [
       "wheel" # Enable ‘sudo’ for the user.
@@ -31,7 +31,6 @@
     zsh
     git
     firefox
-    rnix-lsp
     bitwarden
     telegram-desktop
     nix-index # tool to index and find references in the nix store. Use nix-locate

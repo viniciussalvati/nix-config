@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # utils.url = "github:numtide/flake-utils";
+    flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11"; # for nixos stable
@@ -15,26 +15,29 @@
 
     nixvim = {
       url = "github:nix-community/nixvim/nixos-23.11";
-      # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
-      # url = "github:nix-community/nixvim/nixos-23.05";
-
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
 
     solaar = {
       url = "github:Svenum/Solaar-Flake/latest"; # For latest stable version
-      #url = "https://github.com/Svenum/Solaar-Flake/release-1.1.10; # uncomment line for version 1.1.10
-      #url = "https://github.com/Svenum/Solaar-Flake/main; # Uncomment line for latest unstable version
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nixvim, solaar, ... }:
+  outputs = { ... }@inputs:
     let
-      user = "vinicius";
+      inherit (import ./lib/flake-helpers.nix inputs) mkNixosConfig mkHomeConfig;
     in
     {
-      nixosConfigurations = (import ./hosts { inherit nixpkgs nixpkgs-unstable user home-manager nixvim solaar; });
+      nixosConfigurations =
+        (mkNixosConfig { hostname = "nixos-acer"; }) //
+        (mkNixosConfig { hostname = "vm"; });
+
+      homeConfigurations =
+        (mkHomeConfig { hostname = "wsl-work"; });
+
+      # Templates
       templates = (import ./templates);
     };
 }

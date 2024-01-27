@@ -1,0 +1,32 @@
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+
+    # Uses grub2 boot, because it supports EFI boot and can probe for Windows in other partitions
+    ../../nixos/boot/grub2.nix
+    ../../nixos/boot/plymouth.nix
+    ./grub-entries.nix
+
+    # enable waydroid
+    ../../nixos/android/emulators/waydroid.nix
+
+    ../../nixos/games/steam.nix
+
+    ../../nixos/hardware/logitech/solaar.nix
+  ];
+
+  services.xserver.layout = "br";
+  # Configure console keymap
+  console.keyMap = "br-abnt2";
+
+  # Enable sound.
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
+
+  hardware.bluetooth.enable = true;
+}

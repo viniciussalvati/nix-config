@@ -1,3 +1,4 @@
 .direnv/
 host
 *.backup.nix
+result
