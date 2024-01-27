@@ -11,7 +11,7 @@
 
   home = {
     sessionVariables = {
-      EDITOR = "code --wait";
+      EDITOR = "nvim";
     };
   };
 }
