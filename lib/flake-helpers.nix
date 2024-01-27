@@ -1,6 +1,10 @@
-{ nixpkgs-unstable, ... }@inputs:
+{ nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
 let
   inherit (import ./list.nix) includeIfExists;
+  lib = nixpkgs.lib.extend (final: _prev:
+    (import ./default.nix {
+      lib = final;
+    }) // home-manager.lib);
 in
 {
   mkNixosConfig =
@@ -26,7 +30,7 @@ in
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit username system unstablePkgs;
+            inherit username system unstablePkgs lib;
           };
           modules = [
             solaar.nixosModules.default
@@ -44,13 +48,15 @@ in
                 };
                 users.${username} = {
                   imports = [
+                    ../options/home-manager.nix
                     nixvim.homeManagerModules.nixvim
                     {
+                      home-manager.type = "nixos";
                       home = {
                         inherit stateVersion username homeDirectory;
                       };
                     }
-                    ../home-manager/common.nix
+                    ../home-manager
                     ../home-manager/desktop
                   ] ++ (includeIfExists ../hosts/${hostname}/home.nix);
                 };
@@ -71,6 +77,7 @@ in
     , homeDirectory ? "${homePath}/${username}"
     , system ? "x86_64-linux"
     , stateVersion ? "23.11"
+    , type ? "standalone"
     , nixpkgs ? inputs.nixpkgs
     , home-manager ? inputs.home-manager
     , nixvim ? inputs.nixvim
@@ -91,12 +98,14 @@ in
           inherit pkgs;
 
           extraSpecialArgs = {
-            inherit username unstablePkgs;
+            inherit username unstablePkgs lib;
           };
 
           modules = [
+            ../options/home-manager.nix
             nixvim.homeManagerModules.nixvim
             {
+              home-manager.type = type;
               home = {
                 inherit stateVersion username homeDirectory;
               };
@@ -104,7 +113,7 @@ in
           ] ++
           (includeIfExists ../private/profiles/${hostname}) ++
           [
-            ../home-manager/common.nix
+            ../home-manager
             ../home-manager/standalone
             ../profiles/${hostname}
           ];

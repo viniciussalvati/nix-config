@@ -1,5 +1,6 @@
 # specific configuration for standalone home-manager
-{ pkgs, ... }:
+{ lib, pkgs, config, ... }:
+lib.mkIfStandalone config
 {
   nixpkgs.config.allowUnfree = true;
   nix = {

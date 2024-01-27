@@ -35,7 +35,7 @@
         (mkNixosConfig { hostname = "vm"; });
 
       homeConfigurations =
-        (mkHomeConfig { hostname = "wsl-work"; });
+        (mkHomeConfig { hostname = "wsl-work"; type = "wsl"; });
 
       # Templates
       templates = (import ./templates);

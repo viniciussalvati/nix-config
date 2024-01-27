@@ -1,4 +1,6 @@
 # Specific configuration when running inside wsl
+{ lib, config, ... }:
+lib.mkIfWsl config
 {
   programs.home-manager = {
     enable = true;
