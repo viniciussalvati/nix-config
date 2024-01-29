@@ -7,8 +7,9 @@
       sources = [
         { name = "nvim_lsp"; }
         { name = "luasnip"; }
+        { name = "git"; }
         { name = "path"; } # Autocompletes from path
-        { name = "buffer"; } # Autocompletes from buffer
+        { name = "buffer"; keywordLength = 5; } # Autocompletes from buffer
       ];
       mappingPresets = [ "insert" ];
       mapping =
@@ -53,6 +54,8 @@
     };
     # This plugin gets completions suggestions from the language server
     cmp-nvim-lsp.enable = true;
+    # Enables github and gitlab autocomplete
+    cmp-git.enable = true;
 
     # These two plugins (should) offer more autocomplete options
     # But they are required for the auto-complete to work anyway

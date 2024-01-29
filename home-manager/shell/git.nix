@@ -54,6 +54,8 @@
       tig
       git-bug
       lazygit
+      gh
+      glab
     ];
 
     shellAliases = {
