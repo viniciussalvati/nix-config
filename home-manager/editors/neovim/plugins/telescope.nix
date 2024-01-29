@@ -1,7 +1,25 @@
 { pkgs, ... }:
 {
   programs.nixvim = {
-    plugins.telescope.enable = true;
+    plugins.telescope = {
+      enable = true;
+
+      defaults = {
+        cache_picker = { num_pickers = 5; };
+
+        mappings = {
+          # Mappings will probably be lua functions, so better use __raw anyway
+          __raw = /* lua */ ''
+            {
+              i = {
+                ["<Down>"] = require('telescope.actions').cycle_history_next,
+                ["<Up>"] = require('telescope.actions').cycle_history_prev,
+              }
+            }
+          '';
+        };
+      };
+    };
 
     extraPlugins = [
       pkgs.vimPlugins.telescope-ui-select-nvim
