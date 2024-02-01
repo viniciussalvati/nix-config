@@ -40,6 +40,9 @@
 
       # Adds indent guides
       indent-blankline.enable = true;
+
+      # Adds a markdown previewer
+      markdown-preview.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
