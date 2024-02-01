@@ -17,6 +17,7 @@
     ./plugins/alpha.nix
     ./plugins/debugging.nix
     ./plugins/noice.nix
+    ./plugins/git.nix
   ];
 
   # See all options in https://nix-community.github.io/nixvim
@@ -36,9 +37,6 @@
 
     plugins = {
       nix.enable = true;
-
-      # Adds git symbols for status and helpers such as line blame and other tools
-      gitsigns.enable = true;
 
       # Adds indent guides
       indent-blankline.enable = true;
