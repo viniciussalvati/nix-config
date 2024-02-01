@@ -16,6 +16,7 @@
     ./plugins/neo-tree.nix
     ./plugins/alpha.nix
     ./plugins/debugging.nix
+    ./plugins/noice.nix
   ];
 
   # See all options in https://nix-community.github.io/nixvim
@@ -41,8 +42,6 @@
 
       # Adds indent guides
       indent-blankline.enable = true;
-
-      noice.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [

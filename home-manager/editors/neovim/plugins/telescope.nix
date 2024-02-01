@@ -20,7 +20,7 @@
         };
       };
 
-      enabledExtensions = [ "ui-select" ];
+      enabledExtensions = [ "ui-select" "noice" ];
       extensionConfig = {
         ui-select = {
           __raw = /* lua */ ''
