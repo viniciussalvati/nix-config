@@ -19,15 +19,22 @@
           '';
         };
       };
+
+      enabledExtensions = [ "ui-select" ];
+      extensionConfig = {
+        ui-select = {
+          __raw = /* lua */ ''
+            {
+              require("telescope.themes").get_dropdown {}
+            }
+          '';
+        };
+      };
     };
 
     extraPlugins = [
       pkgs.vimPlugins.telescope-ui-select-nvim
     ];
-
-    extraConfigLua = /* lua */ ''
-      require("telescope").load_extension("ui-select");
-    '';
 
     keymaps = [
       {

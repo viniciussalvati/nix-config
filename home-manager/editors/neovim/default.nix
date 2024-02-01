@@ -41,6 +41,8 @@
 
       # Adds indent guides
       indent-blankline.enable = true;
+
+      noice.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
