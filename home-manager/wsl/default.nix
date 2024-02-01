@@ -1,5 +1,5 @@
 # Specific configuration when running inside wsl
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 lib.mkIfWsl config
 {
   programs.home-manager = {
@@ -14,4 +14,9 @@ lib.mkIfWsl config
     keys = [ ]; # load no key
     agents = [ "ssh" ]; # start ssh agent
   };
+
+  home.packages = with pkgs; [
+    xdg-utils
+    wsl-open
+  ];
 }
