@@ -4,6 +4,7 @@
     ./keymaps.nix
     ./colorscheme.nix
     ./options.nix
+    ./userCommands.nix
     ./plugins/telescope.nix
     ./plugins/treesitter.nix
     ./plugins/lualine.nix
@@ -22,31 +23,29 @@
 
   # See all options in https://nix-community.github.io/nixvim
   # or use `man nixvim`
-  programs.nixvim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    editorconfig.enable = true;
-    globals.mapleader = " ";
+  luaLoader.enable = true;
+  viAlias = true;
+  vimAlias = true;
+  editorconfig.enable = true;
+  globals.mapleader = " ";
 
-    clipboard = {
-      register = "unnamedplus";
+  clipboard = {
+    register = "unnamedplus";
 
-      providers.wl-copy.enable = true;
-    };
-
-    plugins = {
-      nix.enable = true;
-
-      # Adds indent guides
-      indent-blankline.enable = true;
-
-      # Adds a markdown previewer
-      markdown-preview.enable = true;
-    };
-
-    extraPlugins = with pkgs.vimPlugins; [
-      lazygit-nvim
-    ];
+    providers.wl-copy.enable = true;
   };
+
+  plugins = {
+    nix.enable = true;
+
+    # Adds indent guides
+    indent-blankline.enable = true;
+
+    # Adds a markdown previewer
+    markdown-preview.enable = true;
+  };
+
+  extraPlugins = with pkgs.vimPlugins; [
+    lazygit-nvim
+  ];
 }

@@ -1,5 +1,5 @@
 {
-  programs.nixvim.plugins.treesitter = {
+  plugins.treesitter = {
     enable = true;
     indent = true;
     nixGrammars = true; # Because of this, we won't need ensureInstalled, since all the packages we may need comes from nixpkgs

@@ -1,7 +1,6 @@
-{
+{ localPkgs, ... }: {
   imports = [
     ../home-manager/shell
-    ../home-manager/editors/neovim
     ./standalone # only used if in standalone installation of home-manager
     ./wsl # only used if in standalone installation of home-manager inside wsl
   ];
@@ -10,6 +9,7 @@
   programs.bash.enable = true;
 
   home = {
+    packages = with localPkgs; [ nixvim ];
     sessionVariables = {
       EDITOR = "nvim";
     };

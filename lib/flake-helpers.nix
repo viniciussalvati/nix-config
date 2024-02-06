@@ -1,10 +1,9 @@
 { nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
 let
   inherit (import ./list.nix) includeIfExists;
-  lib = nixpkgs.lib.extend (final: _prev:
-    (import ./default.nix {
-      lib = final;
-    }) // home-manager.lib);
+  lib = nixpkgs.lib.extend (_final: _prev:
+    (import ./default.nix inputs) // home-manager.lib);
+  local-packages = (import ../packages inputs);
 in
 {
   mkNixosConfig =
@@ -16,7 +15,6 @@ in
     , stateVersion ? "23.11"
     , nixpkgs ? inputs.nixpkgs
     , home-manager ? inputs.home-manager
-    , nixvim ? inputs.nixvim
     , solaar ? inputs.solaar
     }:
     let
@@ -24,13 +22,14 @@ in
         inherit system;
         config.allowUnfree = true;
       };
+      localPkgs = local-packages.packages.${system};
     in
     {
       ${hostname} =
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit username system unstablePkgs lib;
+            inherit username system unstablePkgs localPkgs lib;
           };
           modules = [
             solaar.nixosModules.default
@@ -44,12 +43,11 @@ in
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
-                  inherit username unstablePkgs;
+                  inherit username unstablePkgs localPkgs;
                 };
                 users.${username} = {
                   imports = [
                     ../options/home-manager.nix
-                    nixvim.homeManagerModules.nixvim
                     {
                       home-manager.type = "nixos";
                       home = {
@@ -80,7 +78,6 @@ in
     , type ? "standalone"
     , nixpkgs ? inputs.nixpkgs
     , home-manager ? inputs.home-manager
-    , nixvim ? inputs.nixvim
     }:
     let
       pkgs = import nixpkgs {
@@ -91,6 +88,7 @@ in
         inherit system;
         config.allowUnfree = true;
       };
+      localPkgs = local-packages.packages.${system};
     in
     {
       ${hostname} =
@@ -98,12 +96,11 @@ in
           inherit pkgs;
 
           extraSpecialArgs = {
-            inherit username unstablePkgs lib;
+            inherit username unstablePkgs lib localPkgs;
           };
 
           modules = [
             ../options/home-manager.nix
-            nixvim.homeManagerModules.nixvim
             {
               home-manager.type = type;
               home = {

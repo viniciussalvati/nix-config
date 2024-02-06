@@ -1,5 +1,5 @@
 {
-  programs.nixvim = {
+  config = {
     options = {
       number = true;
       relativenumber = true;
