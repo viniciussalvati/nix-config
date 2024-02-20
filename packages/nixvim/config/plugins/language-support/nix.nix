@@ -1,5 +1,5 @@
 {
-  programs.nixvim.plugins = {
+  plugins = {
     lsp.servers.nixd = {
       enable = true;
       filetypes = [ "nix" ];

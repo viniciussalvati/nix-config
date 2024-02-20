@@ -14,22 +14,28 @@
     };
 
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-23.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     solaar = {
       url = "github:Svenum/Solaar-Flake/latest"; # For latest stable version
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    git-fuzzy = {
+      url = "github:bigH/git-fuzzy";
+      flake = false;
+    };
   };
 
-  outputs = { ... }@inputs:
+  outputs = inputs:
     let
+      inherit (import ./lib inputs) deepMerge;
       inherit (import ./lib/flake-helpers.nix inputs) mkNixosConfig mkHomeConfig;
+      local-packages = (import ./packages inputs);
     in
-    {
+    deepMerge [{
       nixosConfigurations =
         (mkNixosConfig { hostname = "nixos-acer"; }) //
         (mkNixosConfig { hostname = "vm"; });
@@ -39,5 +45,6 @@
 
       # Templates
       templates = (import ./templates);
-    };
+    }
+      local-packages];
 }

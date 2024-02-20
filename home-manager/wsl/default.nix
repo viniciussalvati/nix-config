@@ -1,5 +1,8 @@
 # Specific configuration when running inside wsl
 { lib, config, pkgs, ... }:
+let
+  scripts = import ./scripts.nix { inherit pkgs; };
+in
 lib.mkIfWsl config
 {
   programs.home-manager = {
@@ -18,5 +21,7 @@ lib.mkIfWsl config
   home.packages = with pkgs; [
     xdg-utils
     wsl-open
-  ];
+    # Adds wl-copy and wl-paste. This works in wsl because it uses a wayland behind the scenes
+    wl-clipboard
+  ] ++ scripts;
 }

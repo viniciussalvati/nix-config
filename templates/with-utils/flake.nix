@@ -6,21 +6,23 @@
     utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, utils, ... }:
+  outputs = { nixpkgs, utils, ... }:
     utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
       in
       {
-        defaultPackage = pkgs.hello;
         devShell = with pkgs; mkShell {
           buildInputs = [
             # enter shell inputs here
           ];
         };
-        # Enter aditional packages here
+        # defaultPackage = pkgs.hello;
+        /*
         packages = {
+          # Enter aditional packages here
           hello = pkgs.hello;
         };
+        */
       });
 }

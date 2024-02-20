@@ -1,4 +1,4 @@
-{ unstablePkgs, ... }:
+{ unstablePkgs, localPkgs, ... }:
 {
   programs.ssh = {
     enable = true;
@@ -40,6 +40,7 @@
         };
       };
       commit = {
+        verbose = true;
         gpgsign = true;
       };
       user = {
@@ -56,7 +57,8 @@
       lazygit
       gh
       glab
-    ];
+      fzf
+    ] ++ [ localPkgs.git-fuzzy ];
 
     shellAliases = {
       gk = ": $(gitk --all > /dev/null 2>&1 &)";
@@ -70,6 +72,8 @@
       gbgl = "git bug pull";
       gbgp = "git bug push";
       gbgls = "git bug ls";
+
+      gfb = "git fuzzy branch";
     };
   };
 }
