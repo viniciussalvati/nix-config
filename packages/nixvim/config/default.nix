@@ -44,8 +44,4 @@
     # Adds a markdown previewer
     markdown-preview.enable = true;
   };
-
-  extraPlugins = with pkgs.vimPlugins; [
-    lazygit-nvim
-  ];
 }

@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   plugins.gitsigns = {
     enable = true;
   };
@@ -6,6 +6,12 @@
   plugins.fugitive = {
     enable = true;
   };
+
+  plugins.gitblame.enable = true;
+
+  extraPlugins = with pkgs.vimPlugins; [
+    lazygit-nvim
+  ];
 
   keymaps = [
     {
@@ -21,4 +27,10 @@
       options.desc = "Gitsigs toggle line Blame";
     }
   ];
+
+  extraConfigLua = /* lua */ ''
+    -- Disables gitblame by default. It can be toggled with GitBlameToggle
+    vim.g.gitblame_enabled = 0;
+  '';
+
 }
