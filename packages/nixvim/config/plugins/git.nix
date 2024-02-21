@@ -23,7 +23,7 @@
     {
       mode = "n";
       key = "<leader>gb";
-      action = "<cmd>Gitsigns toggle_current_line_blame<CR>";
+      action = "<cmd>GitBlameToggle<CR>";
       options.desc = "Gitsigs toggle line Blame";
     }
   ];
