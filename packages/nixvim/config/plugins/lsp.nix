@@ -12,6 +12,10 @@
         "<leader>r" = "rename";
       };
 
+      keymaps.diagnostic = {
+        "<leader>e" = "open_float";
+      };
+
       servers = {
         tsserver.enable = true;
       };
