@@ -19,6 +19,7 @@
     ./plugins/debugging.nix
     ./plugins/noice.nix
     ./plugins/git.nix
+    ./plugins/yanky.nix
   ];
 
   # See all options in https://nix-community.github.io/nixvim

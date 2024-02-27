@@ -15,7 +15,7 @@
     };
 
     extraConfigLua = /* lua */ ''
-      vim.opt.listchars:append({ multispace = ".", trail = "." })
+      vim.opt.listchars:append({ multispace = "•", leadmultispace = "•", trail = "•", tab = "→ " })
       vim.opt.list = true;
     '';
   };
