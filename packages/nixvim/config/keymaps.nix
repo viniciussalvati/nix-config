@@ -99,6 +99,11 @@
       options.nowait = true;
       options.desc = "Increase height of current window";
     }
-
+    {
+      mode = "n";
+      key = "z=";
+      action = "<cmd>Telescope spell_suggest<CR>";
+      options.desc = "Spell suggest";
+    }
   ];
 }

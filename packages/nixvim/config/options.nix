@@ -12,6 +12,9 @@
       tabstop = 2;
       softtabstop = 2;
       shiftwidth = 2;
+
+      spelllang = "en_gb";
+      spell = true;
     };
 
     extraConfigLua = /* lua */ ''
