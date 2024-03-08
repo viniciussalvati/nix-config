@@ -1,56 +1,49 @@
-{
+{ helpers, ... }: {
   plugins = {
-    nvim-cmp = {
+    cmp = {
       enable = true;
       autoEnableSources = true;
-      snippet.expand = "luasnip";
-      sources = [
-        { name = "nvim_lsp"; }
-        { name = "luasnip"; }
-        { name = "git"; }
-        { name = "path"; } # Autocompletes from path
-        { name = "buffer"; keywordLength = 5; } # Autocompletes from buffer
-      ];
-      mappingPresets = [ "insert" ];
-      mapping =
-        {
-          "<C-Space>" = { modes = [ "i" ]; action = "cmp.mapping.complete()"; };
-          "<C-e>" = "cmp.mapping.abort()";
-          "<CR>" = "cmp.mapping.confirm({ select = false })";
-          # Tab actions based on https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
-          "<Tab>" = {
-            action = /* lua */ ''
-              function(fallback)
-                local luasnip = require('luasnip')
-                if cmp.visible() then
-                  cmp.select_next_item()
-                elseif luasnip.expandable() then
-                  luasnip.expand()
-                elseif luasnip.expand_or_jumpable() then
-                  luasnip.expand_or_jump()
-                else
-                  fallback()
-                end
-              end
-            '';
-            modes = [ "i" "s" ];
-          };
-          "<S-Tab>" = {
-            action = /* lua */ ''
-              function(fallback)
-                local luasnip = require('luasnip')
-                if cmp.visible() then
-                  cmp.select_prev_item()
-                elseif luasnip.jumpable(-1) then
-                  luasnip.jump(-1)
-                else
-                  fallback()
-                end
-              end
-            '';
-            modes = [ "i" "s" ];
-          };
+      settings = {
+        sources = [
+          { name = "nvim_lsp"; }
+          { name = "luasnip"; }
+          { name = "git"; }
+          { name = "path"; } # Autocompletes from path
+          { name = "buffer"; keywordLength = 5; } # Autocompletes from buffer
+        ];
+        snippet.expand = /* lua */ ''
+          function(args)
+            require('luasnip').lsp_expand(args.body);
+          end
+        '';
+        mapping = helpers.mkRaw /* lua */ ''
+          cmp.mapping.preset.insert({
+            ['<C-Space>'] = cmp.mapping.complete(),
+            ['<C-e>'] = cmp.mapping.abort(),
+            ['<Escape>'] = cmp.mapping.abort(),
+            ['<CR>'] = cmp.mapping.confirm({ select = false }),
+            ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'}),
+            ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'}),
+          })
+        '';
+      };
+
+      cmdline = {
+        "/" = {
+          mapping = helpers.mkRaw /* lua */ "cmp.mapping.preset.cmdline()";
+          sources = [{ name = "buffer"; }];
         };
+        ":" = {
+          mapping = helpers.mkRaw /* lua */ "cmp.mapping.preset.cmdline()";
+          sources = [{ name = "path"; }
+            {
+              name = "cmdline";
+              option = {
+                ignore_cmds = [ "Man" "!" "terminal" "te" "term" ];
+              };
+            }];
+        };
+      };
     };
     # This plugin gets completions suggestions from the language server
     cmp-nvim-lsp.enable = true;
@@ -73,32 +66,4 @@
       };
     };
   };
-
-  extraConfigLua = /* lua */ ''
-    do
-      local cmp = require('cmp')
-      -- '/' cmdline setup 
-      cmp.setup.cmdline('/', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = { 
-          { name = "buffer" }
-        }
-      })
-
-      -- ':' cmdline setup 
-      cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = "path" }
-        }, {
-          {
-            name = "cmdline",
-            option = {
-              ignore_cmds = { "Man", "!", "terminal", "te", "term" }
-            }
-          }
-        })
-      })
-    end
-  '';
 }

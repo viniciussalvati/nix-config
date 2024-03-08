@@ -1,4 +1,4 @@
-{ localPkgs, ... }: {
+{ unstablePkgs, localPkgs, ... }: {
   imports = [
     ../home-manager/shell
     ./standalone # only used if in standalone installation of home-manager
@@ -9,7 +9,7 @@
   programs.bash.enable = true;
 
   home = {
-    packages = with localPkgs; [ nixvim ];
+    packages = (with localPkgs; [ nixvim ]) ++ (with unstablePkgs; [ neofetch ]);
     sessionVariables = {
       EDITOR = "nvim";
     };
