@@ -33,10 +33,12 @@ in
           };
           modules = [
             solaar.nixosModules.default
+            ../options/common.nix
             ../hosts/configuration.nix
             ../hosts/${hostname}
             home-manager.nixosModules.home-manager
             {
+              common.hostname = hostname;
               networking.hostName = hostname;
 
               home-manager = {
@@ -47,8 +49,10 @@ in
                 };
                 users.${username} = {
                   imports = [
+                    ../options/common.nix
                     ../options/home-manager.nix
                     {
+                      common.hostname = hostname;
                       home-manager.type = "nixos";
                       home = {
                         inherit stateVersion username homeDirectory;
@@ -100,8 +104,10 @@ in
           };
 
           modules = [
+            ../options/common.nix
             ../options/home-manager.nix
             {
+              common.hostname = hostname;
               home-manager.type = type;
               home = {
                 inherit stateVersion username homeDirectory;
