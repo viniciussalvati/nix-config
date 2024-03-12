@@ -1,4 +1,4 @@
-{
+{ helpers, ... }: {
   plugins = {
     lsp = {
       enable = true;
@@ -39,7 +39,7 @@
   autoCmd = [
     {
       event = "BufWritePre";
-      callback = { __raw = /* lua */ "function() vim.lsp.buf.format() end"; };
+      callback = helpers.mkRaw /* lua */ "function() vim.lsp.buf.format() end";
     }
   ];
 }

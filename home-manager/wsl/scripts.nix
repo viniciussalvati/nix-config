@@ -17,6 +17,9 @@ let
       ${stop-service-str "docker"}
 
       keychain --stop all
+
+      # wl-copy can be kept running when started by nixvim
+      pkill wl-copy
     '';
   };
 in
