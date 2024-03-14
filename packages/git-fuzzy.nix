@@ -2,7 +2,7 @@
 flake-utils.lib.eachDefaultSystem
   (system:
   let
-    pkgs = import nixpkgs-unstable { inherit system; };
+    pkgs = nixpkgs-unstable.legacyPackages.${system};
     binPath = with pkgs; lib.makeBinPath [
       fzf
       coreutils # uses dirname
