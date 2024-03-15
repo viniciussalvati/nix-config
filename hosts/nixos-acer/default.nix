@@ -12,9 +12,6 @@
     ../../nixos/boot/plymouth.nix
     ./grub-entries.nix
 
-    # enable waydroid
-    ../../nixos/android/emulators/waydroid.nix
-
     ../../nixos/games/steam.nix
 
     ../../nixos/hardware/logitech/solaar.nix
@@ -29,4 +26,6 @@
   hardware.pulseaudio.enable = true;
 
   hardware.bluetooth.enable = true;
+
+  virtualisation.waydroid.enable = true;
 }

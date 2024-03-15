@@ -9,7 +9,7 @@
   outputs = { nixpkgs, utils, ... }:
     utils.lib.eachDefaultSystem (system:
       let
-        pkgs = import nixpkgs { inherit system; };
+        pkgs = nixpkgs.legacyPackages.${system};
       in
       {
         devShell = with pkgs; mkShell {

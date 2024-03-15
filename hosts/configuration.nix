@@ -5,6 +5,8 @@
     ../nixos/desktop/gnome.nix
     ../nixos/editors/vscode
     ../nixos/applications/localsend.nix
+    # waydroid still needs to be enabled. By default it won't auto start
+    ../nixos/android/emulators/waydroid.nix
   ];
 
   # Easiest to use and most distros use this by default.
