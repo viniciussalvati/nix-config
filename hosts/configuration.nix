@@ -21,34 +21,33 @@
     extraGroups = [
       "wheel" # Enable ‘sudo’ for the user.
       "networkmanager" # Allows the user to manage network settings without asking for the password
+      "adbusers" # Add to the list of adb users. I don't really know what this does
     ];
   };
   users.defaultUserShell = unstablePkgs.zsh;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = (with pkgs; [
-    gnome.gedit
-  ]) ++ (with unstablePkgs; [
-    zsh
-    git
-    firefox
-    bitwarden
-    telegram-desktop
-    nix-index # tool to index and find references in the nix store. Use nix-locate
-  ]);
+  environment.systemPackages = (with pkgs; [ gnome.gedit ])
+    ++ (with unstablePkgs; [
+      zsh
+      git
+      firefox
+      bitwarden
+      telegram-desktop
+      nix-index # tool to index and find references in the nix store. Use nix-locate
+      nil
+      nixfmt
+    ]);
 
-  fonts.packages = with unstablePkgs; [
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-      ];
-    })
-  ];
+  fonts.packages = with unstablePkgs;
+    [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
 
   # programs.sway.enable = true;
 
   programs.zsh.enable = true;
+
+  programs.adb.enable = true;
 
   environment.shells = [ unstablePkgs.zsh ];
 
