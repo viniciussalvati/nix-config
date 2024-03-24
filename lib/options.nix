@@ -1,4 +1,8 @@
 { lib }: {
+  mkIfNixos = config: value:
+    lib.mkIf
+      (config.home-manager.type == "nixos")
+      value;
   mkIfStandalone = config: value:
     lib.mkIf
       (

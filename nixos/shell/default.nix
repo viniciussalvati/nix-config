@@ -9,5 +9,9 @@
     jq
     ripgrep
     sd
+
+    # Terminal
+    tilix
+    terminator
   ];
 }

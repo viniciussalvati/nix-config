@@ -32,7 +32,8 @@
   clipboard = {
     register = "unnamedplus";
 
-    providers.wl-copy.enable = true;
+    # This doesn't seem required if wl-clipboard is installed in the system
+    # providers.wl-copy.enable = true;
   };
 
   plugins = {

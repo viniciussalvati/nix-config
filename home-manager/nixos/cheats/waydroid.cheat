@@ -1,0 +1,10 @@
+% waydroid
+
+# Starts waydroid
+sudo systemctl start waydroid-container
+
+# Stops waydroid
+sudo systemctl stop waydroid-container
+
+# Copy waydroid ip
+sudo waydroid shell -- ip address show dev eth0 | rg 'inet (.*)\/24 ' --only-matching --replace='$1' | wl-copy

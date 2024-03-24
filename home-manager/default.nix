@@ -1,6 +1,7 @@
 { unstablePkgs, localPkgs, ... }: {
   imports = [
     ../home-manager/shell
+    ./nixos # only use if in nixos installation of home-manager
     ./standalone # only used if in standalone installation of home-manager
     ./wsl # only used if in standalone installation of home-manager inside wsl
   ];
@@ -9,9 +10,8 @@
   programs.bash.enable = true;
 
   home = {
-    packages = (with localPkgs; [ nixvim ]) ++ (with unstablePkgs; [ neofetch ]);
-    sessionVariables = {
-      EDITOR = "nvim";
-    };
+    packages = (with localPkgs; [ nixvim ])
+      ++ (with unstablePkgs; [ neofetch wl-clipboard ]);
+    sessionVariables = { EDITOR = "nvim"; };
   };
 }
