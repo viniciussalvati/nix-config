@@ -21,7 +21,5 @@ lib.mkIfWsl config
   home.packages = with pkgs; [
     xdg-utils
     wsl-open
-    # Adds wl-copy and wl-paste. This works in wsl because it uses a wayland behind the scenes
-    wl-clipboard
   ] ++ scripts;
 }
