@@ -49,12 +49,21 @@
     };
   };
 
+  programs.lazygit = {
+    enable = true;
+    package = unstablePkgs.lazygit;
+    settings = {
+      git.commit = {
+        autoWrapCommitMessage = false;
+      };
+    };
+  };
+
   home = {
     packages = with unstablePkgs; [
       gitui
       tig
       git-bug
-      lazygit
       gh
       glab
       fzf

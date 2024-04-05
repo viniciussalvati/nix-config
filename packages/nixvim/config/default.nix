@@ -15,7 +15,7 @@
     ./plugins/completions.nix
     ./plugins/neo-tree.nix
     ./plugins/alpha.nix
-    ./plugins/debugging.nix
+    # ./plugins/debugging.nix
     ./plugins/noice.nix
     ./plugins/git.nix
     ./plugins/yanky.nix
