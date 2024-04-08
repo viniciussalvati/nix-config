@@ -4,7 +4,7 @@
     enable = true;
     extensions.ui-select.enable = true;
 
-    defaults = {
+    settings.defaults = {
       cache_picker = { num_pickers = 5; };
 
       mappings = {
