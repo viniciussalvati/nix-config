@@ -13,7 +13,7 @@ lib.mkIfStandalone config
     {
       nixpkgs.config.allowUnfree = true;
       nix = {
-        package = unstablePkgs.nixVersions.unstable;
+        package = unstablePkgs.nixVersions.git;
         # Allows me to use nix flakes
         extraOptions = "experimental-features = nix-command flakes";
         checkConfig = false; # This is temporary, as it seems home-manager can't build without it for now
