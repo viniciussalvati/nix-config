@@ -30,22 +30,26 @@
     };
   };
 
-  outputs = inputs:
-    let
-      inherit (import ./lib inputs) deepMerge;
-      inherit (import ./lib/flake-helpers.nix inputs) mkNixosConfig mkHomeConfig;
-      local-packages = (import ./packages inputs);
-    in
-    deepMerge [{
-      nixosConfigurations =
-        (mkNixosConfig { hostname = "nixos-acer"; }) //
-        (mkNixosConfig { hostname = "vm"; });
+  outputs = inputs: let
+    inherit (import ./lib inputs) deepMerge;
+    inherit (import ./lib/flake-helpers.nix inputs) mkNixosConfig mkHomeConfig;
+    local-packages = import ./packages inputs;
+  in
+    deepMerge [
+      {
+        nixosConfigurations =
+          (mkNixosConfig {hostname = "nixos-acer";})
+          // (mkNixosConfig {hostname = "vm";});
 
-      homeConfigurations =
-        (mkHomeConfig { hostname = "wsl-work"; type = "wsl"; });
+        homeConfigurations = mkHomeConfig {
+          hostname = "wsl-work";
+          type = "wsl";
+        };
 
-      # Templates
-      templates = (import ./templates);
-    }
-      local-packages];
+        # Templates
+        templates = import ./templates;
+      }
+      local-packages
+    ]
+    // {formatter = {x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.alejandra;};};
 }

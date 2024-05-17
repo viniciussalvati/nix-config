@@ -1,4 +1,4 @@
-{ unstablePkgs, localPkgs, ... }: {
+{ unstablePkgs, ... }: {
   imports = [
     ../home-manager/shell
     ./nixos # only use if in nixos installation of home-manager
@@ -10,8 +10,9 @@
   programs.bash.enable = true;
 
   home = {
-    packages = (with localPkgs; [ nixvim ])
-      ++ (with unstablePkgs; [ neofetch wl-clipboard ]);
-    sessionVariables = { EDITOR = "nvim"; };
+    packages =
+      (with unstablePkgs; [neofetch wl-clipboard nil neovim]);
+
+    sessionVariables = {EDITOR = "code";};
   };
 }
