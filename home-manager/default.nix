@@ -10,9 +10,8 @@
   programs.bash.enable = true;
 
   home = {
-    packages =
-      (with unstablePkgs; [neofetch wl-clipboard nil neovim]);
+    packages = (with unstablePkgs; [ neofetch wl-clipboard nil neovim ]);
 
-    sessionVariables = {EDITOR = "code";};
+    sessionVariables = { EDITOR = "code --wait"; };
   };
 }
