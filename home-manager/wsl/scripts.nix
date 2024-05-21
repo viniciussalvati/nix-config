@@ -1,6 +1,7 @@
 { pkgs }:
 let
   stop-service-str = serviceName: /* bash */ ''
+    # Stops ${serviceName}
     if service --status-all 2>&1 | rg "${serviceName}" > /dev/null; then
       if service "${serviceName}" status > /dev/null; then
         sudo service "${serviceName}" stop
@@ -20,6 +21,9 @@ let
 
       # wl-copy can be kept running when started by nixvim
       pkill wl-copy
+
+      # exits with success status code
+      exit 0
     '';
   };
 in
