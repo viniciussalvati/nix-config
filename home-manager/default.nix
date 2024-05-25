@@ -1,4 +1,4 @@
-{ unstablePkgs, ... }: {
+{ localPkgs, unstablePkgs, ... }: {
   imports = [
     ../home-manager/shell
     ./nixos # only use if in nixos installation of home-manager
@@ -10,7 +10,8 @@
   programs.bash.enable = true;
 
   home = {
-    packages = (with unstablePkgs; [ neofetch wl-clipboard nil neovim ]);
+    packages = (with localPkgs; [ nixvim ])
+      ++ (with unstablePkgs; [ neofetch wl-clipboard nil ]);
 
     sessionVariables = { EDITOR = "code --wait"; };
   };
