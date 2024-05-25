@@ -3,8 +3,6 @@
   imports = [
     ../nixos/shell
     ../nixos/desktop/gnome.nix
-    ../nixos/editors/vscode
-    ../nixos/applications/localsend.nix
     # waydroid still needs to be enabled. By default it won't auto start
     ../nixos/android/emulators/waydroid.nix
   ];
@@ -33,11 +31,11 @@
       zsh
       git
       firefox
+      thunderbird
       bitwarden
       telegram-desktop
-      nix-index # tool to index and find references in the nix store. Use nix-locate
-      nil
-      nixfmt
+      localsend
+      vscode
     ]);
 
   fonts.packages = with unstablePkgs;
