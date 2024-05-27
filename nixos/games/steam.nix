@@ -17,8 +17,7 @@ lib.mkIf config.programs.steam.enable {
   programs.gamemode.enable = true;
 
   environment.sessionVariables = {
-    # Install proton with
-    # protonup
+    # Path where protonup will install proton
     STEAM_EXTRA_COMPAT_TOOLS_PATHS =
       "${config.homeDirectory}/.steam/root/compatibilitytools.d";
   };

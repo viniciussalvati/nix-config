@@ -79,3 +79,7 @@ Profiles are meant for machines with other distros that use standalone home-mana
 ### wsl-work
 
 The configuration I use for work. This one includes the private configurations.
+
+## Specific instructions
+
+- [Gaming](./docs/gaming.md)
