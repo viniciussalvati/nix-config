@@ -1,8 +1,8 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, lib, ... }:
+lib.mkIf config.programs.steam.enable {
   # Enables support for the steam controller
   hardware.steam-hardware.enable = true;
   programs.steam = {
-    enable = true;
     # Allows starting games with a micro-compositor to improve games and fix issues
     gamescopeSession.enable = true;
   };

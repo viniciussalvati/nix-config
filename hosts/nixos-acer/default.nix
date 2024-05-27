@@ -13,8 +13,6 @@
     ../../nixos/boot/plymouth.nix
     ./grub-entries.nix
 
-    ../../nixos/games/steam.nix
-
     ../../nixos/hardware/logitech/solaar.nix
   ];
 
@@ -29,4 +27,5 @@
   hardware.bluetooth.enable = true;
 
   virtualisation.waydroid.enable = true;
+  programs.steam.enable = true;
 }
