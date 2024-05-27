@@ -82,4 +82,5 @@ The configuration I use for work. This one includes the private configurations.
 
 ## Specific instructions
 
+- [Graphics cards](./docs/graphics-cards.md)
 - [Gaming](./docs/gaming.md)

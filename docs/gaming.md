@@ -1,11 +1,11 @@
 ## Steam
 
-Instructions game from [this video](https://www.youtube.com/watch?v=qlfm3MEbqYA), which also links to [this repo](https://github.com/vimjoyer/nixos-gaming-video).
+Instructions came from [this video](https://www.youtube.com/watch?v=qlfm3MEbqYA), which also links to [this repo](https://github.com/vimjoyer/nixos-gaming-video).
 
 ### Setup
 
 To enable steam:
-- Make sure the graphics cards drivers are working
+- Make sure the graphics cards drivers are working. See [instructions](./graphics-cards.md) for graphics cards.
 - Add this line to your host config 
   ```nix
   programs.steam.enable = true;
