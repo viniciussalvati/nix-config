@@ -4,8 +4,11 @@ lib.mkIfStandalone config (let
   standaloneCheats = unstablePkgs.writeTextDir "home-manager.cheat" ''
     % home-manager
 
-    # home-manager switch for '${config.username}@${config.hostname}'
+    # Apply home-manager config for '${config.username}@${config.hostname}'
     nh home switch
+
+    # Update flakes and apply home-manager config for '${config.username}@${config.hostname}'
+    nh home switch --update
   '';
 in {
   nixpkgs.config.allowUnfree = true;
