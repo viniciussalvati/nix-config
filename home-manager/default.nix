@@ -10,8 +10,14 @@
   programs.bash.enable = true;
 
   home = {
-    packages = (with localPkgs; [ nixvim ])
-      ++ (with unstablePkgs; [ neofetch wl-clipboard nil ]);
+    packages = (with localPkgs; [ nixvim ]) ++ (with unstablePkgs; [
+      neofetch
+      wl-clipboard
+      nix-index # tool to index and find references in the nix store. Use nix-locate
+      nil
+      # todo: Checkout nixfmt-rcf-style instead of nixfmt-classic
+      nixfmt-classic
+    ]);
 
     sessionVariables = { EDITOR = "code --wait"; };
   };
