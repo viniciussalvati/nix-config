@@ -4,8 +4,8 @@ lib.mkIfStandalone config (let
   standaloneCheats = unstablePkgs.writeTextDir "home-manager.cheat" ''
     % home-manager
 
-    # home-manager switch for '${config.hostname}' --- you MUST be in the nix-config directory
-    nix run '.?submodules=1#homeConfigurations.${config.hostname}.activationPackage'
+    # home-manager switch for '${config.username}@${config.hostname}'
+    nh home switch
   '';
 in {
   nixpkgs.config.allowUnfree = true;
@@ -16,7 +16,12 @@ in {
     checkConfig =
       false; # This is temporary, as it seems home-manager can't build without it for now
   };
-  # home.packages = [ unstablePkgs.nixVersions.unstable ];
+
+  home.packages = with unstablePkgs; [ nh nix-output-monitor nvd ];
+
+  home.sessionVariables = {
+    FLAKE = "${config.homeDirectory}/nix-config?submodules=1";
+  };
 
   programs.zsh.initExtraFirst = builtins.readFile ./zsh-init-extra-first.zsh;
 
