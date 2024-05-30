@@ -1,5 +1,4 @@
-{ unstablePkgs, ... }:
-{
+{ config, unstablePkgs, ... }: {
   environment.systemPackages = with unstablePkgs; [
     # Cli utils
     bat
@@ -13,5 +12,15 @@
     # Terminal
     tilix
     terminator
+
+    # Tools for nix (aka nh)
+    nix-output-monitor
+    nvd
   ];
+
+  # See in https://github.com/viperML/nh
+  programs.nh = {
+    enable = true;
+    flake = "${config.homeDirectory}/nix-config?submodules=1";
+  };
 }

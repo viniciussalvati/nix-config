@@ -1,7 +1,13 @@
 % nixos
 
-# Build and switches to new nixos config --- you MUST be in the nix-config directory
-sudo nixos-rebuild switch --flake .
+# Builds and switches to new nixos config
+nh os switch --ask
 
-# Build new nixos config and enables it to be booted --- you MUST be in the nix-config directory
-sudo nixos-rebuild boot --flake .
+# Updates the flakes, builds and switches to new nixos config
+nh os switch --update --ask
+
+# Builds the new nixos config and enables it to be booted
+nh os boot --ask
+
+# Updates the flakes, builds the new nixos config and enables it to be booted
+nh os boot --update --ask

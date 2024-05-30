@@ -72,7 +72,7 @@ in {
       };
       localPkgs = local-packages.packages.${system};
     in {
-      ${hostname} = home-manager.lib.homeManagerConfiguration {
+      "${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         extraSpecialArgs = { inherit username unstablePkgs lib localPkgs; };
