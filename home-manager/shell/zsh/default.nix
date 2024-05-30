@@ -1,5 +1,4 @@
-{ unstablePkgs, ... }:
-{
+{ unstablePkgs, ... }: {
   programs.zsh = {
     enable = true;
     package = unstablePkgs.zsh;
@@ -10,23 +9,13 @@
     initExtra = builtins.readFile ./init-extra.zsh;
     oh-my-zsh = {
       enable = true;
-      plugins = [
-        "git"
-        "gitfast"
-        "z"
-        "alias-finder"
-        "sudo"
-        "fd"
-        "ripgrep"
-      ];
+      plugins = [ "git" "gitfast" "z" "alias-finder" "sudo" "fd" "ripgrep" ];
     };
   };
 
-  programs.keychain = {
-    enableZshIntegration = true;
-  };
+  programs.eza.enableZshIntegration = true;
 
-  programs.direnv = {
-    enableZshIntegration = true;
-  };
+  programs.keychain.enableZshIntegration = true;
+
+  programs.direnv.enableZshIntegration = true;
 }

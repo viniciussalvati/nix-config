@@ -27,17 +27,16 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = (with pkgs; [ gnome.gedit ])
-    ++ (with unstablePkgs; [
-      zsh
-      git
-      firefox
-      thunderbird
-      bitwarden
-      telegram-desktop
-      localsend
-      vscode
-    ]);
+  environment.systemPackages = (with pkgs; [ gedit ]) ++ (with unstablePkgs; [
+    zsh
+    git
+    firefox
+    thunderbird
+    bitwarden
+    telegram-desktop
+    localsend
+    vscode
+  ]);
 
   fonts.packages = with unstablePkgs;
     [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
