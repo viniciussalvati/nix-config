@@ -13,13 +13,13 @@
     tilix
     terminator
 
-    nh # todo: Move to programs.nh
+    # Tools for nix (aka nh)
     nix-output-monitor
     nvd
   ];
 
-  environment.sessionVariables = {
-    # todo: Move to programs.nh
-    FLAKE = "${config.homeDirectory}/nix-config?submodules=1";
+  programs.nh = {
+    enable = true;
+    flake = "${config.homeDirectory}/nix-config?submodules=1";
   };
 }
