@@ -1,4 +1,0 @@
-% nix
-
-# Collect garbage
-sudo nix-collect-garbage --delete-older-than 60d

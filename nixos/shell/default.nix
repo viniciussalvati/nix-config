@@ -18,6 +18,7 @@
     nvd
   ];
 
+  # See in https://github.com/viperML/nh
   programs.nh = {
     enable = true;
     flake = "${config.homeDirectory}/nix-config?submodules=1";
