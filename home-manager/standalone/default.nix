@@ -5,10 +5,10 @@ lib.mkIfStandalone config (let
     % home-manager
 
     # Apply home-manager config for '${config.username}@${config.hostname}'
-    nh home switch
+    nh home switch --ask
 
     # Update flakes and apply home-manager config for '${config.username}@${config.hostname}'
-    nh home switch --update
+    nh home switch --update --ask
   '';
 in {
   nixpkgs.config.allowUnfree = true;
