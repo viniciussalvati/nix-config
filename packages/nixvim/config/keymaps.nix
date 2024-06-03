@@ -1,17 +1,19 @@
+{ helpers, ... }:
 {
   keymaps = [
     {
       mode = "n";
       key = "<leader>f";
-      lua = true;
-      action = "vim.lsp.buf.format";
+      action = helpers.mkRaw "vim.lsp.buf.format";
       options.desc = "[F]ormat code";
     }
     {
-      mode = [ "n" "i" ];
+      mode = [
+        "n"
+        "i"
+      ];
       key = "<C-f>";
-      lua = true;
-      action = "vim.lsp.buf.format";
+      action = helpers.mkRaw "vim.lsp.buf.format";
       options.desc = "[F]ormat code";
     }
     # Shortcuts for spliting the screen
@@ -49,53 +51,57 @@
     {
       mode = "n";
       key = "<M-,>";
-      lua = true;
-      action = /* lua */ ''
-        function()
-          local current_window = vim.api.nvim_get_current_win()
-          local current_size = vim.api.nvim_win_get_width(current_window)
-          vim.api.nvim_win_set_width(current_window, current_size - 1)
-        end
-      '';
+      action =
+        helpers.mkRaw # lua
+          ''
+            function()
+              local current_window = vim.api.nvim_get_current_win()
+              local current_size = vim.api.nvim_win_get_width(current_window)
+              vim.api.nvim_win_set_width(current_window, current_size - 1)
+            end
+          '';
       options.desc = "Decrease width of current window";
     }
     {
       mode = "n";
       key = "<M-.>";
-      lua = true;
-      action = /* lua */ ''
-        function()
-          local current_window = vim.api.nvim_get_current_win()
-          local current_size = vim.api.nvim_win_get_width(current_window)
-          vim.api.nvim_win_set_width(current_window, current_size + 1)
-        end
-      '';
+      action =
+        helpers.mkRaw # lua
+          ''
+            function()
+              local current_window = vim.api.nvim_get_current_win()
+              local current_size = vim.api.nvim_win_get_width(current_window)
+              vim.api.nvim_win_set_width(current_window, current_size + 1)
+            end
+          '';
       options.desc = "Increase width of current window";
     }
     {
       mode = "n";
       key = "<M-->";
-      lua = true;
-      action = /* lua */ ''
-        function()
-          local current_window = vim.api.nvim_get_current_win()
-          local current_size = vim.api.nvim_win_get_height(current_window)
-          vim.api.nvim_win_set_height(current_window, current_size - 1)
-        end
-      '';
+      action =
+        helpers.mkRaw # lua
+          ''
+            function()
+              local current_window = vim.api.nvim_get_current_win()
+              local current_size = vim.api.nvim_win_get_height(current_window)
+              vim.api.nvim_win_set_height(current_window, current_size - 1)
+            end
+          '';
       options.desc = "Decrease height of current window";
     }
     {
       mode = "n";
       key = "<M-=>";
-      lua = true;
-      action = /* lua */ ''
-        function()
-          local current_window = vim.api.nvim_get_current_win()
-          local current_size = vim.api.nvim_win_get_height(current_window)
-          vim.api.nvim_win_set_height(current_window, current_size + 1)
-        end
-      '';
+      action =
+        helpers.mkRaw # lua
+          ''
+            function()
+              local current_window = vim.api.nvim_get_current_win()
+              local current_size = vim.api.nvim_win_get_height(current_window)
+              vim.api.nvim_win_set_height(current_window, current_size + 1)
+            end
+          '';
       options.nowait = true;
       options.desc = "Increase height of current window";
     }

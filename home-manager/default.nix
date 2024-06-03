@@ -1,4 +1,5 @@
-{ localPkgs, unstablePkgs, ... }: {
+{ localPkgs, unstablePkgs, ... }:
+{
   imports = [
     ../home-manager/shell
     ./nixos # only use if in nixos installation of home-manager
@@ -10,15 +11,20 @@
   programs.bash.enable = true;
 
   home = {
-    packages = (with localPkgs; [ nixvim ]) ++ (with unstablePkgs; [
-      neofetch
-      wl-clipboard
-      nix-index # tool to index and find references in the nix store. Use nix-locate
-      nil
-      # todo: Checkout nixfmt-rcf-style instead of nixfmt-classic
-      nixfmt-classic
-    ]);
+    packages =
+      (with localPkgs; [ nixvim ])
+      ++ (with unstablePkgs; [
+        neofetch
+        wl-clipboard
+        nix-index # tool to index and find references in the nix store. Use nix-locate
+        nil
+        # todo: Checkout nixfmt-rfc-style instead of nixfmt-classic
+        # nixfmt-classic
+        nixfmt-rfc-style
+      ]);
 
-    sessionVariables = { EDITOR = "code --wait"; };
+    sessionVariables = {
+      EDITOR = "code --wait";
+    };
   };
 }
