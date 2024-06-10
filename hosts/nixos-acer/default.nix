@@ -11,7 +11,6 @@
     # Uses grub2 boot, because it supports EFI boot and can probe for Windows in other partitions
     ../../nixos/boot/grub2.nix
     ../../nixos/boot/plymouth.nix
-    ./grub-entries.nix
 
     ../../nixos/hardware/logitech/solaar.nix
   ];
