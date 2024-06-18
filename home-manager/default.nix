@@ -2,6 +2,8 @@
 {
   imports = [
     ../home-manager/shell
+    ./gaming
+
     ./nixos # only use if in nixos installation of home-manager
     ./standalone # only used if in standalone installation of home-manager
     ./wsl # only used if in standalone installation of home-manager inside wsl

@@ -1,4 +1,9 @@
-{ unstablePkgs, config, lib, ... }:
+{
+  unstablePkgs,
+  config,
+  lib,
+  ...
+}:
 lib.mkIf config.programs.steam.enable {
   # Enables support for the steam controller
   hardware.steam-hardware.enable = true;
@@ -12,6 +17,7 @@ lib.mkIf config.programs.steam.enable {
     # Program to monitor systems status (CPU and GPU load and temp, RAM, FPS, etc)
     mangohud
     protonup
+    (import ./nix-game-launcher.nix unstablePkgs)
   ];
 
   # Improves game performance by temporarily applying optimizations to the OS and game process
@@ -19,7 +25,6 @@ lib.mkIf config.programs.steam.enable {
 
   environment.sessionVariables = {
     # Path where protonup will install proton
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS =
-      "${config.homeDirectory}/.steam/root/compatibilitytools.d";
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${config.homeDirectory}/.steam/root/compatibilitytools.d";
   };
 }
