@@ -8,8 +8,7 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
-      url =
-        "github:nix-community/home-manager/release-24.05"; # for nixos stable
+      url = "github:nix-community/home-manager/release-24.05"; # for nixos stable
       # url = "github:nix-community/home-manager"; # for nixos unstable
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -21,8 +20,7 @@
     };
 
     solaar = {
-      url =
-        "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz"; # For latest stable version
+      url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz"; # For latest stable version
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -32,16 +30,17 @@
     };
   };
 
-  outputs = inputs:
+  outputs =
+    inputs:
     let
       inherit (import ./lib inputs) deepMerge;
-      inherit (import ./lib/flake-helpers.nix inputs)
-        mkNixosConfig mkHomeConfig;
+      inherit (import ./lib/flake-helpers.nix inputs) mkNixosConfig mkHomeConfig;
       local-packages = import ./packages inputs;
-    in deepMerge [
+    in
+    deepMerge [
       {
-        nixosConfigurations = (mkNixosConfig { hostname = "nixos-acer"; })
-          // (mkNixosConfig { hostname = "vm"; });
+        nixosConfigurations =
+          (mkNixosConfig { hostname = "nixos-acer"; }) // (mkNixosConfig { hostname = "vm"; });
 
         homeConfigurations = mkHomeConfig {
           hostname = "wsl-work";
