@@ -4,7 +4,7 @@
   unstablePkgs,
   ...
 }:
-lib.mkIf osConfig.programs.steam.enable {
+lib.mkIf (osConfig ? programs.steam.enable) {
   programs.mangohud = {
     enable = true;
     package = unstablePkgs.mangohud;

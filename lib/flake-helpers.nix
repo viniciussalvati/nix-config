@@ -1,25 +1,49 @@
-{ nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+{
+  nixpkgs,
+  nixpkgs-unstable,
+  home-manager,
+  ...
+}@inputs:
 let
   inherit (import ./list.nix) includeIfExists;
-  lib = nixpkgs.lib.extend
-    (_final: _prev: (import ./default.nix inputs) // home-manager.lib);
+  lib = nixpkgs.lib.extend (_final: _prev: (import ./default.nix inputs) // home-manager.lib);
   local-packages = (import ../packages inputs);
-in {
-  mkNixosConfig = { hostname, username ? "vinicius", homePath ? "/home"
-    , homeDirectory ? "${homePath}/${username}", system ? "x86_64-linux"
-    , stateVersion ? "23.11", nixpkgs ? inputs.nixpkgs
-    , home-manager ? inputs.home-manager, solaar ? inputs.solaar }:
+in
+{
+  mkNixosConfig =
+    {
+      hostname,
+      username ? "vinicius",
+      homePath ? "/home",
+      homeDirectory ? "${homePath}/${username}",
+      system ? "x86_64-linux",
+      stateVersion ? "23.11",
+      nixpkgs ? inputs.nixpkgs,
+      home-manager ? inputs.home-manager,
+      solaar ? inputs.solaar,
+    }:
     let
       unstablePkgs = import nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
       };
       localPkgs = local-packages.packages.${system};
-      config = { inherit hostname username homeDirectory; };
-    in {
+      config = {
+        inherit hostname username homeDirectory;
+      };
+    in
+    {
       ${hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit username system unstablePkgs localPkgs lib; };
+        specialArgs = {
+          inherit
+            username
+            system
+            unstablePkgs
+            localPkgs
+            lib
+            ;
+        };
         modules = [
           solaar.nixosModules.default
           ../options/common.nix
@@ -33,7 +57,9 @@ in {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = { inherit username unstablePkgs localPkgs; };
+              extraSpecialArgs = {
+                inherit username unstablePkgs localPkgs;
+              };
               users.${username} = {
                 imports = [
                   ../options/common.nix
@@ -41,7 +67,9 @@ in {
                   config
                   {
                     home-manager.type = "nixos";
-                    home = { inherit stateVersion username homeDirectory; };
+                    home = {
+                      inherit stateVersion username homeDirectory;
+                    };
                   }
                   ../home-manager
                   ../home-manager/desktop
@@ -49,7 +77,9 @@ in {
               };
               # gdm is gnome's login screen's user
               users.gdm = {
-                home = { inherit stateVersion; };
+                home = {
+                  inherit stateVersion;
+                };
                 imports = [ ../home-manager/desktop/gdm.nix ];
               };
             };
@@ -57,10 +87,18 @@ in {
         ];
       };
     };
-  mkHomeConfig = { hostname, username ? "vinicius", homePath ? "/home"
-    , homeDirectory ? "${homePath}/${username}", system ? "x86_64-linux"
-    , stateVersion ? "23.11", type ? "standalone", nixpkgs ? inputs.nixpkgs
-    , home-manager ? inputs.home-manager }:
+  mkHomeConfig =
+    {
+      hostname,
+      username ? "vinicius",
+      homePath ? "/home",
+      homeDirectory ? "${homePath}/${username}",
+      system ? "x86_64-linux",
+      stateVersion ? "23.11",
+      type ? "standalone",
+      nixpkgs ? inputs.nixpkgs,
+      home-manager ? inputs.home-manager,
+    }:
     let
       pkgs = import nixpkgs {
         inherit system;
@@ -71,26 +109,41 @@ in {
         config.allowUnfree = true;
       };
       localPkgs = local-packages.packages.${system};
-    in {
+    in
+    {
       "${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        extraSpecialArgs = { inherit username unstablePkgs lib localPkgs; };
+        extraSpecialArgs = {
+          inherit
+            username
+            unstablePkgs
+            lib
+            localPkgs
+            ;
+          # This will ensure that the config can be used in non nixos machines
+          osConfig = { };
+        };
 
-        modules = [
-          ../options/common.nix
-          ../options/home-manager.nix
-          {
-            inherit hostname username homeDirectory;
+        modules =
+          [
+            ../options/common.nix
+            ../options/home-manager.nix
+            {
+              inherit hostname username homeDirectory;
 
-            home-manager.type = type;
-            home = { inherit stateVersion username homeDirectory; };
-          }
-        ] ++ (includeIfExists ../private/profiles/${hostname}) ++ [
-          ../home-manager
-          ../home-manager/standalone
-          ../profiles/${hostname}
-        ];
+              home-manager.type = type;
+              home = {
+                inherit stateVersion username homeDirectory;
+              };
+            }
+          ]
+          ++ (includeIfExists ../private/profiles/${hostname})
+          ++ [
+            ../home-manager
+            ../home-manager/standalone
+            ../profiles/${hostname}
+          ];
       };
     };
 }
