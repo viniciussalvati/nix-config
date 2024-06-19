@@ -1,0 +1,7 @@
+% home-manager
+
+# Build and switches the new home-manager configuration
+nh home switch --ask
+
+# Update the flakes, build and switches the new home-manager configuration
+nh home switch --update --ask
