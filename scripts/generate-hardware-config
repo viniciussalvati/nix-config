@@ -4,8 +4,8 @@ set -e
 
 dir=$(dirname $0)
 . $dir/includes/get_root.sh
-. $dir/includes/get_host.sh
 
+host=$(hostname)
 target_file=$root/hosts/$host/hardware-configuration.nix;
 
 if [[ -f "$target_file" ]]; then
