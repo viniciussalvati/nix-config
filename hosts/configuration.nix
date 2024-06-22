@@ -1,4 +1,10 @@
-{ pkgs, unstablePkgs, username, ... }: {
+{
+  pkgs,
+  unstablePkgs,
+  username,
+  ...
+}:
+{
 
   imports = [
     ../nixos/shell
@@ -27,19 +33,20 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = (with pkgs; [ gedit ]) ++ (with unstablePkgs; [
-    zsh
-    git
-    firefox
-    thunderbird
-    bitwarden
-    telegram-desktop
-    localsend
-    vscode
-  ]);
+  environment.systemPackages =
+    (with pkgs; [ gedit ])
+    ++ (with unstablePkgs; [
+      zsh
+      git
+      firefox
+      thunderbird
+      bitwarden
+      telegram-desktop
+      localsend
+      vscode
+    ]);
 
-  fonts.packages = with unstablePkgs;
-    [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
+  fonts.packages = with unstablePkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
 
   # programs.sway.enable = true;
 
@@ -55,12 +62,4 @@
     # Allows me to use nix flakes
     extraOptions = "experimental-features = nix-command flakes";
   };
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
 }
