@@ -4,11 +4,12 @@
     enable = true;
 
     # Close neo-tree when a file is opened
-    eventHandlers.file_opened = /* lua */ ''
-      function(file_path)
-        require('neo-tree').close_all()
-      end
-    '';
+    eventHandlers.file_opened = # lua
+      ''
+        function(file_path)
+          require('neo-tree').close_all()
+        end
+      '';
   };
 
   keymaps = [

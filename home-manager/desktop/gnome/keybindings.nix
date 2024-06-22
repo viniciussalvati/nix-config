@@ -2,19 +2,21 @@
 let
   flameshot-gui = pkgs.writeShellScriptBin "flameshot-gui" "${unstablePkgs.flameshot}/bin/flameshot gui";
 
-  mkBinding = name: binding: command: {
-    inherit binding command name;
-  };
+  mkBinding = name: binding: command: { inherit binding command name; };
   keybindings = [ (mkBinding "Flameshot" "Print" "${flameshot-gui}/bin/flameshot-gui") ];
 
-  keybindingSet = builtins.listToAttrs (builtins.genList
-    (index:
-      let binding = (builtins.elemAt keybindings index); in
+  keybindingSet = builtins.listToAttrs (
+    builtins.genList (
+      index:
+      let
+        binding = (builtins.elemAt keybindings index);
+      in
       {
         name = "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom${builtins.toString index}";
         value = binding;
-      })
-    (builtins.length keybindings));
+      }
+    ) (builtins.length keybindings)
+  );
   keybindingList = builtins.map (name: "/${name}/") (builtins.attrNames keybindingSet);
 in
 {

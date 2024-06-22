@@ -10,7 +10,7 @@
   };
 
   # Opens/closes dapui interface when we start/end the debugging session
-  extraConfigLua = /* lua */
+  extraConfigLua = # lua
     ''
       local dap, dapui = require("dap"), require("dapui")
       dap.listeners.before.attach.dapui_config = function()
@@ -32,14 +32,16 @@
       mode = "n";
       key = "<leader>dt";
       lua = true;
-      action = /* lua */ "require('dap').toggle_breakpoint";
+      action = # lua
+        "require('dap').toggle_breakpoint";
       options.desc = "Toggle Breakpoint";
     }
     {
       mode = "n";
       key = "<leader>dc";
       lua = true;
-      action = /* lua */ "require('dap').continue";
+      action = # lua
+        "require('dap').continue";
       options.desc = "Debug Continue";
     }
   ];

@@ -15,7 +15,7 @@
     ../../nixos/hardware/logitech/solaar.nix
   ];
 
-  services.xserver.layout = "br";
+  services.xserver.xkb.layout = "br";
   # Configure console keymap
   console.keyMap = "br-abnt2";
 

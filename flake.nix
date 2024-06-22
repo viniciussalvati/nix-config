@@ -34,18 +34,29 @@
     inputs:
     let
       inherit (import ./lib inputs) deepMerge;
-      inherit (import ./lib/flake-helpers.nix inputs) mkNixosConfig mkHomeConfig;
+      inherit (import ./lib/flake-helpers.nix inputs) mkNixosConfigs mkHomeConfigs;
       local-packages = import ./packages inputs;
     in
     deepMerge [
       {
-        nixosConfigurations =
-          (mkNixosConfig { hostname = "nixos-acer"; }) // (mkNixosConfig { hostname = "vm"; });
+        nixosConfigurations = mkNixosConfigs [
+          {
+            hostname = "nixos-acer";
+            stateVersion = "23.11";
+          }
+          {
+            hostname = "vm";
+            stateVersion = "23.11";
+          }
+        ];
 
-        homeConfigurations = mkHomeConfig {
-          hostname = "wsl-work";
-          type = "wsl";
-        };
+        homeConfigurations = mkHomeConfigs [
+          {
+            hostname = "wsl-work";
+            type = "wsl";
+            stateVersion = "23.11";
+          }
+        ];
 
         # Templates
         templates = import ./templates;

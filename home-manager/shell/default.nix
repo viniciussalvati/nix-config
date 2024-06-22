@@ -1,13 +1,31 @@
-{ unstablePkgs, ... }: {
-  imports = [ ./git.nix ./navi ./tealdeer.nix ./starship.nix ./zsh ];
+{ unstablePkgs, ... }:
+{
+  imports = [
+    ./git.nix
+    ./navi
+    ./tealdeer.nix
+    ./starship.nix
+    ./zsh
+  ];
 
-  home.packages = with unstablePkgs; [ fd sd bat htop jq ripgrep ];
+  home.packages = with unstablePkgs; [
+    fd
+    sd
+    bat
+    htop
+    jq
+    ripgrep
+  ];
 
   programs.eza = {
     enable = true;
     package = unstablePkgs.eza;
     icons = true;
-    extraOptions = [ "-F" "--group-directories-first" "--color-scale" ];
+    extraOptions = [
+      "-F"
+      "--group-directories-first"
+      "--color-scale"
+    ];
   };
 
   programs.direnv = {

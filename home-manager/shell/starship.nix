@@ -5,10 +5,12 @@
     package = unstablePkgs.starship;
     enableZshIntegration = true;
     settings = {
-      battery.display = [{
-        threshold = 30;
-        style = "bold red";
-      }];
+      battery.display = [
+        {
+          threshold = 30;
+          style = "bold red";
+        }
+      ];
 
       directory = {
         truncate_to_repo = false;

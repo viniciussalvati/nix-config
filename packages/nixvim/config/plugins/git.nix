@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   plugins.gitsigns = {
     enable = true;
   };
@@ -9,9 +10,7 @@
 
   plugins.gitblame.enable = true;
 
-  extraPlugins = with pkgs.vimPlugins; [
-    lazygit-nvim
-  ];
+  extraPlugins = with pkgs.vimPlugins; [ lazygit-nvim ];
 
   keymaps = [
     {
@@ -28,9 +27,10 @@
     }
   ];
 
-  extraConfigLua = /* lua */ ''
-    -- Disables gitblame by default. It can be toggled with GitBlameToggle
-    vim.g.gitblame_enabled = 0;
-  '';
+  extraConfigLua = # lua
+    ''
+      -- Disables gitblame by default. It can be toggled with GitBlameToggle
+      vim.g.gitblame_enabled = 0;
+    '';
 
 }

@@ -1,4 +1,5 @@
-{ config, unstablePkgs, ... }: {
+{ config, unstablePkgs, ... }:
+{
   environment.systemPackages = with unstablePkgs; [
     # Cli utils
     bat

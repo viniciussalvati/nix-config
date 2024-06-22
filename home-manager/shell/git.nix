@@ -60,14 +60,17 @@
   };
 
   home = {
-    packages = with unstablePkgs; [
-      gitui
-      tig
-      git-bug
-      gh
-      glab
-      fzf
-    ] ++ [ localPkgs.git-fuzzy ];
+    packages =
+      with unstablePkgs;
+      [
+        gitui
+        tig
+        git-bug
+        gh
+        glab
+        fzf
+      ]
+      ++ [ localPkgs.git-fuzzy ];
 
     shellAliases = {
       gk = ": $(gitk --all > /dev/null 2>&1 &)";

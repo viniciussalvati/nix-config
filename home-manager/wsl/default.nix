@@ -1,10 +1,14 @@
 # Specific configuration when running inside wsl
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   scripts = import ./scripts.nix { inherit pkgs; };
 in
-lib.mkIfWsl config
-{
+lib.mkIfWsl config {
   programs.home-manager = {
     enable = true;
     # TODO: Get path of home-manager configuration, which should be this repo's root folder
@@ -18,8 +22,11 @@ lib.mkIfWsl config
     agents = [ "ssh" ]; # start ssh agent
   };
 
-  home.packages = with pkgs; [
-    xdg-utils
-    wsl-open
-  ] ++ scripts;
+  home.packages =
+    with pkgs;
+    [
+      xdg-utils
+      wsl-open
+    ]
+    ++ scripts;
 }

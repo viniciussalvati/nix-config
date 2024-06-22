@@ -17,9 +17,10 @@
       spell = true;
     };
 
-    extraConfigLua = /* lua */ ''
-      vim.opt.listchars:append({ multispace = "•", leadmultispace = "•", trail = "•", tab = "→ " })
-      vim.opt.list = true;
-    '';
+    extraConfigLua = # lua
+      ''
+        vim.opt.listchars:append({ multispace = "•", leadmultispace = "•", trail = "•", tab = "→ " })
+        vim.opt.list = true;
+      '';
   };
 }

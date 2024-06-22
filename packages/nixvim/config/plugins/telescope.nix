@@ -5,7 +5,9 @@
     extensions.ui-select.enable = true;
 
     settings.defaults = {
-      cache_picker = { num_pickers = 5; };
+      cache_picker = {
+        num_pickers = 5;
+      };
 
       mappings = {
         i = {
@@ -19,9 +21,7 @@
     enabledExtensions = [ "noice" ];
   };
 
-  extraPlugins = [
-    pkgs.vimPlugins.telescope-ui-select-nvim
-  ];
+  extraPlugins = [ pkgs.vimPlugins.telescope-ui-select-nvim ];
 
   keymaps = [
     {
