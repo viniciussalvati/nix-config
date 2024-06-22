@@ -1,4 +1,2 @@
 # Enables Plymouth boot splash screen.
-{
-  boot.plymouth.enable = true;
-}
+{ boot.plymouth.enable = true; }

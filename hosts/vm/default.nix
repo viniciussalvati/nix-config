@@ -19,7 +19,5 @@
   # Configure console keymap
   console.keyMap = "br-abnt2";
 
-  environment.systemPackages = with pkgs; [
-    spice-vdagent
-  ];
+  environment.systemPackages = with pkgs; [ spice-vdagent ];
 }

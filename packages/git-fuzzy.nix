@@ -1,19 +1,26 @@
-{ flake-utils, nixpkgs-unstable, git-fuzzy, ... }:
-flake-utils.lib.eachDefaultSystem
-  (system:
+{
+  flake-utils,
+  nixpkgs-unstable,
+  git-fuzzy,
+  ...
+}:
+flake-utils.lib.eachDefaultSystem (
+  system:
   let
     pkgs = nixpkgs-unstable.legacyPackages.${system};
-    binPath = with pkgs; lib.makeBinPath [
-      fzf
-      coreutils # uses dirname
-      git
-      gnused
-      ncurses5
-      bc
-      gawk
-      gnugrep
-      unixtools.column
-    ];
+    binPath =
+      with pkgs;
+      lib.makeBinPath [
+        fzf
+        coreutils # uses dirname
+        git
+        gnused
+        ncurses5
+        bc
+        gawk
+        gnugrep
+        unixtools.column
+      ];
   in
   {
     packages = {
@@ -26,18 +33,20 @@ flake-utils.lib.eachDefaultSystem
 
         nativeBuildInputs = [ pkgs.makeWrapper ];
 
-        installPhase = /* bash */ ''
-          runHook preInstall
+        installPhase = # bash
+          ''
+            runHook preInstall
 
-          mkdir -p $out/bin
-          cp -r $src/bin $out
-          cp -r $src/lib $out
+            mkdir -p $out/bin
+            cp -r $src/bin $out
+            cp -r $src/lib $out
 
-          wrapProgram $out/bin/git-fuzzy \
-            --set PATH "$binPath:$out/bin"
+            wrapProgram $out/bin/git-fuzzy \
+              --set PATH "$binPath:$out/bin"
 
-          runHook postInstall
-        '';
+            runHook postInstall
+          '';
       };
     };
-  })
+  }
+)

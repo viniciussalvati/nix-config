@@ -1,3 +1,1 @@
-{
-  includeIfExists = path: if __pathExists path then [ path ] else [ ];
-}
+{ includeIfExists = path: if builtins.pathExists path then [ path ] else [ ]; }
