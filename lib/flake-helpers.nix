@@ -8,16 +8,14 @@ let
   inherit (import ./list.nix) includeIfExists;
   lib = nixpkgs.lib.extend (_final: _prev: (import ./default.nix inputs) // home-manager.lib);
   local-packages = (import ../packages inputs);
-in
-{
   mkNixosConfig =
     {
       hostname,
+      stateVersion,
       username ? "vinicius",
       homePath ? "/home",
       homeDirectory ? "${homePath}/${username}",
       system ? "x86_64-linux",
-      stateVersion ? "23.11",
       nixpkgs ? inputs.nixpkgs,
       home-manager ? inputs.home-manager,
       solaar ? inputs.solaar,
@@ -90,11 +88,11 @@ in
   mkHomeConfig =
     {
       hostname,
+      stateVersion,
       username ? "vinicius",
       homePath ? "/home",
       homeDirectory ? "${homePath}/${username}",
       system ? "x86_64-linux",
-      stateVersion ? "23.11",
       type ? "standalone",
       nixpkgs ? inputs.nixpkgs,
       home-manager ? inputs.home-manager,
@@ -146,4 +144,18 @@ in
           ];
       };
     };
+in
+{
+  mkNixosConfigs =
+    configs:
+    let
+      foldFn = acc: config: acc // (mkNixosConfig config);
+    in
+    builtins.foldl' foldFn { } configs;
+  mkHomeConfigs =
+    configs:
+    let
+      foldFn = acc: config: acc // (mkHomeConfig config);
+    in
+    builtins.foldl' foldFn { } configs;
 }
