@@ -1,13 +1,15 @@
 {
   unstablePkgs,
   config,
+  homeDirectory,
   lib,
   ...
 }:
-lib.mkIf config.programs.steam.enable {
+lib.mkIf config.settings.enableGaming {
   # Enables support for the steam controller
   hardware.steam-hardware.enable = true;
   programs.steam = {
+    enable = true;
     package = unstablePkgs.steam;
     # Allows starting games with a micro-compositor to improve games and fix issues
     gamescopeSession.enable = true;
@@ -18,6 +20,9 @@ lib.mkIf config.programs.steam.enable {
     mangohud
     protonup
     (import ./nix-game-launcher.nix unstablePkgs)
+
+    wine
+    lutris
   ];
 
   # Improves game performance by temporarily applying optimizations to the OS and game process
@@ -25,6 +30,6 @@ lib.mkIf config.programs.steam.enable {
 
   environment.sessionVariables = {
     # Path where protonup will install proton
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${config.homeDirectory}/.steam/root/compatibilitytools.d";
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${homeDirectory}/.steam/root/compatibilitytools.d";
   };
 }

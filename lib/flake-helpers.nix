@@ -26,16 +26,15 @@ let
         config.allowUnfree = true;
       };
       localPkgs = local-packages.packages.${system};
-      config = {
-        inherit hostname username homeDirectory;
-      };
     in
     {
       ${hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
           inherit
+            hostname
             username
+            homeDirectory
             system
             unstablePkgs
             localPkgs
@@ -48,10 +47,7 @@ let
           ../hosts/configuration.nix
           ../hosts/${hostname}
           home-manager.nixosModules.home-manager
-          config
           {
-            networking.hostName = hostname;
-
             # This value determines the NixOS release from which the default
             # settings for stateful data, like file locations and database versions
             # on your system were taken. It‘s perfectly fine and recommended to leave
@@ -64,13 +60,18 @@ let
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = {
-                inherit username unstablePkgs localPkgs;
+                inherit
+                  hostname
+                  username
+                  homeDirectory
+                  unstablePkgs
+                  localPkgs
+                  ;
               };
               users.${username} = {
                 imports = [
                   ../options/common.nix
                   ../options/home-manager.nix
-                  config
                   {
                     home-manager.type = "nixos";
                     home = {
@@ -122,13 +123,17 @@ let
 
         extraSpecialArgs = {
           inherit
+            hostname
             username
+            homeDirectory
             unstablePkgs
             lib
             localPkgs
             ;
           # This will ensure that the config can be used in non nixos machines
-          osConfig = { };
+          osConfig = {
+            settings = { };
+          };
         };
 
         modules =
@@ -136,8 +141,6 @@ let
             ../options/common.nix
             ../options/home-manager.nix
             {
-              inherit hostname username homeDirectory;
-
               home-manager.type = type;
               home = {
                 inherit stateVersion username homeDirectory;
@@ -147,7 +150,6 @@ let
           ++ (includeIfExists ../private/profiles/${hostname})
           ++ [
             ../home-manager
-            ../home-manager/standalone
             ../profiles/${hostname}
           ];
       };

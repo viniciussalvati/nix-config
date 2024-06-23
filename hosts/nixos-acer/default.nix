@@ -26,5 +26,5 @@
   hardware.bluetooth.enable = true;
 
   virtualisation.waydroid.enable = true;
-  programs.steam.enable = true;
+  settings.enableGaming = true;
 }
