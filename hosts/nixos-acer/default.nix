@@ -25,6 +25,7 @@
   hardware.bluetooth.enable = true;
 
   virtualisation.waydroid.enable = true;
+
   settings.enableGaming = true;
 
   programs.kdeconnect.enable = true;
