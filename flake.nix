@@ -42,7 +42,7 @@
         nixosConfigurations = mkNixosConfigs [
           {
             hostname = "nixos-acer";
-            stateVersion = "23.11";
+            stateVersion = "24.05";
           }
           {
             hostname = "vm";
