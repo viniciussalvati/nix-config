@@ -156,6 +156,7 @@ let
     };
 in
 {
+  inherit local-packages;
   mkNixosConfigs =
     configs:
     let

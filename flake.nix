@@ -34,8 +34,7 @@
     inputs:
     let
       inherit (import ./lib inputs) deepMerge;
-      inherit (import ./lib/flake-helpers.nix inputs) mkNixosConfigs mkHomeConfigs;
-      local-packages = import ./packages inputs;
+      inherit (import ./lib/flake-helpers.nix inputs) mkNixosConfigs mkHomeConfigs local-packages;
     in
     deepMerge [
       {
