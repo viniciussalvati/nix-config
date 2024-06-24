@@ -4,7 +4,10 @@
   osConfig,
   ...
 }:
-lib.mkIfNixos config ({
+{
+  imports = [ ../stylix ];
+}
+// lib.mkIfNixos config ({
   # Passes the config settings defined in the NixOS config to home-manager settings
   settings = osConfig.settings;
 

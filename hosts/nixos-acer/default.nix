@@ -29,4 +29,6 @@
   settings.enableGaming = true;
 
   programs.kdeconnect.enable = true;
+
+  stylix.targets.plymouth.enable = false;
 }
