@@ -6,7 +6,10 @@
   homeDirectory,
   ...
 }:
-lib.mkIfStandalone config {
+{
+  imports = [ ../../shared/nix.nix ];
+}
+// (lib.mkIfStandalone config {
   nixpkgs.config.allowUnfree = true;
   nix = {
     package = unstablePkgs.nixVersions.git;
@@ -28,4 +31,4 @@ lib.mkIfStandalone config {
   programs.zsh.initExtraFirst = builtins.readFile ./zsh-init-extra-first.zsh;
 
   programs.navi.settings.cheats.paths = [ ./cheats/home-manager.cheat ];
-}
+})
