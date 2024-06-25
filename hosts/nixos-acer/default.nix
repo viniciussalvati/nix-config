@@ -8,8 +8,7 @@
     ./hardware-configuration.nix
     ./hardware-nvidia.nix
 
-    # Uses grub2 boot, because it supports EFI boot and can probe for Windows in other partitions
-    ../../nixos/boot/grub2.nix
+    ../../nixos/boot/systemd-boot.nix
     ../../nixos/boot/plymouth.nix
 
     ../../nixos/hardware/logitech/solaar.nix
@@ -26,5 +25,7 @@
   hardware.bluetooth.enable = true;
 
   virtualisation.waydroid.enable = true;
-  programs.steam.enable = true;
+  settings.enableGaming = true;
+
+  programs.kdeconnect.enable = true;
 }

@@ -1,6 +1,7 @@
 {
   pkgs,
   unstablePkgs,
+  hostname,
   username,
   ...
 }:
@@ -16,6 +17,7 @@
 
   # Easiest to use and most distros use this by default.
   networking.networkmanager.enable = true;
+  networking.hostName = hostname;
 
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";

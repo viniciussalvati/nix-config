@@ -3,6 +3,7 @@
   lib,
   unstablePkgs,
   config,
+  homeDirectory,
   ...
 }:
 lib.mkIfStandalone config {
@@ -21,7 +22,7 @@ lib.mkIfStandalone config {
   ];
 
   home.sessionVariables = {
-    FLAKE = "${config.homeDirectory}/nix-config?submodules=1";
+    FLAKE = "${homeDirectory}/nix-config?submodules=1";
   };
 
   programs.zsh.initExtraFirst = builtins.readFile ./zsh-init-extra-first.zsh;

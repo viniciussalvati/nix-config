@@ -1,4 +1,4 @@
-{ config, unstablePkgs, ... }:
+{ homeDirectory, unstablePkgs, ... }:
 {
   environment.systemPackages = with unstablePkgs; [
     # Cli utils
@@ -22,6 +22,6 @@
   # See in https://github.com/viperML/nh
   programs.nh = {
     enable = true;
-    flake = "${config.homeDirectory}/nix-config?submodules=1";
+    flake = "${homeDirectory}/nix-config?submodules=1";
   };
 }
