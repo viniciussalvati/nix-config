@@ -9,6 +9,9 @@ let
   scripts = import ./scripts.nix { inherit pkgs; };
 in
 lib.mkIfWsl config {
+  # Disables stylix in wsl, because it doesn't work for now
+  stylix.enable = lib.mkForce false;
+
   programs.home-manager = {
     enable = true;
     # TODO: Get path of home-manager configuration, which should be this repo's root folder

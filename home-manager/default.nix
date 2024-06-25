@@ -3,6 +3,7 @@
   imports = [
     ../home-manager/shell
     ./gaming
+    ./stylix
 
     ./nixos # only use if in nixos installation of home-manager
     ./standalone # only used if in standalone installation of home-manager
