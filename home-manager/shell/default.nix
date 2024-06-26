@@ -17,6 +17,10 @@
     ripgrep
   ];
 
+  home.shellAliases = {
+    ta = "tig --all";
+  };
+
   programs.eza = {
     enable = true;
     package = unstablePkgs.eza;
