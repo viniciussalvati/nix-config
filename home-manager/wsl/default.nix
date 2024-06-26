@@ -9,8 +9,11 @@ let
   scripts = import ./scripts.nix { inherit pkgs; };
 in
 lib.mkIfWsl config {
-  # Disables stylix in wsl, because it doesn't work for now
-  stylix.enable = lib.mkForce false;
+  stylix.autoEnable = false;
+  stylix.targets.bat.enable = true;
+  stylix.targets.fzf.enable = true;
+  stylix.targets.gitui.enable = true;
+  stylix.targets.lazygit.enable = true;
 
   programs.home-manager = {
     enable = true;
