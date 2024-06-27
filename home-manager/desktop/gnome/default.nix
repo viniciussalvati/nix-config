@@ -2,6 +2,8 @@
   imports = [
     ./extensions.nix
     ./keybindings.nix
+    ./clocks.nix
+    ./weather.nix
   ];
 
   dconf.settings = {
