@@ -8,6 +8,7 @@
     nodejs
     yarn
     awscli2
+    jre_headless
   ];
 
   programs.zsh.oh-my-zsh.plugins = [
