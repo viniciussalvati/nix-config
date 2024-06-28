@@ -22,6 +22,7 @@
   # See in https://github.com/viperML/nh
   programs.nh = {
     enable = true;
+    package = unstablePkgs.nh;
     flake = "${homeDirectory}/nix-config?submodules=1";
   };
 }
