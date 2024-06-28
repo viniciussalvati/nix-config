@@ -25,13 +25,13 @@ let
 in
 {
   dconf.settings = {
-    # This is the one that appears in the gnome interface
-    "org/gnome/shell/weather" = {
+    # This is the weather app
+    "org/gnome/Weather" = {
       locations = [ PortoWeatherLocation ];
     };
 
-    # This is the weather app
-    "org/gnome/Weather" = {
+    # This is the one that appears in the gnome interface
+    "org/gnome/shell/weather" = {
       locations = [ PortoWeatherLocation ];
     };
 

@@ -25,14 +25,21 @@ let
 in
 {
   dconf.settings = {
+    # This is the clocks app
+    "org/gnome/clocks" = {
+      world-clocks = [
+        ([
+          (lib.hm.gvariant.mkDictionaryEntry [
+            "location"
+            SaoPauloWorldClock
+          ])
+        ])
+      ];
+    };
+
     # This is the one that appears in the gnome interface
     "org/gnome/shell/world-clocks" = {
       locations = [ SaoPauloWorldClock ];
-    };
-
-    # This is the clocks app
-    "org/gnome/clocks" = {
-      world-clocks = [ SaoPauloWorldClock ];
     };
   };
 }
