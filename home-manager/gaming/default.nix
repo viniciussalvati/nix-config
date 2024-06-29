@@ -15,6 +15,8 @@ lib.mkIf (config.settings.enableGaming) {
       fan = true;
       frame_timing = 0;
       gamemode = true;
+      font_size = lib.mkForce 18;
+      font_size_text = lib.mkForce 18;
     };
   };
 }
