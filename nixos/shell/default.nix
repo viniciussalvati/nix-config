@@ -6,6 +6,7 @@
     eza
     fd
     htop
+    btop
     jq
     ripgrep
     sd

@@ -13,12 +13,21 @@
     sd
     bat
     htop
+    btop
     jq
     ripgrep
   ];
 
   home.shellAliases = {
     ta = "tig --all";
+  };
+
+  programs.btop = {
+    enable = true;
+    package = unstablePkgs.btop;
+    settings = {
+      show_io_stat = true;
+    };
   };
 
   programs.eza = {

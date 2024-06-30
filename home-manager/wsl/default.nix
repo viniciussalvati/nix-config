@@ -14,6 +14,7 @@ lib.mkIfWsl config {
   stylix.targets.fzf.enable = true;
   stylix.targets.gitui.enable = true;
   stylix.targets.lazygit.enable = true;
+  stylix.targets.btop.enable = true;
 
   programs.home-manager = {
     enable = true;
