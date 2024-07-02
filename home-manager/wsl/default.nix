@@ -16,10 +16,7 @@ lib.mkIfWsl config {
   stylix.targets.lazygit.enable = true;
   stylix.targets.btop.enable = true;
 
-  programs.home-manager = {
-    enable = true;
-    # TODO: Get path of home-manager configuration, which should be this repo's root folder
-  };
+  programs.home-manager.enable = true;
 
   programs.zsh.initExtraFirst = builtins.readFile ./zsh-init-extra-first.zsh;
 
