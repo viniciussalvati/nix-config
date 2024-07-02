@@ -9,12 +9,11 @@ let
   scripts = import ./scripts.nix { inherit pkgs; };
 in
 lib.mkIfWsl config {
-  stylix.autoEnable = false;
-  stylix.targets.bat.enable = true;
-  stylix.targets.fzf.enable = true;
-  stylix.targets.gitui.enable = true;
-  stylix.targets.lazygit.enable = true;
-  stylix.targets.btop.enable = true;
+  stylix.targets = {
+    gnome.enable = false;
+    gtk.enable = false;
+    firefox.enable = false;
+  };
 
   programs.home-manager.enable = true;
 
