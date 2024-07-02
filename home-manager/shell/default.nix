@@ -27,6 +27,7 @@
     package = unstablePkgs.btop;
     settings = {
       show_io_stat = true;
+      proc_tree = true;
     };
   };
 
