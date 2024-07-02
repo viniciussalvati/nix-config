@@ -13,6 +13,9 @@
     # waydroid still needs to be enabled. By default it won't auto start
     ../nixos/android/emulators/waydroid.nix
     ../nixos/games/steam.nix
+
+    ../shared/nix.nix
+    ../shared/stylix
   ];
 
   # Easiest to use and most distros use this by default.
@@ -60,8 +63,4 @@
 
   # Allow unfree software (such as vscode)
   nixpkgs.config.allowUnfree = true;
-  nix = {
-    # Allows me to use nix flakes
-    extraOptions = "experimental-features = nix-command flakes";
-  };
 }

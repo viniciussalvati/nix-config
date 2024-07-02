@@ -9,7 +9,6 @@
       two-finger-scrolling-enabled = true; # scroll with two fingers
     };
     "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark"; # dark theme
       show-battery-percentage = true; # displays battery
     };
     "org/gnome/settings-daemon/plugins/power" = {

@@ -23,7 +23,7 @@ in
   dconf.settings = {
     "org/gnome/desktop/wm/keybindings" = {
       # Configure switching on alt-tab
-      switch-applications = [ ]; # prevents behaviour of swithing whole applications
+      switch-applications = [ ]; # prevents behaviour of switching whole applications
       switch-windows = [ "<Alt>Tab" ]; # configure alt-tab to switch between all open windows
       switch-windows-backward = [ "<Shift><Alt>Tab" ]; # configure alt-tab to switch between all open windows, backwards
     };

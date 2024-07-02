@@ -9,10 +9,13 @@ let
   scripts = import ./scripts.nix { inherit pkgs; };
 in
 lib.mkIfWsl config {
-  programs.home-manager = {
-    enable = true;
-    # TODO: Get path of home-manager configuration, which should be this repo's root folder
+  stylix.targets = {
+    gnome.enable = false;
+    gtk.enable = false;
+    firefox.enable = false;
   };
+
+  programs.home-manager.enable = true;
 
   programs.zsh.initExtraFirst = builtins.readFile ./zsh-init-extra-first.zsh;
 

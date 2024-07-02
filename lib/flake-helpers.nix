@@ -2,6 +2,7 @@
   nixpkgs,
   nixpkgs-unstable,
   home-manager,
+  stylix,
   ...
 }@inputs:
 let
@@ -42,6 +43,7 @@ let
             ;
         };
         modules = [
+          stylix.nixosModules.stylix
           solaar.nixosModules.default
           ../options/common.nix
           ../hosts/configuration.nix
@@ -138,6 +140,7 @@ let
 
         modules =
           [
+            stylix.homeManagerModules.stylix
             ../options/common.nix
             ../options/home-manager.nix
             {

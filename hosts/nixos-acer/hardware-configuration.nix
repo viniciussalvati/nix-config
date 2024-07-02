@@ -29,6 +29,7 @@
 
   # This device points to nixos parent LUKS partition
   boot.initrd.luks.devices."luks-nixos".device = "/dev/sda3";
+  # This device points to swap parent LUKS partition
   boot.initrd.luks.devices."luks-swap".device = "/dev/sda2";
 
   fileSystems."/boot/efi" = {
