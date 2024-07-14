@@ -10,6 +10,7 @@
 
     ../../nixos/boot/systemd-boot.nix
     ../../nixos/boot/plymouth.nix
+    ../../nixos/boot/secure-boot.nix
 
     ../../nixos/hardware/logitech/solaar.nix
   ];
