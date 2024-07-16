@@ -33,37 +33,37 @@
     }
     {
       mode = "n";
-      key = "ff";
+      key = "<leader>ff";
       action = "<cmd>Telescope git_files<CR>";
       options.desc = "Find git Files";
     }
     {
       mode = "n";
-      key = "FF";
+      key = "<leader>FF";
       action = "<cmd>Telescope find_files<CR>";
       options.desc = "Find Files";
     }
     {
       mode = "n";
-      key = "fb";
+      key = "<leader>fb";
       action = "<cmd>Telescope buffers<CR>";
       options.desc = "Find Buffers";
     }
     {
       mode = "n";
-      key = "fg";
+      key = "<leader>fg";
       action = "<cmd>Telescope live_grep<CR>";
       options.desc = "Find by Grep";
     }
     {
       mode = "n";
-      key = "fw";
+      key = "<leader>fw";
       action = "<cmd>Telescope grep_string<CR>";
       options.desc = "Find current String";
     }
     {
       mode = "n";
-      key = "fd";
+      key = "<leader>fd";
       action = "<cmd>Telescope diagnostics<CR>";
       options.desc = "Find Diagnostics";
     }
