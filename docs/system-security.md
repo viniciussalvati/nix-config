@@ -2,11 +2,11 @@
 
 To fully secure the system, the system needs both full-disk encryption and secure boot enabled.
 
-The disk encryption will ensure that the contents of the hardrive can't be accessed, and secure boot will ensure that the boot loader can't be tampered with, since the boot partition can't be encrypted.
+The disk encryption will ensure that the contents of the hard drive can't be accessed, and secure boot will ensure that the boot loader can't be tampered with, since the boot partition can't be encrypted.
 
 ### Full disk encryption
 
-To encrypt the disk, when partitioning, use gnome-disks, and ensure the data (`nixos`) and `swap` partitions are encrypted with LUKS. Also, aditional configuration needs to be added to the `hardware-configuration.nix` file.
+To encrypt the disk, when partitioning, use gnome-disks, and ensure the data (`nixos`) and `swap` partitions are encrypted with LUKS. Also, additional configuration needs to be added to the `hardware-configuration.nix` file.
 
 ```nix
   # The values may need to be updated depending on your config
