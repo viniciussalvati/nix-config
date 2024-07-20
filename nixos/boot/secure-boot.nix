@@ -12,4 +12,8 @@
     enable = true;
     pkiBundle = "/etc/secureboot";
   };
+
+  # Required to unlock the disk encryption with TPM2
+  boot.initrd.systemd.enable = true;
+  boot.initrd.systemd.enableTpm2 = true;
 }

@@ -38,3 +38,21 @@ To do it while installing, run the following before the `nixos-install` step.
 # Both database-path and export are the default values, prefixed with /mnt to point to the mount point
 nix run nixpkgs#sbctl create-keys -- --database-path /mnt/etc/secureboot --export /mnt/etc/secureboot/keys
 ```
+### Auto unlock disk with TPM2
+
+It is possible to unlock the disk without typing the unlock key on boot. For this, the following lines need to be added to your config:
+
+```nix
+  # This is already included in secure-boot.nix
+  boot.initrd.systemd.enable = true;
+  boot.initrd.systemd.enableTpm2 = true;
+```
+
+Then it is necessary to enroll the keys in TPM2 by running: `sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+7 /dev/<encrypted device>`. This has to be done for each LUKS partition.
+
+You can also verify it the command worked by running `sudo systemd-cryptenroll /dev/<encrypted device>`. The output should be something like the following.
+```
+SLOT TYPE
+   0 password
+   1 tpm2
+```

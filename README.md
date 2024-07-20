@@ -42,6 +42,8 @@ nixos-enter --command 'passwd vinicius'
 reboot
 ```
 
+See extra instructions in [system-security](./docs/system-security.md) for extra steps to secure the system.
+
 ## Install home-manager
 
 - Install nix according to your system. See the [website](https://nixos.org/download.html) for instructions.
