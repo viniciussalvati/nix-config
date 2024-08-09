@@ -80,7 +80,7 @@
         { }
         # {paths= ./path/to/file;}
       ];
-      extraConfig = {
+      settings = {
         enable_autosnippets = true;
       };
     };
