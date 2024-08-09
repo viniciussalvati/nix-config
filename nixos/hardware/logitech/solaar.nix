@@ -1,1 +1,1 @@
-{ programs.solaar.enable = true; }
+{ services.solaar.enable = true; }
