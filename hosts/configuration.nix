@@ -12,7 +12,7 @@
     ../nixos/desktop/gnome.nix
     # waydroid still needs to be enabled. By default it won't auto start
     ../nixos/android/emulators/waydroid.nix
-    ../nixos/games/steam.nix
+    ../nixos/games
 
     ../shared/nix.nix
     ../shared/stylix
