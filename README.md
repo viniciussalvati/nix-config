@@ -8,7 +8,9 @@ This readme file is a work in progress
 
 First, close the default installer, then open gparted and configure it like so
 
-In GParted, Create `gpt` partition table in this format
+In GParted, Create `gpt` partition table in this format:
+
+**Note: Use gnome-disks if you wish to use disk encryption and secure boot. GParted may still be necessary to add labels to the disks.**
 
 | name  | file system | label | flags    | size                                                           |
 | ----- | ----------- | ----- | -------- | -------------------------------------------------------------- |
@@ -19,10 +21,16 @@ In GParted, Create `gpt` partition table in this format
 Note: Sometimes `btrfs` won't work after installed (or a rebuild will fail). In that case, reinstall with ext4
 
 ```bash
+# Start root shell
+sudo su -
+
 # mount disks
 mount /dev/disk/by-label/nixos /mnt # mount the root
 mkdir -p /mnt/boot/efi # create boot and efi mount point
 mount /dev/disk/by-label/BOOT /mnt/boot/efi # mount efi partition
+
+# If the host has the secure boot enabled, run the following to generate the boot loader signing keys
+nix run nixpkgs#sbctl create-keys -- --database-path /mnt/etc/secureboot --export /mnt/etc/secureboot/keys
 
 # install nixos pointing to the flake
 # new root password will be asked in the end
@@ -33,6 +41,8 @@ nixos-enter --command 'passwd vinicius'
 
 reboot
 ```
+
+See extra instructions in [system-security](./docs/system-security.md) for extra steps to secure the system.
 
 ## Install home-manager
 
@@ -82,5 +92,6 @@ The configuration I use for work. This one includes the private configurations.
 
 ## Specific instructions
 
+- [Disk Encryption and Secure Boot](./docs/system-security.md)
 - [Graphics cards](./docs/graphics-cards.md)
 - [Gaming](./docs/gaming.md)

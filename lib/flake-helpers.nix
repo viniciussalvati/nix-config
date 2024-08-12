@@ -1,6 +1,7 @@
 {
   nixpkgs,
   nixpkgs-unstable,
+  lanzaboote,
   home-manager,
   stylix,
   ...
@@ -43,6 +44,7 @@ let
             ;
         };
         modules = [
+          lanzaboote.nixosModules.lanzaboote
           stylix.nixosModules.stylix
           solaar.nixosModules.default
           ../options/common.nix

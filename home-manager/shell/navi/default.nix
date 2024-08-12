@@ -5,7 +5,7 @@ let
     % nix
 
     # Collect garbage
-    nh clean ${cleanType} --keep 3 --keep-since 30d --ask
+    nh clean ${cleanType} --keep 3 --keep-since 15d --ask
   '';
 in
 {

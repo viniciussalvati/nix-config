@@ -1,7 +1,7 @@
 {
   plugins.treesitter = {
     enable = true;
-    indent = true;
+    settings.indent.enable = true;
     nixGrammars = true; # Because of this, we won't need ensureInstalled, since all the packages we may need comes from nixpkgs
     settings.incremental_selection = {
       enable = true;
