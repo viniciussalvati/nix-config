@@ -32,7 +32,7 @@
   # This device points to swap parent LUKS partition
   boot.initrd.luks.devices."luks-swap".device = "/dev/sda2";
 
-  fileSystems."/boot/efi" = {
+  fileSystems."/boot" = {
     device = "/dev/disk/by-label/BOOT";
     fsType = "vfat";
     options = [

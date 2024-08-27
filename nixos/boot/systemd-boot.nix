@@ -3,7 +3,7 @@
     timeout = 30;
     efi = {
       canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi";
+      efiSysMountPoint = "/boot";
     };
     systemd-boot = {
       enable = true;
