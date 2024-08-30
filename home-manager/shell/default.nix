@@ -6,12 +6,12 @@
     ./tealdeer.nix
     ./starship.nix
     ./zsh
+    ./fzf.nix
   ];
 
   home.packages = with unstablePkgs; [
     fd
     sd
-    bat
     htop
     btop
     jq
@@ -40,6 +40,11 @@
       "--group-directories-first"
       "--color-scale"
     ];
+  };
+
+  programs.bat = {
+    enable = true;
+    package = unstablePkgs.bat;
   };
 
   programs.direnv = {
