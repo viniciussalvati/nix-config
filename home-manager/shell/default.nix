@@ -10,16 +10,13 @@
   ];
 
   home.packages = with unstablePkgs; [
-    fd
     sd
-    htop
-    btop
-    jq
-    ripgrep
   ];
 
   home.shellAliases = {
-    ta = "tig --all";
+    "rm!" = "rm";
+    rm = "echo 'Use trash command or rm! if you really want to remove the file'";
+    trash = "gio trash";
   };
 
   programs.btop = {
@@ -29,6 +26,11 @@
       show_io_stat = true;
       proc_tree = true;
     };
+  };
+
+  programs.htop = {
+    enable = true;
+    package = unstablePkgs.htop;
   };
 
   programs.eza = {
@@ -51,5 +53,19 @@
     enable = true;
     package = unstablePkgs.direnv;
     nix-direnv.enable = true;
+  };
+
+  programs.fd = {
+    enable = true;
+    package = unstablePkgs.fd;
+  };
+
+  programs.jq = {
+    enable = true;
+  };
+
+  programs.ripgrep = {
+    enable = true;
+    package = unstablePkgs.ripgrep;
   };
 }

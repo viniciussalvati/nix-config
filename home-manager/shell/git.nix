@@ -102,6 +102,8 @@
       gbgls = "git bug ls";
 
       gfb = "git fuzzy branch";
+
+      ta = "tig --all";
     };
   };
 }

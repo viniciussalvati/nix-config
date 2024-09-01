@@ -10,6 +10,7 @@
     jq
     ripgrep
     sd
+    fzf
 
     # Terminal
     tilix

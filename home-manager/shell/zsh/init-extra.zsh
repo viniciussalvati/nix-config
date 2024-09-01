@@ -17,3 +17,17 @@ precmd() {
   printf "\e]9;9;%s\e\\" $PWD
 }
 
+# Enables alias-finder
+zstyle ':omz:plugins:alias-finder' autoload yes
+zstyle ':omz:plugins:alias-finder' longer yes
+zstyle ':omz:plugins:alias-finder' exact yes
+zstyle ':omz:plugins:alias-finder' cheaper yes
+
+# Configure docker plugin
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+
+# Sets Ctrl+arrow keys to move cursor across words
+bindkey ';5C' forward-word
+bindkey ';5D' backward-word
+

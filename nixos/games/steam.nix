@@ -22,7 +22,6 @@ lib.mkIf config.settings.enableGaming {
     (import ./nix-game-launcher.nix unstablePkgs)
 
     wine
-    lutris
   ];
 
   # Improves game performance by temporarily applying optimizations to the OS and game process
