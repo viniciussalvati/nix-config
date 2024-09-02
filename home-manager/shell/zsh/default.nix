@@ -20,9 +20,8 @@ in
       (mkOhMyZshPlugin "z")
       (mkOhMyZshPlugin "alias-finder")
       (mkOhMyZshPlugin "git")
-      (mkOhMyZshPlugin "docker")
-      (mkOhMyZshPlugin "docker-compose")
       (mkOhMyZshPlugin "sudo")
+      (mkOhMyZshPlugin "yarn")
     ];
   };
 }
