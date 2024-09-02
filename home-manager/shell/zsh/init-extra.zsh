@@ -35,3 +35,9 @@ bindkey ';5D' backward-word
 # This is because Ctrl+G alone was being delayed by fzf-git
 bindkey '^g^g' _navi_widget
 
+# Gets the current branch name
+# Some aliases use this command
+git_current_branch() {
+  git rev-parse --abbrev-ref HEAD
+}
+
