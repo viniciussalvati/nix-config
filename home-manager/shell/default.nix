@@ -1,4 +1,9 @@
-{ unstablePkgs, ... }:
+{
+  lib,
+  config,
+  unstablePkgs,
+  ...
+}:
 {
   imports = [
     ./git.nix
@@ -13,11 +18,13 @@
     sd
   ];
 
-  home.shellAliases = {
-    "rm!" = "rm";
-    rm = "echo 'Use trash command or rm! if you really want to remove the file'";
-    trash = "gio trash";
-  };
+  home.shellAliases = (
+    lib.mkIfDesktop config {
+      "rm!" = "rm";
+      rm = "echo 'Use trash command or rm! if you really want to remove the file'";
+      trash = "gio trash";
+    }
+  );
 
   programs.btop = {
     enable = true;
