@@ -27,17 +27,7 @@ zstyle ':omz:plugins:alias-finder' cheaper yes
 zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
-# Sets Ctrl+arrow keys to move cursor across words
-bindkey ';5C' forward-word
-bindkey ';5D' backward-word
-
 # Adds a new key binding to navi widget
 # This is because Ctrl+G alone was being delayed by fzf-git
 bindkey '^g^g' _navi_widget
-
-# Gets the current branch name
-# Some aliases use this command
-git_current_branch() {
-  git rev-parse --abbrev-ref HEAD
-}
 

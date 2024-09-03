@@ -1,11 +1,4 @@
 { unstablePkgs, ... }:
-let
-  mkOhMyZshPlugin = name: {
-    inherit name;
-    file = "share/oh-my-zsh/plugins/${name}/${name}.plugin.zsh";
-    src = unstablePkgs.oh-my-zsh;
-  };
-in
 {
   programs.zsh = {
     enable = true;
@@ -16,12 +9,18 @@ in
     # enableVteIntegration = true; # This was supposed to let the terminal know the working folder so applications can duplicate it. But it didn't work
     initExtra = builtins.readFile ./init-extra.zsh;
     autocd = true;
-    plugins = [
-      (mkOhMyZshPlugin "z")
-      (mkOhMyZshPlugin "alias-finder")
-      (mkOhMyZshPlugin "git")
-      (mkOhMyZshPlugin "sudo")
-      (mkOhMyZshPlugin "yarn")
-    ];
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "alias-finder"
+        "docker"
+        "docker-compose"
+        "git"
+        "gitfast"
+        "sudo"
+        "yarn"
+        "z"
+      ];
+    };
   };
 }
