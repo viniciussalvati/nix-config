@@ -41,6 +41,7 @@ let
             unstablePkgs
             localPkgs
             lib
+            inputs
             ;
         };
         modules = [
@@ -70,6 +71,8 @@ let
                   homeDirectory
                   unstablePkgs
                   localPkgs
+                  lib
+                  inputs
                   ;
               };
               users.${username} = {
@@ -131,8 +134,9 @@ let
             username
             homeDirectory
             unstablePkgs
-            lib
             localPkgs
+            lib
+            inputs
             ;
           # This will ensure that the config can be used in non nixos machines
           osConfig = {
