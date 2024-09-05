@@ -17,11 +17,12 @@ in
     initExtra = builtins.readFile ./init-extra.zsh;
     autocd = true;
     plugins = [
-      (mkOhMyZshPlugin "z")
       (mkOhMyZshPlugin "alias-finder")
       (mkOhMyZshPlugin "git")
+      (mkOhMyZshPlugin "gitfast")
       (mkOhMyZshPlugin "sudo")
       (mkOhMyZshPlugin "yarn")
+      (mkOhMyZshPlugin "z")
     ];
   };
 }
