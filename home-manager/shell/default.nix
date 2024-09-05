@@ -11,6 +11,7 @@
     ./tealdeer.nix
     ./starship.nix
     ./zsh
+    ./nushell
     ./fzf.nix
   ];
 

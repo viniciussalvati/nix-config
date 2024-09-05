@@ -49,6 +49,7 @@
       telegram-desktop
       localsend
       vscode
+      nushell
     ]);
 
   fonts.packages = with unstablePkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
@@ -63,4 +64,6 @@
 
   # Allow unfree software (such as vscode)
   nixpkgs.config.allowUnfree = true;
+
+  home-manager.backupFileExtension = "backup";
 }
