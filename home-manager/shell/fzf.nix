@@ -91,12 +91,12 @@ in
             # export|unset) ${fzfBin} --preview "eval 'echo $'{}"         "$@" ;;
             # ssh)          ${fzfBin} --preview 'dig {}'                   "$@" ;;
             ${fzfString}
-            *)            ${fzfBin} --preview "${batBin} -n --color=always --line-range :500 {}" "$@" ;;
+            *)              ${fzfBin} --preview "${batBin} -n --color=always --line-range :500 {}" "$@" ;;
           esac
         }
 
         # preview directory's content with eza when completing cd
-        zstyle ':fzf-tab:complete:(cd|eza|bat):*' fzf-preview '${fzfTabCdPreview}'
+        zstyle ':fzf-tab:complete:(cd|eza|bat):*' fzf-preview 'test -d $realpath && ${fzfTabCdPreview} || ${batBin} $realpath'
       '';
   };
 }
