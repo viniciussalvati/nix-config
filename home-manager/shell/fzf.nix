@@ -96,7 +96,7 @@ in
         }
 
         # preview directory's content with eza when completing cd
-        zstyle ':fzf-tab:complete:(cd|eza|bat):*' fzf-preview 'test -d $realpath && ${fzfTabCdPreview} || ${batBin} $realpath'
+        zstyle ':fzf-tab:complete:*' fzf-preview 'test -d $realpath && ${fzfTabCdPreview} || (test -f $realpath && ${batBin} $realpath)'
       '';
   };
 }
