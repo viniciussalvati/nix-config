@@ -1,11 +1,4 @@
 { unstablePkgs, ... }:
-let
-  mkOhMyZshPlugin = name: {
-    inherit name;
-    file = "share/oh-my-zsh/plugins/${name}/${name}.plugin.zsh";
-    src = unstablePkgs.oh-my-zsh;
-  };
-in
 {
   programs.zsh = {
     enable = true;

@@ -87,9 +87,6 @@ in
           shift
 
           case "$command" in
-            # cd)           ${fzfBin} --preview '${cdPreview}' "$@" ;;
-            # export|unset) ${fzfBin} --preview "eval 'echo $'{}"         "$@" ;;
-            # ssh)          ${fzfBin} --preview 'dig {}'                   "$@" ;;
             ${fzfString}
             *)              ${fzfBin} --preview "${batBin} -n --color=always --line-range :500 {}" "$@" ;;
           esac
