@@ -21,7 +21,7 @@
 
   home.shellAliases = (
     lib.mkIfDesktop config {
-      "rm!" = "rm";
+      "rm!" = "command rm";
       rm = "echo 'Use trash command or rm! if you really want to remove the file'";
       trash = "gio trash";
     }
