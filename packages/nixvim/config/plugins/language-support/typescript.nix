@@ -1,6 +1,6 @@
 {
   plugins = {
-    lsp.servers.tsserver.enable = true;
+    lsp.servers.ts-ls.enable = true;
     lsp.servers.eslint = {
       enable = true;
     };
