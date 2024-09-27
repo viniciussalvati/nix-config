@@ -5,6 +5,7 @@
     ./colorscheme.nix
     ./options.nix
     ./userCommands.nix
+    ./plugins/web-devicons.nix
     ./plugins/telescope.nix
     ./plugins/treesitter.nix
     ./plugins/lualine.nix
