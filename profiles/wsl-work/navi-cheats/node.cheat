@@ -1,0 +1,4 @@
+% node, yarn
+
+# Install yarn packages for all subfolders
+fd package.json --exec yarn --cwd={//}
