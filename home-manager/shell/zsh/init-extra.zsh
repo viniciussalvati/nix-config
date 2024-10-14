@@ -30,4 +30,4 @@ zstyle ':completion:*:*:docker-*:*' option-stacking yes
 # Adds a new key binding to navi widget
 # This is because Ctrl+G alone was being delayed by fzf-git
 bindkey '^g^g' _navi_widget
-
+bindkey '^n' _navi_widget # This one makes more sense as a navi shorcut

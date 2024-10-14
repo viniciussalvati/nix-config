@@ -21,10 +21,6 @@ let
       name = "ssh";
       preview = "dig {}";
     }
-    # {
-    #   name = "docker\ rmi";
-    #   cmd = "docker images --format '{{.Repository}}'";
-    # }
   ];
   mkCmd = cmd: if (builtins.stringLength cmd) > 0 then ''${cmd} |'' else "";
   mkPreview = preview: if (builtins.stringLength preview) > 0 then ''--preview "${preview}"'' else "";
