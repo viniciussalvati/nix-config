@@ -16,10 +16,6 @@
       keymaps.diagnostic = {
         "<leader>e" = "open_float";
       };
-
-      servers = {
-        tsserver.enable = true;
-      };
     };
     fidget.enable = true; # Indicator for LSP
     # lsp-lines.enable = true; # Makes the diagnostics messages appear as virtual lines

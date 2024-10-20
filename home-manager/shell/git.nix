@@ -47,6 +47,14 @@
         signingkey = "~/.ssh/github_ed25519";
       };
     };
+
+    delta = {
+      enable = true;
+      package = unstablePkgs.delta;
+      options = {
+        side-by-side = true;
+      };
+    };
   };
 
   programs.lazygit = {
@@ -59,16 +67,24 @@
     };
   };
 
+  programs.gh = {
+    enable = true;
+    package = unstablePkgs.gh;
+    settings.git_protocol = "ssh";
+  };
+
+  programs.gitui = {
+    enable = true;
+    package = unstablePkgs.gitui;
+  };
+
   home = {
     packages =
       with unstablePkgs;
       [
-        gitui
         tig
         git-bug
-        gh
         glab
-        fzf
       ]
       ++ [ localPkgs.git-fuzzy ];
 
@@ -86,6 +102,8 @@
       gbgls = "git bug ls";
 
       gfb = "git fuzzy branch";
+
+      ta = "tig --all";
     };
   };
 }

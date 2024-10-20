@@ -11,6 +11,10 @@
     jre_headless
   ];
 
+  programs.navi.settings.cheats.paths = [
+    ./navi-cheats
+  ];
+
   programs.zsh.oh-my-zsh.plugins = [
     "node"
     "npm"

@@ -1,17 +1,18 @@
 # Better status line
 {
-  plugins.lualine = rec {
+  plugins.lualine = {
     enable = true;
 
-    sections.lualine_c = [
-      {
-        name = "filename";
-        extraConfig = {
+    settings = rec {
+      sections.lualine_c = [
+        "filename"
+        {
           newfile_status = true;
           path = 1;
-        };
-      }
-    ];
-    inactiveSections.lualine_c = sections.lualine_c;
+        }
+      ];
+
+      inactiveSections.lualine_c = sections.lualine_c;
+    };
   };
 }
