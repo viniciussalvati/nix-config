@@ -41,6 +41,11 @@
       url = "github:bigH/git-fuzzy";
       flake = false;
     };
+
+    browser-stack-local-flake = {
+      url = "github:viniciussalvati/browser-stack-local-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

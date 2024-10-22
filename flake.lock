@@ -114,6 +114,26 @@
         "type": "github"
       }
     },
+    "browser-stack-local-flake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1729593018,
+        "narHash": "sha256-QmDqhPHdFtyuXw1YLZGKbGWEqo3yWZu3a+RQclmTMaI=",
+        "owner": "viniciussalvati",
+        "repo": "browser-stack-local-flake",
+        "rev": "df5b15c58a8c0516cb503326a966a77af664724d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "viniciussalvati",
+        "repo": "browser-stack-local-flake",
+        "type": "github"
+      }
+    },
     "crane": {
       "inputs": {
         "nixpkgs": [
@@ -688,6 +708,7 @@
     },
     "root": {
       "inputs": {
+        "browser-stack-local-flake": "browser-stack-local-flake",
         "flake-utils": "flake-utils",
         "git-fuzzy": "git-fuzzy",
         "home-manager": "home-manager",

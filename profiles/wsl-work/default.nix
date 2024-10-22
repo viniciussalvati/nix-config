@@ -1,4 +1,4 @@
-{ unstablePkgs, ... }:
+{ unstablePkgs, localPkgs, ... }:
 {
   # Forces node 18 to be installed by the node.nix
   # This is also required for yarn to use the same version of nodejs
@@ -9,6 +9,7 @@
     yarn
     awscli2
     jre_headless
+    localPkgs.BrowserStackLocal
   ];
 
   programs.navi.settings.cheats.paths = [
