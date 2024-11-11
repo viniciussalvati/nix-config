@@ -68,12 +68,13 @@
     package = unstablePkgs.fd;
   };
 
-  programs.jq = {
-    enable = true;
-  };
+  programs.jq.enable = true;
 
   programs.ripgrep = {
     enable = true;
     package = unstablePkgs.ripgrep;
   };
+
+  programs.zoxide.enable = true;
+  programs.carapace.enable = true;
 }

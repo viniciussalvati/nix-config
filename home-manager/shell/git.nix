@@ -106,4 +106,21 @@
       ta = "tig --all";
     };
   };
+  programs.nushell.shellAliases = {
+    gk = "sh -c 'exec gitk --all > /dev/null 2>&1 &'";
+    gui = "gitui";
+    main = "do { gfa; gsw -d origin/(git_main_branch) }";
+
+    # git-bug aliases
+    gbug = "git bug";
+    gbgui = "git bug termui";
+    gbga = "git bug add";
+    gbgl = "git bug pull";
+    gbgp = "git bug push";
+    gbgls = "git bug ls";
+
+    gfb = "git fuzzy branch";
+
+    ta = "tig --all";
+  };
 }

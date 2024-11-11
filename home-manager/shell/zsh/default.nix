@@ -19,7 +19,6 @@
         "gitfast"
         "sudo"
         "yarn"
-        "z"
       ];
     };
   };
