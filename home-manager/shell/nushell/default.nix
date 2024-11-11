@@ -61,20 +61,9 @@ in
       https://github.com/nix-community/home-manager/issues/4313
       are not merged
     */
+    envFile.source = ./env.nu;
     extraEnv = ''
       if $env.__HM_SESS_VARS_SOURCED? == null {
-        # Loads the PATH
-        let nixStateProfile = $"($env.HOME)/.local/state/nix/profile"
-        let nixLink = if $env.XDG_STATE_HOME? != null and ($env.XDG_STATE_HOME | path exists) {
-          $"($env.XDG_STATE_HOME)/nix/profile"
-        } else if ($nixStateProfile | path exists) {
-          $nixStateProfile
-        } else {
-          $"($env.HOME)/.nix-profile"
-        }
-        
-        $env.PATH = $"($nixLink)/bin:$($env.path)"
-
         # Loads other variables
         let envVars = { ${environmentVariablesString} }
         load-env (

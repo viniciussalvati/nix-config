@@ -18,6 +18,7 @@ lib.mkIfWsl config {
   programs.home-manager.enable = true;
 
   programs.zsh.initExtraFirst = builtins.readFile ./zsh-init-extra-first.zsh;
+  programs.nushell.extraConfig = builtins.readFile ./config.nu;
 
   programs.keychain = {
     enable = true;
