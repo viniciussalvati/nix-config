@@ -1,6 +1,12 @@
 { unstablePkgs, config, ... }:
 let
   nuScripts = unstablePkgs.nu_scripts;
+  environmentVariables = builtins.attrValues (
+    builtins.mapAttrs (
+      name: value: "${name}: \"${builtins.toString value}\""
+    ) config.home.sessionVariables
+  );
+  environmentVariablesString = builtins.concatStringsSep ", " environmentVariables;
 in
 {
   programs.nushell = {
@@ -49,9 +55,45 @@ in
       yy = "yarn why";
     };
 
+    /*
+      This is needed while
+      https://github.com/NixOS/nixpkgs/pull/343036 and
+      https://github.com/nix-community/home-manager/issues/4313
+      are not merged
+    */
+    extraEnv = ''
+      if $env.__HM_SESS_VARS_SOURCED? == null {
+        # Loads the PATH
+        let nixStateProfile = $"($env.HOME)/.local/state/nix/profile"
+        let nixLink = if $env.XDG_STATE_HOME? != null and ($env.XDG_STATE_HOME | path exists) {
+          $"($env.XDG_STATE_HOME)/nix/profile"
+        } else if ($nixStateProfile | path exists) {
+          $nixStateProfile
+        } else {
+          $"($env.HOME)/.nix-profile"
+        }
+        
+        $env.PATH = $"($nixLink)/bin:$($env.path)"
+
+        # Loads other variables
+        let envVars = { ${environmentVariablesString} }
+        load-env (
+          $envVars
+          | transpose name value
+          | update value {|x|
+              $x.value
+              | str replace --regex $'\$\{($x.name):\+:\$($x.name)\}' (if ($env | get --ignore-errors $x.name) != null { $":($env | get $x.name)"} else { "" })
+            }
+          | transpose --header-row --as-record
+        )
+
+        $env.__HM_SESS_VARS_SOURCED = '1'
+      }
+    '';
+
     configFile.source = ./config.nu;
     extraConfig = ''
-      source ${./navi.nu}
+      source ${./config-navi.nu}
 
       $env.config.rm.always_trash = ${if config.home-manager.type == "wsl" then "false" else "true"}
 
