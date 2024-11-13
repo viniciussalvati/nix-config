@@ -1,6 +1,7 @@
 { unstablePkgs, config, ... }:
 let
   nuScripts = unstablePkgs.nu_scripts;
+  gstatPlugin = unstablePkgs.nushellPlugins.gstat;
   environmentVariables = builtins.attrValues (
     builtins.mapAttrs (
       name: value: "${name}: \"${builtins.toString value}\""
@@ -86,6 +87,7 @@ in
 
       $env.config.rm.always_trash = ${if config.home-manager.type == "wsl" then "false" else "true"}
 
+      plugin add ${gstatPlugin}/bin/nu_plugin_gstat
       use ${nuScripts}/share/nu_scripts/aliases/git/git-aliases.nu *
     '';
   };
