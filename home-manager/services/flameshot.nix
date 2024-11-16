@@ -2,10 +2,9 @@
 {
   services.flameshot = {
     enable = true;
-    package = unstablePkgs.flameshot;
+    package = unstablePkgs.flameshot; # switch to stable on 24.11
     settings = {
       General = {
-        checkForUpdates = false;
         saveLastRegion = true;
       };
     };
