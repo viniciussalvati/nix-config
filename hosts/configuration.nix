@@ -11,6 +11,7 @@
     ../nixos
     ../nixos/shell
     ../nixos/desktop/gnome.nix
+    ../nixos/desktop/hyprland.nix
     # waydroid still needs to be enabled. By default it won't auto start
     ../nixos/android/emulators/waydroid.nix
     ../nixos/games
