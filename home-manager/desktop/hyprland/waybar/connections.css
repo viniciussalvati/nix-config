@@ -1,0 +1,22 @@
+#network {
+  margin-right: 13px;
+}
+
+#network.disconnected {
+  color: @base08;
+}
+
+#network.disabled {
+  opacity: 0.5;
+  color: @base0A;
+}
+
+#bluetooth {
+  margin-right: 10px;
+  opacity: 0.5;
+  color: @base0D;
+}
+
+#bluetooth.connected {
+  opacity: 1;
+}
