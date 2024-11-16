@@ -9,7 +9,7 @@
   dconf.settings = {
     "org/gnome/shell" = {
       favorite-apps = [
-        "org.gnome.Console.desktop"
+        "kitty.desktop"
         "firefox.desktop"
         "code.desktop"
         "org.gnome.Nautilus.desktop"
