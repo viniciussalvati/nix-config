@@ -1,0 +1,42 @@
+/* Energy */
+#custom-power,
+#custom-quit,
+#custom-suspend,
+#custom-lock,
+#custom-reboot,
+#power-profiles-daemon {
+  padding-left: 10px;
+  padding-right: 13px;
+  font-weight: bold;
+}
+
+#custom-power:hover,
+#custom-quit:hover,
+#custom-suspend:hover,
+#custom-lock:hover,
+#custom-reboot:hover,
+#power-profiles-daemon:hover {
+  background-color: @base02;
+}
+
+#custom-power {
+  padding-right: 15px;
+  color: @base08;
+}
+
+#custom-quit {
+  color: @base0B;
+}
+
+#custom-suspend {
+  color: @base0C;
+}
+
+#custom-lock {
+  color: @base0D;
+}
+
+#custom-reboot {
+  border-left: 1px solid @base03;
+  color: @base0A;
+}

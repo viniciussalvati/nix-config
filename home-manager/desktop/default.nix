@@ -2,6 +2,7 @@
 {
   imports = [
     ./gnome
+    ./hyprland
     ./kitty.nix
     ../services/flameshot.nix
   ];

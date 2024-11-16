@@ -1,0 +1,7 @@
+#workspaces button.active {
+  background-color: @base02;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
