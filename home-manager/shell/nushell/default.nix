@@ -15,6 +15,8 @@ in
     package = unstablePkgs.nushell;
 
     shellAliases = {
+      grbom = "git rebase origin/(git_main_branch)";
+
       la = "ls -a";
       ll = "ls -l";
       lla = "ls -la";

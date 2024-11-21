@@ -11,3 +11,5 @@ $env.config.keybindings = ($env.config.keybindings | append
     event: { send: ClearScrollback }
   }
 )
+
+def --env mkcd [path: directory] { mkdir $path; cd $path }
