@@ -20,7 +20,7 @@ in
       la = "ls -a";
       ll = "ls -l";
       lla = "ls -la";
-      l = "ls";
+      l = "eza";
 
       y = "yarn";
       ya = "yarn add";
