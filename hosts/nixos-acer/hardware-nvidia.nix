@@ -12,7 +12,7 @@
   # hardware.nvidia.modesetting.enable = true;
 
   hardware.nvidia = {
-    open = true;
+    open = false;
     prime = {
       offload = {
         enable = true;
