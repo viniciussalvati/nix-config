@@ -9,7 +9,6 @@
     ./hardware-nvidia.nix
 
     ../../nixos/boot/systemd-boot.nix
-    ../../nixos/boot/plymouth.nix
     ../../nixos/boot/secure-boot.nix
 
     ../../nixos/hardware/logitech/solaar.nix
@@ -30,5 +29,4 @@
 
   programs.kdeconnect.enable = true;
 
-  stylix.targets.plymouth.enable = false;
 }
