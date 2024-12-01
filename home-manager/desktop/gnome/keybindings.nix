@@ -1,6 +1,6 @@
-{ pkgs, unstablePkgs, ... }:
+{ pkgs, ... }:
 let
-  flameshot-gui = pkgs.writeShellScriptBin "flameshot-gui" "${unstablePkgs.flameshot}/bin/flameshot gui";
+  flameshot-gui = pkgs.writeShellScriptBin "flameshot-gui" "${pkgs.flameshot}/bin/flameshot gui";
 
   mkBinding = name: binding: command: { inherit binding command name; };
   keybindings = [ (mkBinding "Flameshot" "Print" "${flameshot-gui}/bin/flameshot-gui") ];

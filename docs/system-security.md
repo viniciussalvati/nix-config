@@ -58,7 +58,7 @@ It is possible to unlock the disk without typing the unlock key on boot. For thi
 ```nix
   # This is already included in secure-boot.nix
   boot.initrd.systemd.enable = true;
-  boot.initrd.systemd.enableTpm2 = true;
+  boot.initrd.systemd.tpm2.enable = true;
 ```
 
 Then it is necessary to enroll the keys in TPM2 by running: `sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+7 /dev/<encrypted device>`. This has to be done for each LUKS partition.

@@ -12,10 +12,6 @@
     sd
     fzf
 
-    # Terminal
-    tilix
-    terminator
-
     # Tools for nix (aka nh)
     nix-output-monitor
     nvd

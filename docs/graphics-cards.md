@@ -8,10 +8,9 @@ NixOS documentation is also available at https://nixos.wiki/wiki/Nvidia
 
 - First enable openGL  
   ```nix
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
   ```
 - Follow the instructions for the graphics card
@@ -28,19 +27,28 @@ If the host is a laptop and has two graphics cards, like an Intel, which consume
 
 ```nix
 # This is not the only way to configure the driver. Please check more options in nixos documentation
-hardware.nvidia.prime = {
-  offload = {
-    enable = true;
-    # Will enable nvidia-offload command
-    enableOffloadCmd = true;
+  hardware.nvidia = {
+    open = true;
+    prime = {
+      offload = {
+        enable = true;
+        # Will enable nvidia-offload command
+        enableOffloadCmd = true;
+      };
+
+      # Bus ids retrieved with command:
+      # nix shell nixpkgs#pciutils -c lspci
+      # And confirmed with
+      # sudo nix run nixpkgs#lshw -- -c display
+
+      # integrated
+      intelBusId = "PCI:0:2:0";
+      # amdgpuBusId = "PCI:6:0:0"
+
+      # dedicated
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
-
-  # integrated
-  # intelBusId = "PCI:PUT VALUE HERE";
-
-  # dedicated
-  # nvidiaBusId = "PCI:PUT VALUE HERE";
-};
 ```
 
 Also note that the `intelBusId` and `nvidiaBusId` will have to be changed, as they vary by hardware.

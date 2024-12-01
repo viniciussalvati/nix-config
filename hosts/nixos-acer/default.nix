@@ -20,8 +20,7 @@
   console.keyMap = "br-abnt2";
 
   # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  services.pipewire.enable = true;
 
   hardware.bluetooth.enable = true;
 

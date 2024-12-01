@@ -19,10 +19,9 @@
   };
 
   # Removes some packages from gnome I don't want/need
-  environment.gnome.excludePackages =
-    (with pkgs; [ gnome-tour ])
-    ++ (with pkgs.gnome; [
-      epiphany # web browser
-      geary # email reader (I'll use thunderbird or another client if I want it)
-    ]);
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+    epiphany # web browser
+    geary # email reader (I'll use thunderbird or another client if I want it)
+  ];
 }
