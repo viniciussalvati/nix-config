@@ -8,6 +8,7 @@ let
     ) config.home.sessionVariables
   );
   environmentVariablesString = builtins.concatStringsSep ", " environmentVariables;
+  isWslString = if config.home-manager.type == "wsl" then "true" else "false";
 in
 {
   programs.nushell = {
@@ -87,6 +88,7 @@ in
     extraConfig = ''
       source ${./config-navi.nu}
 
+      $env.config.shell_integration.osc9_9 = ${isWslString}
       $env.config.rm.always_trash = ${if config.home-manager.type == "wsl" then "false" else "true"}
 
       plugin add ${gstatPlugin}/bin/nu_plugin_gstat
