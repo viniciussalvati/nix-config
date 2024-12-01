@@ -6,6 +6,9 @@
   homeDirectory,
   ...
 }:
+let
+  submodulesFragment = if config.settings.includePrivate then "submodules=1" else "";
+in
 {
   imports = [ ../../shared/nix.nix ];
 }
@@ -25,7 +28,7 @@
   ];
 
   home.sessionVariables = {
-    FLAKE = "${homeDirectory}/nix-config?submodules=1";
+    FLAKE = "${homeDirectory}/nix-config?${submodulesFragment}";
   };
 
   programs.zsh.initExtraFirst = builtins.readFile ./zsh-init-extra-first.zsh;
