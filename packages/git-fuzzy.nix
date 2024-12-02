@@ -12,6 +12,7 @@ flake-utils.lib.eachDefaultSystem (
       with pkgs;
       lib.makeBinPath [
         fzf
+        eza
         coreutils # uses dirname
         git
         gnused
