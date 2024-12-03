@@ -1,8 +1,7 @@
-{ unstablePkgs, inputs, ... }:
+{ inputs, ... }:
 {
   nix = {
-    package = unstablePkgs.nixVersions.latest;
-    # Allows me to use nix flakes
+    # Allows me to use nix flakes and the pipeline operator
     extraOptions = "experimental-features = nix-command flakes pipe-operators";
     # checkConfig = true; # This is temporary, as it seems home-manager can't build without it for now
 
