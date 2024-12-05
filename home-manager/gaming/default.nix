@@ -1,13 +1,13 @@
 {
   lib,
   config,
-  unstablePkgs,
+  pkgs,
   ...
 }:
 lib.mkIf (config.settings.enableGaming) {
   programs.mangohud = {
     enable = true;
-    package = unstablePkgs.mangohud;
+    package = pkgs.mangohud;
     settings = {
       gpu_temp = true;
       gpu_name = true;

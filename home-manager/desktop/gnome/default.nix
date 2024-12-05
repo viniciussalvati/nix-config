@@ -26,6 +26,7 @@
       two-finger-scrolling-enabled = true; # scroll with two fingers
     };
     "org/gnome/desktop/interface" = {
+      accent-color = "teal";
       show-battery-percentage = true; # displays battery
     };
     "org/gnome/settings-daemon/plugins/power" = {

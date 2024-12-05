@@ -47,14 +47,17 @@
       thunderbird
       bitwarden
       telegram-desktop
-      localsend
       vscode
       nushell
     ]);
 
-  fonts.packages = with unstablePkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
+  fonts.packages = with unstablePkgs.nerd-fonts; [ fira-code ];
 
-  # programs.sway.enable = true;
+  programs.localsend = {
+    enable = true;
+    package = unstablePkgs.localsend;
+    openFirewall = true;
+  };
 
   programs.zsh.enable = true;
 

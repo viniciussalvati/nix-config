@@ -1,4 +1,5 @@
 {
+  pkgs,
   unstablePkgs,
   config,
   homeDirectory,
@@ -15,14 +16,17 @@ lib.mkIf config.settings.enableGaming {
     gamescopeSession.enable = true;
   };
 
-  environment.systemPackages = with unstablePkgs; [
-    # Program to monitor systems status (CPU and GPU load and temp, RAM, FPS, etc)
-    mangohud
-    protonup
-    (import ./nix-game-launcher.nix unstablePkgs)
+  environment.systemPackages =
+    (with pkgs; [
+      # Program to monitor systems status (CPU and GPU load and temp, RAM, FPS, etc)
+      mangohud
 
-    wine
-  ];
+      (import ./nix-game-launcher.nix pkgs)
+    ])
+    ++ (with unstablePkgs; [
+      protonup
+      wine
+    ]);
 
   # Improves game performance by temporarily applying optimizations to the OS and game process
   programs.gamemode.enable = true;

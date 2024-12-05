@@ -9,7 +9,6 @@
     ./hardware-nvidia.nix
 
     ../../nixos/boot/systemd-boot.nix
-    ../../nixos/boot/plymouth.nix
     ../../nixos/boot/secure-boot.nix
 
     ../../nixos/hardware/logitech/solaar.nix
@@ -20,8 +19,7 @@
   console.keyMap = "br-abnt2";
 
   # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  services.pipewire.enable = true;
 
   hardware.bluetooth.enable = true;
 
@@ -31,5 +29,4 @@
 
   programs.kdeconnect.enable = true;
 
-  stylix.targets.plymouth.enable = false;
 }

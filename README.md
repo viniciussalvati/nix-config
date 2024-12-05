@@ -51,7 +51,7 @@ See extra instructions in [system-security](./docs/system-security.md) for extra
 - Enter this repository and run
 
 ```bash
-  nix run --experimental-features 'nix-command flakes' '.#homeConfigurations.{profile}.activationPackage'
+  nix run --experimental-features 'nix-command flakes pipe-operators' '.#homeConfigurations.{profile}.activationPackage'
 
 ```
 

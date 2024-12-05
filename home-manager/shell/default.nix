@@ -44,7 +44,7 @@
   programs.eza = {
     enable = true;
     package = unstablePkgs.eza;
-    icons = true;
+    icons = "always";
     extraOptions = [
       "-F"
       "--group-directories-first"

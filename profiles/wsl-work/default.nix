@@ -4,6 +4,8 @@
   # This is also required for yarn to use the same version of nodejs
   nixpkgs.overlays = [ (_self: _super: { nodejs = unstablePkgs.nodejs_20; }) ];
 
+  settings.includePrivate = true;
+
   home.packages = with unstablePkgs; [
     nodejs
     yarn

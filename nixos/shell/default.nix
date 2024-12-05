@@ -1,4 +1,12 @@
-{ homeDirectory, unstablePkgs, ... }:
+{
+  homeDirectory,
+  unstablePkgs,
+  config,
+  ...
+}:
+let
+  submodulesFragment = if config.settings.includePrivate then "submodules=1" else "";
+in
 {
   environment.systemPackages = with unstablePkgs; [
     # Cli utils
@@ -12,10 +20,6 @@
     sd
     fzf
 
-    # Terminal
-    tilix
-    terminator
-
     # Tools for nix (aka nh)
     nix-output-monitor
     nvd
@@ -25,6 +29,6 @@
   programs.nh = {
     enable = true;
     package = unstablePkgs.nh;
-    flake = "${homeDirectory}/nix-config?submodules=1";
+    flake = "${homeDirectory}/nix-config?${submodulesFragment}";
   };
 }

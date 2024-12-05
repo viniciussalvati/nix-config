@@ -1,4 +1,4 @@
-{ localPkgs, unstablePkgs, ... }:
+{ localPkgs, pkgs, ... }:
 {
   imports = [
     ../home-manager/shell
@@ -16,13 +16,11 @@
   home = {
     packages =
       (with localPkgs; [ nixvim ])
-      ++ (with unstablePkgs; [
+      ++ (with pkgs; [
         neofetch
         wl-clipboard
         nix-index # tool to index and find references in the nix store. Use nix-locate
         nil
-        # todo: Checkout nixfmt-rfc-style instead of nixfmt-classic
-        # nixfmt-classic
         nixfmt-rfc-style
       ]);
 
