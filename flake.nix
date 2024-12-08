@@ -47,6 +47,8 @@
       url = "github:viniciussalvati/browser-stack-local-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.5.1";
   };
 
   outputs =

@@ -580,6 +580,22 @@
         "type": "github"
       }
     },
+    "nix-flatpak": {
+      "locked": {
+        "lastModified": 1733228754,
+        "narHash": "sha256-Jbt4imHmz5Z0jdaW7RrwAO1HYCmPs3XCt4j86jkG0b4=",
+        "owner": "gmodena",
+        "repo": "nix-flatpak",
+        "rev": "2880dc44fc8c450b4ffe1609a4bccd19ef759f5c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gmodena",
+        "ref": "v0.5.1",
+        "repo": "nix-flatpak",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1734737257,
@@ -715,6 +731,7 @@
         "git-fuzzy": "git-fuzzy",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
+        "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",

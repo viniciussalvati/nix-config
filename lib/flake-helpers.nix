@@ -4,6 +4,7 @@
   lanzaboote,
   home-manager,
   stylix,
+  nix-flatpak,
   ...
 }@inputs:
 let
@@ -48,6 +49,7 @@ let
           lanzaboote.nixosModules.lanzaboote
           stylix.nixosModules.stylix
           solaar.nixosModules.default
+          nix-flatpak.nixosModules.nix-flatpak
           ../options/common.nix
           ../hosts/configuration.nix
           ../hosts/${hostname}
