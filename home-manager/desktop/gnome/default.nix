@@ -10,10 +10,9 @@
     "org/gnome/shell" = {
       favorite-apps = [
         "kitty.desktop"
-        "firefox.desktop"
-        "code.desktop"
+        "io.github.zen_browser.zen.desktop"
         "org.gnome.Nautilus.desktop"
-        "org.gnome.TextEditor.desktop"
+        "code.desktop"
         "bitwarden.desktop"
         "org.telegram.desktop.desktop"
       ];
