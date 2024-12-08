@@ -29,4 +29,13 @@
 
   programs.kdeconnect.enable = true;
 
+  environment.sessionVariables = {
+    # makes gnome apps use the old renderer, allowing it to work with faulty nvidia driver
+    # Error messages:
+    # MESA-INTEL: warning: ../src/intel/vulkan/anv_formats.c:763: FINISHME: support YUV colorspace with DRM format modifiers
+    # MESA-INTEL: warning: ../src/intel/vulkan/anv_formats.c:794: FINISHME: support more multi-planar formats with DRM modifiers
+    #
+    # See https://bbs.archlinux.org/viewtopic.php?id=299546
+    GSK_RENDERER = "ngl";
+  };
 }
