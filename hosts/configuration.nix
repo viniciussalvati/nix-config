@@ -49,6 +49,7 @@
       telegram-desktop
       vscode
       nushell
+      vlc
     ]);
 
   fonts.packages = with unstablePkgs.nerd-fonts; [ fira-code ];
@@ -69,4 +70,13 @@
   nixpkgs.config.allowUnfree = true;
 
   home-manager.backupFileExtension = "backup";
+
+  services.flatpak.enable = true;
+
+  services.flatpak.packages = [
+    {
+      appId = "io.github.zen_browser.zen";
+      origin = "flathub";
+    }
+  ];
 }
