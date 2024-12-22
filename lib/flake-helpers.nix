@@ -89,13 +89,6 @@ let
                   ../home-manager/desktop
                 ] ++ (includeIfExists ../hosts/${hostname}/home.nix);
               };
-              # gdm is gnome's login screen's user
-              users.gdm = {
-                home = {
-                  inherit stateVersion;
-                };
-                imports = [ ../home-manager/desktop/gdm.nix ];
-              };
             };
           }
         ];
