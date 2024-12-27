@@ -11,6 +11,7 @@
     yarn
     awscli2
     jre_headless
+    maven # used by slots-admin
     localPkgs.BrowserStackLocal
   ];
 
