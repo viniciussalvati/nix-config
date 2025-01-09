@@ -1,4 +1,4 @@
-% node, yarn
+% yarn
 
 # Install yarn packages for all subfolders
 fd yarn.lock --exec yarn --cwd={//}
