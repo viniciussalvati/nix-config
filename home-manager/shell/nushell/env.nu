@@ -8,4 +8,4 @@ let nixLink = if $env.XDG_STATE_HOME? != null and ($env.XDG_STATE_HOME | path ex
   $"($env.HOME)/.nix-profile"
 }
 
-$env.PATH = $"($nixLink)/bin:$($env.path)"
+$env.PATH = $env.PATH | prepend $"($nixLink)/bin"
