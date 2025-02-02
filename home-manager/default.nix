@@ -8,6 +8,8 @@
     ./nixos # only use if in nixos installation of home-manager
     ./standalone # only used if in standalone installation of home-manager
     ./wsl # only used if in standalone installation of home-manager inside wsl
+
+    ./config/packages.nix # Installs packages from shared settings.packages when in standalone home-manager installation
   ];
 
   # Used to make home-manager generate the .profile file

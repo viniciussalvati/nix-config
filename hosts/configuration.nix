@@ -8,6 +8,7 @@
 {
 
   imports = [
+    ../nixos
     ../nixos/shell
     ../nixos/desktop/gnome.nix
     # waydroid still needs to be enabled. By default it won't auto start

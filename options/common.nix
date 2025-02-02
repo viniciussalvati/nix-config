@@ -1,5 +1,11 @@
 { lib, ... }:
 {
+  # home-manager.nix is left out on purpose
+  imports = [
+    ./packages.nix
+    ./libreoffice.nix
+  ];
+
   options.settings = {
     enableGaming = lib.mkOption {
       description = "Choose if gaming should be enabled";

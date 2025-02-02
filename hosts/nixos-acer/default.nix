@@ -26,6 +26,7 @@
   virtualisation.waydroid.enable = true;
 
   settings.enableGaming = true;
+  settings.libreoffice.enable = true;
 
   programs.kdeconnect.enable = true;
 
