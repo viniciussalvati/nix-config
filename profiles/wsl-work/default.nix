@@ -2,7 +2,7 @@
 let
   # Forces node 20 to be installed by the node.nix
   # This is also required for yarn to use the same version of nodejs
-  nodejs = unstablePkgs.nodejs_20;
+  nodejs = unstablePkgs.nodejs_22;
 in
 {
   nixpkgs.overlays = [ (_self: _super: { inherit nodejs; }) ];
@@ -15,10 +15,9 @@ in
       localPkgs.BrowserStackLocal
     ]
     ++ (with unstablePkgs; [
-      # Makes yarn use the specific nodejs version
-      (yarn.override { inherit nodejs; })
-      awscli2
-      jre_headless
+      (yarn.override { inherit nodejs; }) # Yarn with specific node version, instead of latest
+      awscli2 # Used to load some pre-built docker images
+      jre_headless # Used by wiremock, which is used by wtr-website to run business scenario tests
       maven # used by slots-admin
     ]);
 
