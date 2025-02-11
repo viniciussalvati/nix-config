@@ -23,6 +23,8 @@ in
       lla = "ls -la";
       l = "eza";
 
+      nr = "node --run";
+
       y = "yarn";
       ya = "yarn add";
       yad = "yarn add --dev";
