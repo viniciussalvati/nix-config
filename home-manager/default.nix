@@ -28,6 +28,8 @@
 
     sessionVariables = {
       EDITOR = "code --wait";
+      # Enables Console Do Not Track https://consoledonottrack.com/
+      DO_NOT_TRACK = 1;
     };
   };
 }
