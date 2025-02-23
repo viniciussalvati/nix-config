@@ -46,7 +46,6 @@
       git
       firefox
       thunderbird
-      bitwarden
       telegram-desktop
       vscode
       nushell
@@ -80,6 +79,10 @@
     packages = [
       {
         appId = "io.github.zen_browser.zen";
+        origin = "flathub";
+      }
+      {
+        appId = "com.bitwarden.desktop";
         origin = "flathub";
       }
     ];
