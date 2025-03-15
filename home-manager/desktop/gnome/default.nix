@@ -13,7 +13,7 @@
         "app.zen_browser.zen.desktop"
         "org.gnome.Nautilus.desktop"
         "code.desktop"
-        "bitwarden.desktop"
+        "com.bitwarden.desktop.desktop"
         "org.telegram.desktop.desktop"
       ];
     };
