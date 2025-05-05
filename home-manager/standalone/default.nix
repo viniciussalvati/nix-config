@@ -25,7 +25,7 @@ in
   ];
 
   home.sessionVariables = {
-    FLAKE = "${homeDirectory}/nix-config?${submodulesFragment}";
+    NH_FLAKE = "${homeDirectory}/nix-config?${submodulesFragment}";
   };
 
   programs.zsh.initExtraFirst = builtins.readFile ./zsh-init-extra-first.zsh;
