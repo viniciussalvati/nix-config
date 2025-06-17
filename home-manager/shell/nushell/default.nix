@@ -1,7 +1,11 @@
-{ unstablePkgs, config, ... }:
+{
+  pkgs,
+  unstablePkgs,
+  config,
+  ...
+}:
 let
   nuScripts = unstablePkgs.nu_scripts;
-  gstatPlugin = unstablePkgs.nushellPlugins.gstat;
   environmentVariables = builtins.attrValues (
     builtins.mapAttrs (
       name: value: "${name}: \"${builtins.toString value}\""
@@ -13,7 +17,10 @@ in
 {
   programs.nushell = {
     enable = true;
-    package = unstablePkgs.nushell;
+
+    plugins = [
+      pkgs.nushellPlugins.gstat
+    ];
 
     shellAliases = {
       grbom = "git rebase origin/(git_main_branch)";
@@ -88,13 +95,12 @@ in
 
     configFile.source = ./config.nu;
     extraConfig = ''
-      source ${./config-navi.nu}
-
       $env.config.shell_integration.osc9_9 = ${isWslString}
       $env.config.rm.always_trash = ${if config.home-manager.type == "wsl" then "false" else "true"}
 
-      plugin add ${gstatPlugin}/bin/nu_plugin_gstat
       use ${nuScripts}/share/nu_scripts/aliases/git/git-aliases.nu *
+
+      use ${nuScripts}/share/nu_scripts/custom-completions/flutter/flutter-completions.nu *
     '';
   };
 }

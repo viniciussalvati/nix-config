@@ -76,5 +76,9 @@
   };
 
   programs.zoxide.enable = true;
-  programs.carapace.enable = true;
+  programs.carapace = {
+    enable = true;
+    # Needed to fix an error on init on nushell. May be removed when the version in stable is 1.3.3 or older
+    package = unstablePkgs.carapace;
+  };
 }

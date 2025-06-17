@@ -141,7 +141,7 @@ let
 
         modules =
           [
-            stylix.homeManagerModules.stylix
+            stylix.homeModules.stylix
             ../options/common.nix
             ../options/home-manager.nix
             {

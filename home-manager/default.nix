@@ -1,4 +1,9 @@
-{ localPkgs, pkgs, ... }:
+{
+  localPkgs,
+  pkgs,
+  unstablePkgs,
+  ...
+}:
 {
   imports = [
     ../home-manager/shell
@@ -24,7 +29,9 @@
         nix-index # tool to index and find references in the nix store. Use nix-locate
         nil
         nixfmt-rfc-style
-      ]);
+
+      ])
+      ++ (with unstablePkgs; [ devenv ]);
 
     sessionVariables = {
       EDITOR = "code --wait";

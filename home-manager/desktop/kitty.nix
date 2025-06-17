@@ -1,10 +1,14 @@
-{ unstablePkgs, lib, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 {
   programs.kitty = {
     enable = true;
     font.name = lib.mkForce "FiraCode Nerd Font";
     settings = {
-      shell = "${unstablePkgs.nushell}/bin/nu";
+      shell = "${config.programs.nushell.package}/bin/nu";
       editor = "nvim";
 
       copy_on_select = true;

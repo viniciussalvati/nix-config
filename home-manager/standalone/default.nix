@@ -28,7 +28,7 @@ in
     NH_FLAKE = "${homeDirectory}/nix-config?${submodulesFragment}";
   };
 
-  programs.zsh.initExtraFirst = builtins.readFile ./zsh-init-extra-first.zsh;
+  programs.zsh.initContent = lib.mkBefore (builtins.readFile ./zsh-init-content-first.zsh);
 
   programs.navi.settings.cheats.paths = [ ./cheats/home-manager.cheat ];
 })

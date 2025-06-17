@@ -37,10 +37,22 @@
   };
   users.defaultUserShell = unstablePkgs.zsh;
 
+  # Allows my user to manage nix caches (aka, through devenv)
+  nix.settings.trusted-users = [
+    "root"
+    username
+  ];
+
+  # Uses the latest nix version
+  nix.package = unstablePkgs.nixVersions.latest;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages =
-    (with pkgs; [ gedit ])
+    (with pkgs; [
+      gedit
+      nushell
+    ])
     ++ (with unstablePkgs; [
       zsh
       git
@@ -48,7 +60,6 @@
       thunderbird
       telegram-desktop
       vscode
-      nushell
       vlc
     ]);
 

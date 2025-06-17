@@ -1,4 +1,4 @@
 % yarn
 
 # Install yarn packages for all subfolders
-fd yarn.lock --exec yarn --cwd={//}
+fd yarn.lock --hidden --exec yarn --cwd={//}

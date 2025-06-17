@@ -11,7 +11,6 @@ lib.mkIf config.settings.enableGaming {
   hardware.steam-hardware.enable = true;
   programs.steam = {
     enable = true;
-    package = unstablePkgs.steam;
     # Allows starting games with a micro-compositor to improve games and fix issues
     gamescopeSession.enable = true;
   };

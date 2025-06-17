@@ -64,7 +64,7 @@ in
       }
     ];
 
-    initExtra = # zsh
+    initContent = # zsh
       ''
         # Use fd for listing path candidates.
         # - The first argument to the function ($1) is the base path to start traversal
