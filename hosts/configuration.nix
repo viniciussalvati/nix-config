@@ -43,9 +43,6 @@
     username
   ];
 
-  # Uses the latest nix version
-  nix.package = unstablePkgs.nixVersions.latest;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages =

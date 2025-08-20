@@ -15,8 +15,6 @@ in
 // (lib.mkIfStandalone config {
   nixpkgs.config.allowUnfree = true;
 
-  nix.package = unstablePkgs.nixVersions.latest;
-
   home.packages = with unstablePkgs; [
     nh
     nix-output-monitor
