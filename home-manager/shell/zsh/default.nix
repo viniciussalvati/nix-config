@@ -1,4 +1,9 @@
-{ unstablePkgs, ... }:
+{
+  unstablePkgs,
+  lib,
+  config,
+  ...
+}:
 {
   programs.zsh = {
     enable = true;
@@ -21,5 +26,13 @@
         "yarn"
       ];
     };
+
+    shellAliases = (
+      lib.mkIfDesktop config {
+        "rm!" = "command rm";
+        rm = "echo 'Use trash command or rm! if you really want to remove the file'";
+        trash = "gio trash";
+      }
+    );
   };
 }
