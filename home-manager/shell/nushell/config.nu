@@ -1,6 +1,3 @@
-$env.config.show_banner = false # Not show the banner when opening nushell
-$env.config.use_kitty_protocol = true # Enables keyboard enhancement protocol implemented by kitty console, only if your terminal support this.
-
 # Sets the Ctrl+L to clear the screen, instead of just scrolling
 $env.config.keybindings = ($env.config.keybindings | append
   { name: clear_screen

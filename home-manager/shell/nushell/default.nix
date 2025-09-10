@@ -12,7 +12,6 @@ let
     ) config.home.sessionVariables
   );
   environmentVariablesString = builtins.concatStringsSep ", " environmentVariables;
-  isWslString = if config.home-manager.type == "wsl" then "true" else "false";
 in
 {
   programs.nushell = {
@@ -75,6 +74,14 @@ in
       are not merged
     */
     envFile.source = ./env.nu;
+
+    settings = {
+      show_banner = false; # Not show the banner when opening nushell
+      use_kitty_protocol = true; # Enables keyboard enhancement protocol implemented by kitty console, only if your terminal support this.
+      shell_integration.osc9_9 = config.home-manager.type == "wsl"; # Proper integrations for windows terminal (causes issues on kitty)
+      rm.always_trash = config.home-manager.type != "wsl"; # Send files to the trash when using rm, when not in wsl
+    };
+
     extraEnv = ''
       if $env.__HM_SESS_VARS_SOURCED? == null {
         # Loads other variables
@@ -95,9 +102,6 @@ in
 
     configFile.source = ./config.nu;
     extraConfig = ''
-      $env.config.shell_integration.osc9_9 = ${isWslString}
-      $env.config.rm.always_trash = ${if config.home-manager.type == "wsl" then "false" else "true"}
-
       use ${nuScripts}/share/nu_scripts/aliases/git/git-aliases.nu *
 
       use ${nuScripts}/share/nu_scripts/custom-completions/flutter/flutter-completions.nu *
