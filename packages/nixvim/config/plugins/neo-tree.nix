@@ -4,7 +4,7 @@
     enable = true;
 
     # Close neo-tree when a file is opened
-    eventHandlers.file_opened = # lua
+    settings.event_handlers.file_opened = # lua
       ''
         function(file_path)
           require('neo-tree').close_all()
