@@ -1,10 +1,10 @@
-{ helpers, ... }:
+{ lib, ... }:
 {
   keymaps = [
     {
       mode = "n";
       key = "<leader>f";
-      action = helpers.mkRaw "vim.lsp.buf.format";
+      action = lib.nixvim.mkRaw "vim.lsp.buf.format";
       options.desc = "[F]ormat code";
     }
     {
@@ -13,7 +13,7 @@
         "i"
       ];
       key = "<C-f>";
-      action = helpers.mkRaw "vim.lsp.buf.format";
+      action = lib.nixvim.mkRaw "vim.lsp.buf.format";
       options.desc = "[F]ormat code";
     }
     # Shortcuts for spliting the screen
@@ -52,7 +52,7 @@
       mode = "n";
       key = "<M-,>";
       action =
-        helpers.mkRaw # lua
+        lib.nixvim.mkRaw # lua
           ''
             function()
               local current_window = vim.api.nvim_get_current_win()
@@ -66,7 +66,7 @@
       mode = "n";
       key = "<M-.>";
       action =
-        helpers.mkRaw # lua
+        lib.nixvim.mkRaw # lua
           ''
             function()
               local current_window = vim.api.nvim_get_current_win()
@@ -80,7 +80,7 @@
       mode = "n";
       key = "<M-->";
       action =
-        helpers.mkRaw # lua
+        lib.nixvim.mkRaw # lua
           ''
             function()
               local current_window = vim.api.nvim_get_current_win()
@@ -94,7 +94,7 @@
       mode = "n";
       key = "<M-=>";
       action =
-        helpers.mkRaw # lua
+        lib.nixvim.mkRaw # lua
           ''
             function()
               local current_window = vim.api.nvim_get_current_win()

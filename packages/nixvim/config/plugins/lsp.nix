@@ -1,4 +1,4 @@
-{ helpers, ... }:
+{ lib, ... }:
 {
   plugins = {
     lsp = {
@@ -37,7 +37,7 @@
     {
       event = "BufWritePre";
       callback =
-        helpers.mkRaw # lua
+        lib.nixvim.mkRaw # lua
           "function() vim.lsp.buf.format() end";
     }
   ];

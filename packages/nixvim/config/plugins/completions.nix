@@ -1,4 +1,4 @@
-{ helpers, ... }:
+{ lib, ... }:
 {
   plugins = {
     cmp = {
@@ -22,7 +22,7 @@
             end
           '';
         mapping =
-          helpers.mkRaw # lua
+          lib.nixvim.mkRaw # lua
             ''
               cmp.mapping.preset.insert({
                 ['<C-Space>'] = cmp.mapping.complete(),
@@ -38,13 +38,13 @@
       cmdline = {
         "/" = {
           mapping =
-            helpers.mkRaw # lua
+            lib.nixvim.mkRaw # lua
               "cmp.mapping.preset.cmdline()";
           sources = [ { name = "buffer"; } ];
         };
         ":" = {
           mapping =
-            helpers.mkRaw # lua
+            lib.nixvim.mkRaw # lua
               "cmp.mapping.preset.cmdline()";
           sources = [
             { name = "path"; }
