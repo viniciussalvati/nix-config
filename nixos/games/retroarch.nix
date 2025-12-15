@@ -1,7 +1,7 @@
 { unstablePkgs, ... }:
 {
   environment.systemPackages = with unstablePkgs; [
-    (retroarchFull.withCores (
+    (retroarch-full.withCores (
       cores: with cores; [
         dolphin
         # genesis-plus-gx

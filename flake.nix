@@ -2,11 +2,11 @@
   description = "Configurations for my nixos machines";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
+      url = "github:nix-community/lanzaboote/v1.0.0";
 
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,14 +15,14 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05"; # for nixos stable
+      url = "github:nix-community/home-manager/release-25.11"; # for nixos stable
       # url = "github:nix-community/home-manager"; # for nixos unstable
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     stylix = {
       # url = "github:danth/stylix";
-      url = "github:danth/stylix/release-25.05";
+      url = "github:danth/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
