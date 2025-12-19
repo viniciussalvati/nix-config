@@ -23,7 +23,6 @@ lib.mkIfWsl config {
   programs.keychain = {
     enable = true;
     keys = [ ]; # load no key
-    agents = [ "ssh" ]; # start ssh agent
   };
 
   home.packages =
