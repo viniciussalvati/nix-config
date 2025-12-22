@@ -23,6 +23,8 @@ lib.mkIfWsl config {
   programs.keychain = {
     enable = true;
     keys = [ ]; # load no key
+    enableZshIntegration = true;
+    enableNushellIntegration = false;
   };
 
   home.packages =

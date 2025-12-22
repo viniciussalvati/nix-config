@@ -1,4 +1,5 @@
 {
+  pkgs,
   unstablePkgs,
   localPkgs,
   lib,
@@ -8,6 +9,7 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
+    package = pkgs.openssh;
     matchBlocks = {
       "github.com" = {
         hostname = "github.com";
@@ -33,9 +35,11 @@
       alias = {
         sort = "!git rebase -i $(git merge-base origin/HEAD --fork-point)";
       };
-
       advice = {
         detachedHead = false;
+      };
+      core = {
+        sshCommand = "${pkgs.openssh}/bin/ssh";
       };
       pull = {
         ff = "only";
