@@ -1,5 +1,8 @@
 {
   imports = [ ../../shared/stylix ];
 
-  stylix.targets.vscode.enable = false;
+  stylix = {
+    targets.vscode.enable = false;
+    targets.qt.platform = "qtct";
+  };
 }
