@@ -28,10 +28,11 @@
         wl-clipboard
         nix-index # tool to index and find references in the nix store. Use nix-locate
         nil
-        nixfmt-rfc-style
-
       ])
-      ++ (with unstablePkgs; [ devenv ]);
+      ++ (with unstablePkgs; [
+        devenv
+        nixfmt
+      ]);
 
     sessionVariables = {
       EDITOR = "code --wait";
