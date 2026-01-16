@@ -91,7 +91,7 @@ in
           | transpose name value
           | update value {|x|
               $x.value
-              | str replace --regex $'\$\{($x.name):\+:\$($x.name)\}' (if ($env | get --ignore-errors $x.name) != null { $":($env | get $x.name)"} else { "" })
+              | str replace --regex $'\$\{($x.name):\+:\$($x.name)\}' (if ($env | get --optional $x.name) != null { $":($env | get $x.name)"} else { "" })
             }
           | transpose --header-row --as-record
         )

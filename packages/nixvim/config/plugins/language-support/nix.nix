@@ -11,7 +11,7 @@
       code_actions.statix.enable = true;
       diagnostics.deadnix.enable = true;
       formatting.nixfmt.enable = true;
-      formatting.nixfmt.package = pkgs.nixfmt-rfc-style;
+      formatting.nixfmt.package = pkgs.nixfmt;
     };
   };
 }

@@ -23,7 +23,7 @@ lib.mkIf config.settings.enableGaming {
       (import ./nix-game-launcher.nix pkgs)
     ])
     ++ (with unstablePkgs; [
-      protonup
+      protonup-ng
       wine
     ]);
 

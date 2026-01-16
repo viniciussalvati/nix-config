@@ -23,7 +23,8 @@ lib.mkIfWsl config {
   programs.keychain = {
     enable = true;
     keys = [ ]; # load no key
-    agents = [ "ssh" ]; # start ssh agent
+    enableZshIntegration = true;
+    enableNushellIntegration = false;
   };
 
   home.packages =

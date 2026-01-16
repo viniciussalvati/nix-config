@@ -1,4 +1,5 @@
 {
+  pkgs,
   unstablePkgs,
   localPkgs,
   lib,
@@ -7,6 +8,8 @@
 {
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
+    package = pkgs.openssh;
     matchBlocks = {
       "github.com" = {
         hostname = "github.com";
@@ -23,14 +26,20 @@
   programs.git = {
     enable = true;
     package = unstablePkgs.gitFull;
-    userName = "Vinicius Salvati Melquiades";
-    userEmail = "1378981+viniciussalvati@users.noreply.github.com";
-    aliases = {
-      sort = "!git rebase -i $(git merge-base origin/HEAD --fork-point)";
-    };
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Vinicius Salvati Melquiades";
+        email = "1378981+viniciussalvati@users.noreply.github.com";
+        signingkey = "~/.ssh/github_ed25519";
+      };
+      alias = {
+        sort = "!git rebase -i $(git merge-base origin/HEAD --fork-point)";
+      };
       advice = {
         detachedHead = false;
+      };
+      core = {
+        sshCommand = "${pkgs.openssh}/bin/ssh";
       };
       pull = {
         ff = "only";
@@ -48,17 +57,21 @@
         verbose = true;
         gpgsign = true;
       };
-      user = {
-        signingkey = "~/.ssh/github_ed25519";
+      spice = {
+        submit = {
+          navigationComment = false;
+          publish = false;
+        };
       };
     };
+  };
 
-    delta = {
-      enable = true;
-      package = unstablePkgs.delta;
-      options = {
-        side-by-side = true;
-      };
+  programs.delta = {
+    enable = true;
+    package = unstablePkgs.delta;
+    enableGitIntegration = true;
+    options = {
+      side-by-side = true;
     };
   };
 
@@ -87,9 +100,10 @@
     packages =
       with unstablePkgs;
       [
-        tig
         git-bug
+        git-spice
         glab
+        tig
       ]
       ++ [ localPkgs.git-fuzzy ];
 

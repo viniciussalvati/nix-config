@@ -1,21 +1,11 @@
 { pkgs, ... }:
 {
-  services.xserver = {
-    enable = true;
+  services = {
     displayManager.gdm.enable = true;
 
-    desktopManager = {
-      gnome = {
-        enable = true;
-      };
-
-      # Disables xterm
-      xterm.enable = false;
+    desktopManager.gnome = {
+      enable = true;
     };
-
-    excludePackages = with pkgs; [
-      xterm # because xterm.enable = false isn't always enough
-    ];
   };
 
   # Removes some packages from gnome I don't want/need
