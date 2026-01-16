@@ -57,6 +57,12 @@
         verbose = true;
         gpgsign = true;
       };
+      spice = {
+        submit = {
+          navigationComment = false;
+          publish = false;
+        };
+      };
     };
   };
 
@@ -95,6 +101,7 @@
       with unstablePkgs;
       [
         git-bug
+        git-spice
         glab
         tig
       ]
