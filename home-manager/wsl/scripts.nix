@@ -20,6 +20,10 @@ let
       ''
         ${stop-service-str "docker"}
 
+        ${stop-service-str "dbus"}
+        pkill dbus-launch || true
+        pkill dbus-daemon || true
+
         keychain --stop all || true
 
         # wl-copy can be kept running when started by nixvim

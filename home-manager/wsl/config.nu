@@ -9,3 +9,10 @@ let keychain_shell_command = (SHELL=bash keychain --eval --quiet |
 if not ($keychain_shell_command|is-empty) {
   $keychain_shell_command | load-env
 }
+
+let is_using_systemd = (systemctl status | complete | get exit_code) == 0
+
+# Starts dbus so I don't end up with a lot of instances for commands that use it
+if (not $is_using_systemd and (service dbus status | complete | get exit_code) == 3) {
+  sudo service dbus start | ignore
+}
