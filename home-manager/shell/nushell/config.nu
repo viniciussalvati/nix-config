@@ -33,3 +33,21 @@ def --env import-env []: [
     } |
     transpose -r -d | load-env $in
 }
+
+def "list alias" [...search: string, --name (-n): string, --expansion (-e): string] {
+  mut result = scope aliases | select name expansion
+
+  if ($search | length) != 0 {
+    $result | find $"($search | str join ' ')"
+  } else {
+    if $name != null {
+      $result = $result | where name =~ $name
+    }
+
+    if $expansion != null {
+      $result = $result | where expansion =~ $expansion
+    }
+
+    $result
+  }
+}
