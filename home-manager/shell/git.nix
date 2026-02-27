@@ -122,7 +122,7 @@
 
       gfb = "git fuzzy branch";
 
-      ta = "tig --all";
+      ta = "tig --all --not refs/spice/data";
     };
   };
   programs.nushell.shellAliases = builtins.mapAttrs (name: value: lib.mkForce value) {
