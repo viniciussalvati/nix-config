@@ -124,6 +124,12 @@
 
       ta = "tig --all --not refs/spice/data";
     };
+
+    sessionVariables = {
+      # Disables a warning about using the `gs` command instead of `git-spice`
+      # This is necessary because the `git-spice` executable is not present yet
+      GIT_SPICE_NO_GS_WARNING = "1";
+    };
   };
   programs.nushell.shellAliases = builtins.mapAttrs (name: value: lib.mkForce value) {
     gk = "do { job spawn { gitk --all } | ignore }";
