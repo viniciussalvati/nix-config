@@ -1,8 +1,13 @@
-{ unstablePkgs, localPkgs, ... }:
+{
+  pkgs,
+  unstablePkgs,
+  localPkgs,
+  ...
+}:
 let
-  # Forces node 20 to be installed by the node.nix
+  # Forces node 24 to be installed by the node.nix
   # This is also required for yarn to use the same version of nodejs
-  nodejs = unstablePkgs.nodejs_24;
+  nodejs = pkgs.nodejs_24;
 in
 {
   nixpkgs.overlays = [ (_self: _super: { inherit nodejs; }) ];
