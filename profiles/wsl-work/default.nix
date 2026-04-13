@@ -34,4 +34,6 @@ in
     "npm"
     "yarn"
   ];
+
+  programs.nushell.extraEnv = builtins.readFile ./env.nu;
 }
