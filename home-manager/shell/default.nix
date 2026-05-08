@@ -4,7 +4,7 @@
     ./git.nix
     ./navi
     ./tealdeer.nix
-    ./starship.nix
+    ./starship
     ./zsh
     ./nushell
     ./fzf.nix
