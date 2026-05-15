@@ -1,4 +1,7 @@
-% yarn
+% node
+
+# Install npm packages for all subfolders
+fd package-lock.json --hidden --exec npm install --prefix={//}
 
 # Install yarn packages for all subfolders
 fd yarn.lock --hidden --exec yarn --cwd={//}
