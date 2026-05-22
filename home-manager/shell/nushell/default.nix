@@ -30,6 +30,18 @@ in
       l = "eza";
 
       nr = "node --run";
+      nd = "node --run dev --";
+      ns = "node --run serve --";
+      nb = "node --run build --";
+      nt = "node --run test --";
+
+      npmi = "npm install";
+      npmS = "npm i -S";
+      npmD = "npm i -D";
+      npmst = "npm start";
+      npmt = "npm test";
+      npmrd = "npm run dev";
+      npmrb = "npm run build";
 
       y = "yarn";
       ya = "yarn add";
