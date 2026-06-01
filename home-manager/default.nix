@@ -24,7 +24,7 @@
     packages =
       (with localPkgs; [ nixvim ])
       ++ (with pkgs; [
-        neofetch
+        fastfetch
         wl-clipboard
         nix-index # tool to index and find references in the nix store. Use nix-locate
         nil
