@@ -23,7 +23,7 @@ in
   ];
 
   home.sessionVariables = {
-    NH_FLAKE = "${homeDirectory}/nix-config?${submodulesFragment}";
+    NH_FLAKE = "git+file://${homeDirectory}/nix-config?${submodulesFragment}";
   };
 
   programs.zsh.initContent = lib.mkBefore (builtins.readFile ./zsh-init-content-first.zsh);
