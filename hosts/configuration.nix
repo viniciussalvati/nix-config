@@ -49,6 +49,7 @@
     (with pkgs; [
       gedit
       nushell
+      android-tools
     ])
     ++ (with unstablePkgs; [
       zsh
@@ -70,7 +71,6 @@
 
   programs.zsh.enable = true;
 
-  programs.adb.enable = true;
 
   environment.shells = [ unstablePkgs.zsh ];
 
