@@ -1,5 +1,4 @@
 {
-  unstablePkgs,
   lib,
   config,
   ...
@@ -7,7 +6,6 @@
 {
   programs.zsh = {
     enable = true;
-    package = unstablePkgs.zsh;
     autosuggestion.enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
