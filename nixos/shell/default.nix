@@ -29,6 +29,6 @@ in
   programs.nh = {
     enable = true;
     package = unstablePkgs.nh;
-    flake = "${homeDirectory}/nix-config?${submodulesFragment}";
+    flake = "git+file://${homeDirectory}/nix-config?${submodulesFragment}";
   };
 }

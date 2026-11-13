@@ -35,7 +35,7 @@
       "adbusers" # Add to the list of adb users. I don't really know what this does
     ];
   };
-  users.defaultUserShell = unstablePkgs.zsh;
+  users.defaultUserShell = pkgs.zsh;
 
   # Allows my user to manage nix caches (aka, through devenv)
   nix.settings.trusted-users = [
@@ -47,11 +47,12 @@
   # $ nix search wget
   environment.systemPackages =
     (with pkgs; [
+      zsh
       gedit
       nushell
+      android-tools
     ])
     ++ (with unstablePkgs; [
-      zsh
       git
       firefox
       thunderbird
@@ -70,9 +71,7 @@
 
   programs.zsh.enable = true;
 
-  programs.adb.enable = true;
-
-  environment.shells = [ unstablePkgs.zsh ];
+  environment.shells = [ pkgs.zsh ];
 
   # Allow unfree software (such as vscode)
   nixpkgs.config.allowUnfree = true;

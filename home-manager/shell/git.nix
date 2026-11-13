@@ -10,15 +10,13 @@
     enable = true;
     enableDefaultConfig = false;
     package = pkgs.openssh;
-    matchBlocks = {
+    settings = {
       "github.com" = {
         hostname = "github.com";
         user = "git";
         identityFile = "~/.ssh/github_ed25519";
         identitiesOnly = true;
-        extraOptions = {
-          addKeysToAgent = "yes";
-        };
+        addKeysToAgent = "yes";
       };
     };
   };
